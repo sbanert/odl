@@ -1157,7 +1157,7 @@ def proximal_convex_conj_kl(space, lam=1, g=None):
 
     Parameters
     ----------
-    space : `FnBase`
+    space : `TensorSpace`
         Space X which is the domain of the functional F
     lam : positive float, optional
         Scaling factor.
@@ -1292,7 +1292,7 @@ def proximal_convex_conj_kl_cross_entropy(space, lam=1, g=None):
 
     Parameters
     ----------
-    space : `FnBase`
+    space : `TensorSpace`
         Space X which is the domain of the functional F
     lam : positive float, optional
         Scaling factor.

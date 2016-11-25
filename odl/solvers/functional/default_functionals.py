@@ -68,7 +68,7 @@ class LpNorm(Functional):
 
         Parameters
         ----------
-        space : `DiscreteLp` or `FnBase`
+        space : `DiscreteLp` or `TensorSpace`
             Domain of the functional.
         exponent : float
             Exponent for the norm (``p``).
@@ -465,7 +465,7 @@ class IndicatorLpUnitBall(Functional):
 
         Parameters
         ----------
-        space : `DiscreteLp` or `FnBase`
+        space : `DiscreteLp` or `TensorSpace`
             Domain of the functional.
         exponent : int or infinity
             Specifies wich norm to use.
@@ -565,7 +565,7 @@ class L1Norm(LpNorm):
 
         Parameters
         ----------
-        space : `DiscreteLp` or `FnBase`
+        space : `DiscreteLp` or `TensorSpace`
             Domain of the functional.
         """
         super().__init__(space=space, exponent=1)
@@ -603,7 +603,7 @@ class L2Norm(LpNorm):
 
         Parameters
         ----------
-        space : `DiscreteLp` or `FnBase`
+        space : `DiscreteLp` or `TensorSpace`
             Domain of the functional.
         """
         super().__init__(space=space, exponent=2)
@@ -641,7 +641,7 @@ class L2NormSquared(Functional):
 
         Parameters
         ----------
-        space : `DiscreteLp` or `FnBase`
+        space : `DiscreteLp` or `TensorSpace`
             Domain of the functional.
         """
         super().__init__(space=space, linear=False, grad_lipschitz=2)
@@ -1062,7 +1062,7 @@ class KullbackLeibler(Functional):
 
         Parameters
         ----------
-        space : `DiscreteLp` or `FnBase`
+        space : `DiscreteLp` or `TensorSpace`
             Domain of the functional.
         prior : ``space`` `element-like`, optional
             Depending on the context, the prior, target or data
@@ -1207,7 +1207,7 @@ class KullbackLeiblerConvexConj(Functional):
 
         Parameters
         ----------
-        space : `DiscreteLp` or `FnBase`
+        space : `DiscreteLp` or `TensorSpace`
             Domain of the functional.
         prior : ``space`` `element-like`, optional
             Depending on the context, the prior, target or data
@@ -1348,7 +1348,7 @@ class KullbackLeiblerCrossEntropy(Functional):
 
         Parameters
         ----------
-        space : `DiscreteLp` or `FnBase`
+        space : `DiscreteLp` or `TensorSpace`
             Domain of the functional.
         prior : ``space`` `element-like`, optional
             Depending on the context, the prior, target or data
@@ -1472,7 +1472,7 @@ class KullbackLeiblerCrossEntropyConvexConj(Functional):
 
         Parameters
         ----------
-        space : `DiscreteLp` or `FnBase`
+        space : `DiscreteLp` or `TensorSpace`
             Domain of the functional.
         prior : ``space`` `element-like`, optional
             Depending on the context, the prior, target or data
@@ -1892,7 +1892,7 @@ class NuclearNorm(Functional):
 
         Parameters
         ----------
-        space : `ProductSpace` of `ProductSpace` of `FnBase`
+        space : `ProductSpace` of `ProductSpace` of `TensorSpace`
             Domain of the functional.
         outer_exp : {1, 2, inf}, optional
             Exponent for the outer norm.
@@ -1916,7 +1916,7 @@ class NuclearNorm(Functional):
             raise TypeError('`space` must be a `ProductSpace` of '
                             '`ProductSpace`s')
         if (not space.is_power_space or not space[0].is_power_space):
-            raise TypeError('`space` must be of the form `FnBase^(nxm)`')
+            raise TypeError('`space` must be of the form `TensorSpace^(nxm)`')
 
         super().__init__(space=space, linear=False, grad_lipschitz=np.nan)
 
@@ -2125,7 +2125,7 @@ class IndicatorNuclearNormUnitBall(Functional):
 
         Parameters
         ----------
-        space : `ProductSpace` of `ProductSpace` of `FnBase`
+        space : `ProductSpace` of `ProductSpace` of `TensorSpace`
             Domain of the functional.
         outer_exp : {1, 2, inf}, optional
             Exponent for the outer norm.
