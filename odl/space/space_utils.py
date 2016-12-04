@@ -138,7 +138,7 @@ def tensor_space(shape, dtype=None, order='C', impl='numpy', **kwargs):
     One-dimensional spaces have special constructors:
 
     >>> odl.tensor_space((3,), dtype='int64')
-    fn(3, 'int')
+    tensor_space(3, 'int')
 
     See also
     --------
