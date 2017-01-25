@@ -17,7 +17,6 @@ import numpy as np
 
 from odl.set import RealNumbers, ComplexNumbers
 from odl.space.entry_points import tensor_space_impl
-from odl.util import is_scalar_dtype
 
 
 __all__ = ('vector', 'tensor_space', 'cn', 'rn')
@@ -77,14 +76,13 @@ def vector(array, dtype=None, order='C', impl='numpy'):
 
     >>> odl.vector([[True, True, False],
     ...             [False, False, True]])
-    tensor_set((2, 3), 'bool', order='C').element(
+    tensor_space((2, 3), 'bool', order='C').element(
     [[True, True, False],
      [False, False, True]]
     )
     """
     # Sanitize input
     arr = np.array(array, copy=False, order=order, ndmin=1)
-
     if arr.dtype is object:
         raise ValueError('invalid input data resulting in `dtype==object`')
 
@@ -94,14 +92,8 @@ def vector(array, dtype=None, order='C', impl='numpy'):
     else:
         space_dtype = arr.dtype
 
-    # Select implementation
-    if space_dtype is None or is_scalar_dtype(space_dtype):
-        space_constr = tensor_space
-    else:
-        space_constr = tensor_set
-
-    return space_constr(arr.shape, dtype=space_dtype, order=order,
-                        impl=impl).element(arr)
+    space = tensor_space(arr.shape, dtype=space_dtype, order=order, impl=impl)
+    return space.element(arr)
 
 
 def tensor_space(shape, dtype=None, order='K', impl='numpy', **kwargs):
@@ -133,7 +125,7 @@ def tensor_space(shape, dtype=None, order='K', impl='numpy', **kwargs):
 
     Returns
     -------
-    tspace : `TensorSpace`
+    space : `TensorSpace`
 
     Examples
     --------
@@ -159,7 +151,8 @@ def tensor_space(shape, dtype=None, order='K', impl='numpy', **kwargs):
 
     See Also
     --------
-    tensor_set : Set of tensors with arbitrary data type.
+    rn : Real tensor space.
+    cn : Complex tensor space.
     """
     tspace_cls = tensor_space_impl(impl)
 
@@ -225,7 +218,7 @@ def cn(shape, dtype=None, order='K', impl='numpy', **kwargs):
     See Also
     --------
     tensor_space : Space of tensors with arbitrary scalar data type.
-    rn : Real tensor spaces.
+    rn : Real tensor space.
     """
     cn_cls = tensor_space_impl(impl)
 
