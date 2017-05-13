@@ -18,7 +18,7 @@ import numpy as np
 
 from odl.discr import RectPartition
 from odl.tomo.util.utility import perpendicular_vector
-from odl.util import indent_rows, signature_string
+from odl.util import indent, signature_string
 
 
 __all__ = ('Detector', 'FlatDetector', 'Flat1dDetector', 'Flat2dDetector',
@@ -263,8 +263,7 @@ class Flat1dDetector(FlatDetector):
         """Return ``repr(self)``."""
         posargs = [self.partition, self.axis]
         inner_str = signature_string(posargs, [], sep=[',\n', ', ', ', '])
-        return '{}({})'.format(self.__class__.__name__,
-                               indent_rows(inner_str))
+        return '{}({})'.format(self.__class__.__name__, indent(inner_str))
 
     def __str__(self):
         """Return ``str(self)``."""

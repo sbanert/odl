@@ -21,7 +21,7 @@ from odl.tomo.geometry.detector import Flat1dDetector, Flat2dDetector
 from odl.tomo.geometry.geometry import (
     DivergentBeamGeometry, AxisOrientedGeometry)
 from odl.tomo.util.utility import euler_matrix, transform_system
-from odl.util import signature_string, indent_rows
+from odl.util import signature_string, indent
 
 
 __all__ = ('FanFlatGeometry', 'ConeFlatGeometry',
@@ -471,8 +471,7 @@ class FanFlatGeometry(DivergentBeamGeometry):
             optargs.append(['translation', self.translation.tolist(), None])
 
         sig_str = signature_string(posargs, optargs, sep=',\n')
-        return '{}(\n{}\n)'.format(self.__class__.__name__,
-                                   indent_rows(sig_str))
+        return '{}(\n{}\n)'.format(self.__class__.__name__, indent(sig_str))
 
 
 class ConeFlatGeometry(DivergentBeamGeometry, AxisOrientedGeometry):
