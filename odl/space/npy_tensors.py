@@ -2224,7 +2224,8 @@ class NumpyTensorSpaceNoWeighting(NoWeighting,
                 cls.__instance = inst
             return cls.__instance
         else:
-            return super().__new__(cls, *args, **kwargs)
+            return super(NoWeighting, NumpyTensorSpaceNoWeighting).__new__(
+                cls, *args, **kwargs)
 
     def __init__(self, exponent=2.0):
         """Initialize a new instance.
