@@ -998,8 +998,7 @@ class ConeFlatGeometry(DivergentBeamGeometry, AxisOrientedGeometry):
             optargs.append(['translation', self.translation.tolist(), None])
 
         sig_str = signature_string(posargs, optargs, sep=',\n')
-        return '{}(\n{}\n)'.format(self.__class__.__name__,
-                                   indent_rows(sig_str))
+        return '{}(\n{}\n)'.format(self.__class__.__name__, indent(sig_str))
 
     # Manually override the abstract method in `Geometry` since it's found
     # first
