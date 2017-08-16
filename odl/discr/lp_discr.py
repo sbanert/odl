@@ -591,6 +591,11 @@ class DiscreteLpElement(DiscretizedSpaceElement):
         return self.space.cell_volume
 
     @property
+    def data(self):
+        """Data container of ``self``, depends on ``space.impl``."""
+        return self.tensor.data
+
+    @property
     def real(self):
         """Real part of this element."""
         rspace = self.space.astype(self.space.real_dtype)
@@ -1088,7 +1093,8 @@ numpy.ufunc.reduceat.html
 
                 elif method == 'reduce':
                     # Index space by axis using `reduced_axes`
-                    res_space = self.space.byaxis_in[reduced_axes]
+                    res_space = self.space.byaxis_in[reduced_axes].astype(
+                        res_tens.dtype)
                     result = res_space.element(res_tens)
 
                 else:
