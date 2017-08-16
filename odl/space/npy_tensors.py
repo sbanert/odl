@@ -1399,9 +1399,9 @@ class NumpyTensor(Tensor):
             ``'__call__'``, ``'accumulate'``, ``'at'``, ``'outer'``,
             ``'reduce'``, ``'reduceat'``
 
-        input1, ..., inputN:
+        input1, ..., inputN :
             Positional arguments to ``ufunc.method``.
-        kwargs:
+        kwargs :
             Keyword arguments to ``ufunc.method``.
 
         Returns
