@@ -31,8 +31,7 @@ from odl.space.weighting import Weighting, NoWeighting, ConstWeighting
 from odl.util import (
     apply_on_boundary, is_real_dtype, is_complex_floating_dtype,
     dtype_str, signature_string, indent,
-    normalized_scalar_param_list, safe_int_conv, normalized_nodes_on_bdry,
-    broadcast_to)
+    normalized_scalar_param_list, safe_int_conv, normalized_nodes_on_bdry)
 
 __all__ = ('DiscreteLp', 'DiscreteLpElement',
            'uniform_discr_frompartition', 'uniform_discr_fromspace',
@@ -462,7 +461,11 @@ class DiscreteLp(DiscretizedSpace):
                 fspace = space.uspace.byaxis_in[indices]
                 part = space.partition.byaxis[indices]
 
-                if isinstance(space.weighting, ConstWeighting):
+                if isinstance(space.weighting, NoWeighting):
+                    # Extra case since NoWeighting is a subclass of
+                    # ConstWeighting
+                    dspace = space.dspace.byaxis[indices]
+                elif isinstance(space.weighting, ConstWeighting):
                     # Need to manually construct `dspace` since it doesn't
                     # know where its weighting factor comes from
                     try:
@@ -925,7 +928,7 @@ numpy.ufunc.reduceat.html
         # Determine list of remaining axes from `axis` for `'reduce'`
         axis = kwargs.get('axis', None)
         if axis is None:
-            reduced_axes = list(range(self.ndim))
+            reduced_axes = list(range(1, self.ndim))
         else:
             try:
                 iter(axis)
@@ -1065,13 +1068,25 @@ numpy.ufunc.reduceat.html
                         # Duplicates, take default
                         labels = None
 
-                    # For constant weighting, use cell volume of the new
-                    # partition. The result tensor space cannot know
-                    # about the "correct" way to combine the two constants,
-                    # so we need to do it manually here.
-                    if all(isinstance(inp.space.weighting, ConstWeighting)
+                    if all(isinstance(inp.space.weighting, NoWeighting)
                            for inp in (inp1, inp2)):
-                        weighting = part.cell_volume
+                        # Propagate no-weighting if both have it
+                        dspace = type(res_tens.space)(
+                            res_tens.shape, res_tens.dtype, res_tens.order,
+                            exponent=res_tens.space.exponent,
+                            weighting=None)
+                    elif all(isinstance(inp.space.weighting,
+                                        ConstWeighting)
+                             for inp in (inp1, inp2)):
+                        # For constant weighting, use the product of the
+                        # two weighting constants. The result tensor space
+                        # cannot know about the "correct" way to combine the
+                        # two constants, so we need to do it manually here.
+                        # NOTE: this includes the weighting combination
+                        # const + none, since NoWeighting is just
+                        # ConstWeighting with constant 1.
+                        weighting = (inp1.space.weighting.const *
+                                     inp2.space.weighting.const)
                         dspace = type(res_tens.space)(
                             res_tens.shape, res_tens.dtype, res_tens.order,
                             exponent=res_tens.space.exponent,
