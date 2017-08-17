@@ -328,7 +328,6 @@ class ProductSpace(LinearSpace):
         6
         """
         return 0 if self.shape == () else int(np.prod(self.shape))
->>>>>>> ENH: implement ProductSpace.shape and indexing as for TensorSpace
 
     @property
     def spaces(self):
@@ -727,10 +726,6 @@ class ProductSpaceElement(LinearSpaceElement):
 
     @property
     def shape(self):
-<<<<<<< HEAD
-        """Number of spaces per axis."""
-        return self.space.shape
-=======
         """Number of values per axis in ``self``, computed recursively.
 
         This is only valid if all product spaces are power spaces,
@@ -793,7 +788,6 @@ class ProductSpaceElement(LinearSpaceElement):
         3
         """
         return len(self.shape)
->>>>>>> ENH: implement ProductSpace.shape and indexing as for TensorSpace
 
     @property
     def size(self):
