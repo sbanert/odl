@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.arctan2
+========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.arctan2

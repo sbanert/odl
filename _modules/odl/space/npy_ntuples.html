@@ -1,0 +1,2258 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>odl.space.npy_ntuples &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../odl.html">odl</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>odl.space.npy_ntuples</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for odl.space.npy_ntuples</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2014-2017 The ODL contributors</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of ODL.</span>
+<span class="c1">#</span>
+<span class="c1"># This Source Code Form is subject to the terms of the Mozilla Public License,</span>
+<span class="c1"># v. 2.0. If a copy of the MPL was not distributed with this file, You can</span>
+<span class="c1"># obtain one at https://mozilla.org/MPL/2.0/.</span>
+
+<span class="sd">&quot;&quot;&quot;CPU implementations of ``n``-dimensional Cartesian spaces.&quot;&quot;&quot;</span>
+
+<span class="c1"># Imports for common Python 2/3 codebase</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">future.utils</span> <span class="k">import</span> <span class="n">native</span>
+<span class="kn">from</span> <span class="nn">builtins</span> <span class="k">import</span> <span class="nb">super</span>
+
+<span class="kn">import</span> <span class="nn">ctypes</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">partial</span>
+<span class="kn">from</span> <span class="nn">numbers</span> <span class="k">import</span> <span class="n">Integral</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="nn">linalg</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse.base</span> <span class="k">import</span> <span class="n">isspmatrix</span>
+
+<span class="kn">from</span> <span class="nn">odl.set</span> <span class="k">import</span> <span class="n">RealNumbers</span><span class="p">,</span> <span class="n">ComplexNumbers</span>
+<span class="kn">from</span> <span class="nn">odl.space.base_ntuples</span> <span class="k">import</span> <span class="p">(</span>
+    <span class="n">NtuplesBase</span><span class="p">,</span> <span class="n">NtuplesBaseVector</span><span class="p">,</span> <span class="n">FnBase</span><span class="p">,</span> <span class="n">FnBaseVector</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">odl.space.weighting</span> <span class="k">import</span> <span class="p">(</span>
+    <span class="n">Weighting</span><span class="p">,</span> <span class="n">MatrixWeighting</span><span class="p">,</span> <span class="n">ArrayWeighting</span><span class="p">,</span>
+    <span class="n">ConstWeighting</span><span class="p">,</span> <span class="n">NoWeighting</span><span class="p">,</span>
+    <span class="n">CustomInner</span><span class="p">,</span> <span class="n">CustomNorm</span><span class="p">,</span> <span class="n">CustomDist</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">odl.util</span> <span class="k">import</span> <span class="n">dtype_repr</span><span class="p">,</span> <span class="n">is_real_dtype</span>
+<span class="kn">from</span> <span class="nn">odl.util.ufuncs</span> <span class="k">import</span> <span class="n">NumpyNtuplesUfuncs</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;NumpyNtuples&#39;</span><span class="p">,</span> <span class="s1">&#39;NumpyNtuplesVector&#39;</span><span class="p">,</span> <span class="s1">&#39;NumpyFn&#39;</span><span class="p">,</span> <span class="s1">&#39;NumpyFnVector&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;npy_weighted_dist&#39;</span><span class="p">,</span> <span class="s1">&#39;npy_weighted_norm&#39;</span><span class="p">,</span> <span class="s1">&#39;npy_weighted_inner&#39;</span><span class="p">)</span>
+
+
+<span class="n">_BLAS_DTYPES</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;float64&#39;</span><span class="p">),</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;complex64&#39;</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;complex128&#39;</span><span class="p">))</span>
+
+<span class="c1"># Define thresholds for when different implementations should be used</span>
+<span class="n">THRESHOLD_SMALL</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">THRESHOLD_MEDIUM</span> <span class="o">=</span> <span class="mi">50000</span>
+
+
+<div class="viewcode-block" id="NumpyNtuples"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyNtuples.html#odl.space.npy_ntuples.NumpyNtuples">[docs]</a><span class="k">class</span> <span class="nc">NumpyNtuples</span><span class="p">(</span><span class="n">NtuplesBase</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Set of n-tuples of arbitrary type.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="NumpyNtuples.element"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyNtuples.element.html#odl.space.npy_ntuples.NumpyNtuples.element">[docs]</a>    <span class="k">def</span> <span class="nf">element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data_ptr</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a new element.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        inp : `array-like`, optional</span>
+<span class="sd">            Input to initialize the new element.</span>
+
+<span class="sd">            If ``inp`` is ``None``, an empty element is created with no</span>
+<span class="sd">            guarantee of its state (memory allocation only).</span>
+
+<span class="sd">            If ``inp`` is a `numpy.ndarray` of shape ``(size,)``</span>
+<span class="sd">            and the same data type as this space, the array is wrapped,</span>
+<span class="sd">            not copied.</span>
+<span class="sd">            Other `array-like` objects are copied.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        element : `NumpyNtuplesVector`</span>
+<span class="sd">            The new element created (from ``inp``).</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        This method preserves &quot;array views&quot; of correct size and type,</span>
+<span class="sd">        see the examples below.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; strings3 = NumpyNtuples(3, dtype=&#39;U1&#39;)  # 1-char strings</span>
+<span class="sd">        &gt;&gt;&gt; x = strings3.element([&#39;w&#39;, &#39;b&#39;, &#39;w&#39;])</span>
+<span class="sd">        &gt;&gt;&gt; print(x)</span>
+<span class="sd">        [w, b, w]</span>
+<span class="sd">        &gt;&gt;&gt; x.space</span>
+<span class="sd">        ntuples(3, &#39;&lt;U1&#39;)</span>
+
+<span class="sd">        Construction from data pointer:</span>
+
+<span class="sd">        &gt;&gt;&gt; int3 = NumpyNtuples(3, dtype=&#39;int&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; x = int3.element([1, 2, 3])</span>
+<span class="sd">        &gt;&gt;&gt; y = int3.element(data_ptr=x.data_ptr)</span>
+<span class="sd">        &gt;&gt;&gt; print(y)</span>
+<span class="sd">        [1, 2, 3]</span>
+<span class="sd">        &gt;&gt;&gt; y[0] = 5</span>
+<span class="sd">        &gt;&gt;&gt; print(x)</span>
+<span class="sd">        [5, 2, 3]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">inp</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">data_ptr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">element_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arr</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">ctype_array_def</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_byte</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">*</span>
+                                                   <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span><span class="p">)</span>
+                <span class="n">as_ctype_array</span> <span class="o">=</span> <span class="n">ctype_array_def</span><span class="o">.</span><span class="n">from_address</span><span class="p">(</span><span class="n">data_ptr</span><span class="p">)</span>
+                <span class="n">as_numpy_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ctypeslib</span><span class="o">.</span><span class="n">as_array</span><span class="p">(</span><span class="n">as_ctype_array</span><span class="p">)</span>
+                <span class="n">arr</span> <span class="o">=</span> <span class="n">as_numpy_array</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">element_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arr</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">data_ptr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">inp</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">inp</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">arr</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">,):</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;expected input shape </span><span class="si">{}</span><span class="s1">, got </span><span class="si">{}</span><span class="s1">&#39;</span>
+                                         <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">,),</span> <span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">element_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arr</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;cannot provide both `inp` and `data_ptr`&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NumpyNtuples.zero"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyNtuples.zero.html#odl.space.npy_ntuples.NumpyNtuples.zero">[docs]</a>    <span class="k">def</span> <span class="nf">zero</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a vector of zeros.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; c3 = NumpyNtuples(3, dtype=complex)</span>
+<span class="sd">        &gt;&gt;&gt; x = c3.zero()</span>
+<span class="sd">        &gt;&gt;&gt; x</span>
+<span class="sd">        ntuples(3, &#39;complex&#39;).element([0j, 0j, 0j])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="NumpyNtuples.one"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyNtuples.one.html#odl.space.npy_ntuples.NumpyNtuples.one">[docs]</a>    <span class="k">def</span> <span class="nf">one</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a vector of ones.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; c3 = NumpyNtuples(3, dtype=complex)</span>
+<span class="sd">        &gt;&gt;&gt; x = c3.one()</span>
+<span class="sd">        &gt;&gt;&gt; x</span>
+<span class="sd">        ntuples(3, &#39;complex&#39;).element([(1+0j), (1+0j), (1+0j)])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span></div>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``repr(self)``.&quot;&quot;&quot;</span>
+        <span class="n">constructor_name</span> <span class="o">=</span> <span class="s1">&#39;ntuples&#39;</span>
+
+        <span class="n">inner_str</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+        <span class="n">inner_str</span> <span class="o">+=</span> <span class="s1">&#39;, </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dtype_repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">(</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">constructor_name</span><span class="p">,</span> <span class="n">inner_str</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">element_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;`NumpyNtuplesVector`&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">NumpyNtuplesVector</span>
+
+    <span class="n">impl</span> <span class="o">=</span> <span class="s1">&#39;numpy&#39;</span>
+
+<div class="viewcode-block" id="NumpyNtuples.available_dtypes"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyNtuples.available_dtypes.html#odl.space.npy_ntuples.NumpyNtuples.available_dtypes">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">available_dtypes</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;Available data types.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        This is all dtypes available to numpy. See ``numpy.sctypes``</span>
+<span class="sd">        for more information.</span>
+
+<span class="sd">        The available dtypes may depend on the specific system used.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">all_types</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">sctypes</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">all_types</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">all_types</span></div></div>
+
+
+<div class="viewcode-block" id="NumpyNtuplesVector"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyNtuplesVector.html#odl.space.npy_ntuples.NumpyNtuplesVector">[docs]</a><span class="k">class</span> <span class="nc">NumpyNtuplesVector</span><span class="p">(</span><span class="n">NtuplesBaseVector</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Representation of an `NumpyNtuples` element.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">space</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__data</span> <span class="o">=</span> <span class="n">data</span>
+
+        <span class="n">NtuplesBaseVector</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">space</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raw Numpy array representing the data.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__data</span>
+
+<div class="viewcode-block" id="NumpyNtuplesVector.asarray"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyNtuplesVector.asarray.html#odl.space.npy_ntuples.NumpyNtuplesVector.asarray">[docs]</a>    <span class="k">def</span> <span class="nf">asarray</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Extract the data of this array as a numpy array.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        start : int, optional</span>
+<span class="sd">            Start position. ``None`` means the first element.</span>
+<span class="sd">        stop : int, optional</span>
+<span class="sd">            One element past the last element to be extracted.</span>
+<span class="sd">            ``None`` means the last element.</span>
+<span class="sd">        step : int, optional</span>
+<span class="sd">            Step length. ``None`` is equivalent to 1.</span>
+<span class="sd">        out : `numpy.ndarray`, optional</span>
+<span class="sd">            Array to which the result should be written.</span>
+<span class="sd">            Has to be contiguous and of the correct data type.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        asarray : `numpy.ndarray`</span>
+<span class="sd">            Numpy array of the same type as the space.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import ctypes</span>
+<span class="sd">        &gt;&gt;&gt; vec = NumpyNtuples(3, &#39;float&#39;).element([1, 2, 3])</span>
+<span class="sd">        &gt;&gt;&gt; vec.asarray()</span>
+<span class="sd">        array([ 1.,  2.,  3.])</span>
+<span class="sd">        &gt;&gt;&gt; vec.asarray(start=1, stop=3)</span>
+<span class="sd">        array([ 2.,  3.])</span>
+
+<span class="sd">        Using the out parameter</span>
+
+<span class="sd">        &gt;&gt;&gt; out = np.empty((3,), dtype=&#39;float&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; result = vec.asarray(out=out)</span>
+<span class="sd">        &gt;&gt;&gt; out</span>
+<span class="sd">        array([ 1.,  2.,  3.])</span>
+<span class="sd">        &gt;&gt;&gt; result is out</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">:</span><span class="n">step</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">out</span><span class="p">[:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">:</span><span class="n">step</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">out</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">data_ptr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;A raw pointer to the data container.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import ctypes</span>
+<span class="sd">        &gt;&gt;&gt; vec = NumpyNtuples(3, &#39;int32&#39;).element([1, 2, 3])</span>
+<span class="sd">        &gt;&gt;&gt; arr_type = ctypes.c_int32 * 3</span>
+<span class="sd">        &gt;&gt;&gt; buffer = arr_type.from_address(vec.data_ptr)</span>
+<span class="sd">        &gt;&gt;&gt; arr = np.frombuffer(buffer, dtype=&#39;int32&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; print(arr)</span>
+<span class="sd">        [1 2 3]</span>
+
+<span class="sd">        In-place modification via pointer:</span>
+
+<span class="sd">        &gt;&gt;&gt; arr[0] = 5</span>
+<span class="sd">        &gt;&gt;&gt; print(vec)</span>
+<span class="sd">        [5, 2, 3]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">ctypes</span><span class="o">.</span><span class="n">data</span>
+
+<div class="viewcode-block" id="NumpyNtuplesVector.__eq__"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyNtuplesVector.__eq__.html#odl.space.npy_ntuples.NumpyNtuplesVector.__eq__">[docs]</a>    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``self == other``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        equals : bool</span>
+<span class="sd">            ``True`` if all entries of other are equal to this</span>
+<span class="sd">            vector&#39;s entries, ``False`` otherwise.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Space membership is not checked, hence vectors from</span>
+<span class="sd">        different spaces can be equal.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; vec1 = NumpyNtuples(3, int).element([1, 2, 3])</span>
+<span class="sd">        &gt;&gt;&gt; vec2 = NumpyNtuples(3, int).element([-1, 2, 0])</span>
+<span class="sd">        &gt;&gt;&gt; vec1 == vec2</span>
+<span class="sd">        False</span>
+<span class="sd">        &gt;&gt;&gt; vec2 = NumpyNtuples(3, int).element([1, 2, 3])</span>
+<span class="sd">        &gt;&gt;&gt; vec1 == vec2</span>
+<span class="sd">        True</span>
+
+<span class="sd">        Space membership matters:</span>
+
+<span class="sd">        &gt;&gt;&gt; vec2 = NumpyNtuples(3, float).element([1, 2, 3])</span>
+<span class="sd">        &gt;&gt;&gt; vec1 == vec2 or vec2 == vec1</span>
+<span class="sd">        False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">other</span> <span class="ow">is</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">elif</span> <span class="n">other</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NumpyNtuplesVector.copy"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyNtuplesVector.copy.html#odl.space.npy_ntuples.NumpyNtuplesVector.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an identical (deep) copy of this vector.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        None</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        copy : `NumpyNtuplesVector`</span>
+<span class="sd">            The deep copy</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; vec1 = NumpyNtuples(3, &#39;int&#39;).element([1, 2, 3])</span>
+<span class="sd">        &gt;&gt;&gt; vec2 = vec1.copy()</span>
+<span class="sd">        &gt;&gt;&gt; vec2</span>
+<span class="sd">        ntuples(3, &#39;int&#39;).element([1, 2, 3])</span>
+<span class="sd">        &gt;&gt;&gt; vec1 == vec2</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; vec1 is vec2</span>
+<span class="sd">        False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="NumpyNtuplesVector.__getitem__"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyNtuplesVector.__getitem__.html#odl.space.npy_ntuples.NumpyNtuplesVector.__getitem__">[docs]</a>    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Access values of this vector.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        indices : int or `slice`</span>
+<span class="sd">            The position(s) that should be accessed</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        values : scalar or `NumpyNtuplesVector`</span>
+<span class="sd">            The value(s) at the index (indices)</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; str_3 = NumpyNtuples(3, dtype=&#39;U6&#39;)  # 6-char unicode</span>
+<span class="sd">        &gt;&gt;&gt; x = str_3.element([&#39;a&#39;, &#39;Hello!&#39;, &#39;0&#39;])</span>
+<span class="sd">        &gt;&gt;&gt; print(x[0])</span>
+<span class="sd">        a</span>
+<span class="sd">        &gt;&gt;&gt; print(x[1:3])</span>
+<span class="sd">        [Hello!, 0]</span>
+<span class="sd">        &gt;&gt;&gt; x[1:3].space</span>
+<span class="sd">        ntuples(2, &#39;&lt;U6&#39;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">Integral</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>  <span class="c1"># single index</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">arr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+            <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">)(</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NumpyNtuplesVector.__setitem__"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyNtuplesVector.__setitem__.html#odl.space.npy_ntuples.NumpyNtuplesVector.__setitem__">[docs]</a>    <span class="k">def</span> <span class="nf">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set values of this vector.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        indices : int or `slice`</span>
+<span class="sd">            The position(s) that should be set</span>
+<span class="sd">        values : scalar or `array-like`</span>
+<span class="sd">            The value(s) that are to be assigned.</span>
+
+<span class="sd">            If ``indices`` is an integer, ``value`` must be scalar.</span>
+
+<span class="sd">            If ``indices`` is a slice, ``value`` must be</span>
+<span class="sd">            broadcastable to the size of the slice (same size,</span>
+<span class="sd">            shape ``(1,)`` or single value).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; int_3 = NumpyNtuples(3, &#39;int&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; x = int_3.element([1, 2, 3])</span>
+<span class="sd">        &gt;&gt;&gt; x[0] = 5</span>
+<span class="sd">        &gt;&gt;&gt; x</span>
+<span class="sd">        ntuples(3, &#39;int&#39;).element([5, 2, 3])</span>
+
+<span class="sd">        Assignment from array-like structures or another</span>
+<span class="sd">        vector:</span>
+
+<span class="sd">        &gt;&gt;&gt; y = NumpyNtuples(2, &#39;short&#39;).element([-1, 2])</span>
+<span class="sd">        &gt;&gt;&gt; x[:2] = y</span>
+<span class="sd">        &gt;&gt;&gt; x</span>
+<span class="sd">        ntuples(3, &#39;int&#39;).element([-1, 2, 3])</span>
+<span class="sd">        &gt;&gt;&gt; x[1:3] = [7, 8]</span>
+<span class="sd">        &gt;&gt;&gt; x</span>
+<span class="sd">        ntuples(3, &#39;int&#39;).element([-1, 7, 8])</span>
+<span class="sd">        &gt;&gt;&gt; x[:] = np.array([0, 0, 0])</span>
+<span class="sd">        &gt;&gt;&gt; x</span>
+<span class="sd">        ntuples(3, &#39;int&#39;).element([0, 0, 0])</span>
+
+<span class="sd">        Broadcasting is also supported:</span>
+
+<span class="sd">        &gt;&gt;&gt; x[1:3] = -2.</span>
+<span class="sd">        &gt;&gt;&gt; x</span>
+<span class="sd">        ntuples(3, &#39;int&#39;).element([0, -2, -2])</span>
+
+<span class="sd">        Array views are preserved:</span>
+
+<span class="sd">        &gt;&gt;&gt; y = x[::2]  # view into x</span>
+<span class="sd">        &gt;&gt;&gt; y[:] = -9</span>
+<span class="sd">        &gt;&gt;&gt; print(y)</span>
+<span class="sd">        [-9, -9]</span>
+<span class="sd">        &gt;&gt;&gt; print(x)</span>
+<span class="sd">        [-9, -2, -9]</span>
+
+<span class="sd">        Be aware of unsafe casts and over-/underflows, there</span>
+<span class="sd">        will be warnings at maximum.</span>
+
+<span class="sd">        &gt;&gt;&gt; x = NumpyNtuples(2, &#39;int8&#39;).element([0, 0])</span>
+<span class="sd">        &gt;&gt;&gt; maxval = 255  # maximum signed 8-bit unsigned int</span>
+<span class="sd">        &gt;&gt;&gt; x[0] = maxval + 1</span>
+<span class="sd">        &gt;&gt;&gt; x</span>
+<span class="sd">        ntuples(2, &#39;int8&#39;).element([0, 0])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">NumpyNtuplesVector</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">data</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ufuncs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;`NumpyNtuplesUfuncs`, access to numpy style ufuncs.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; r2 = NumpyFn(2)</span>
+<span class="sd">        &gt;&gt;&gt; x = r2.element([1, -2])</span>
+<span class="sd">        &gt;&gt;&gt; x.ufuncs.absolute()</span>
+<span class="sd">        rn(2).element([1.0, 2.0])</span>
+
+<span class="sd">        These functions can also be used with broadcasting</span>
+
+<span class="sd">        &gt;&gt;&gt; x.ufuncs.add(3)</span>
+<span class="sd">        rn(2).element([4.0, 1.0])</span>
+
+<span class="sd">        and non-space elements</span>
+
+<span class="sd">        &gt;&gt;&gt; x.ufuncs.subtract([3, 3])</span>
+<span class="sd">        rn(2).element([-2.0, -5.0])</span>
+
+<span class="sd">        There is also support for various reductions (sum, prod, min, max)</span>
+
+<span class="sd">        &gt;&gt;&gt; x.ufuncs.sum()</span>
+<span class="sd">        -1.0</span>
+
+<span class="sd">        They also support an out parameter</span>
+
+<span class="sd">        &gt;&gt;&gt; y = r2.element([3, 4])</span>
+<span class="sd">        &gt;&gt;&gt; out = r2.element()</span>
+<span class="sd">        &gt;&gt;&gt; result = x.ufuncs.add(y, out=out)</span>
+<span class="sd">        &gt;&gt;&gt; result</span>
+<span class="sd">        rn(2).element([4.0, 2.0])</span>
+<span class="sd">        &gt;&gt;&gt; result is out</span>
+<span class="sd">        True</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        These are optimized for use with ntuples and incur no overhead.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">NumpyNtuplesUfuncs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">_blas_is_applicable</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Whether BLAS routines can be applied or not.</span>
+
+<span class="sd">    BLAS routines are available for single and double precision</span>
+<span class="sd">    float or complex data only. If the arrays are non-contiguous,</span>
+<span class="sd">    BLAS methods are usually slower, and array-writing routines do</span>
+<span class="sd">    not work at all. Hence, only contiguous arrays are allowed.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x1,...,xN : `NtuplesBaseVector`</span>
+<span class="sd">        The vectors to be tested for BLAS conformity</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">all</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">and</span>
+                <span class="n">x</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">in</span> <span class="n">_BLAS_DTYPES</span> <span class="ow">and</span>
+                <span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">contiguous</span>
+                <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">args</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">_lincomb_impl</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">dtype</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raw linear combination depending on data type.&quot;&quot;&quot;</span>
+    <span class="c1"># Convert to native since BLAS needs it</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="n">native</span><span class="p">(</span><span class="n">x1</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+
+    <span class="c1"># Shortcut for small problems</span>
+    <span class="k">if</span> <span class="n">size</span> <span class="o">&lt;=</span> <span class="n">THRESHOLD_SMALL</span><span class="p">:</span>  <span class="c1"># small array optimization</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x1</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">x2</span><span class="o">.</span><span class="n">data</span>
+        <span class="k">return</span>
+
+    <span class="c1"># If data is very big, use BLAS if possible</span>
+    <span class="k">if</span> <span class="n">size</span> <span class="o">&gt;</span> <span class="n">THRESHOLD_MEDIUM</span> <span class="ow">and</span> <span class="n">_blas_is_applicable</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">out</span><span class="p">):</span>
+        <span class="n">axpy</span><span class="p">,</span> <span class="n">scal</span><span class="p">,</span> <span class="n">copy</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">blas</span><span class="o">.</span><span class="n">get_blas_funcs</span><span class="p">(</span>
+            <span class="p">[</span><span class="s1">&#39;axpy&#39;</span><span class="p">,</span> <span class="s1">&#39;scal&#39;</span><span class="p">,</span> <span class="s1">&#39;copy&#39;</span><span class="p">],</span> <span class="n">arrays</span><span class="o">=</span><span class="p">(</span><span class="n">x1</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">x2</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">out</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Use fallbacks otherwise</span>
+        <span class="k">def</span> <span class="nf">fallback_axpy</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Fallback axpy implementation avoiding copy.&quot;&quot;&quot;</span>
+            <span class="k">if</span> <span class="n">a</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">x2</span> <span class="o">/=</span> <span class="n">a</span>
+                <span class="n">x2</span> <span class="o">+=</span> <span class="n">x1</span>
+                <span class="n">x2</span> <span class="o">*=</span> <span class="n">a</span>
+            <span class="k">return</span> <span class="n">x2</span>
+
+        <span class="k">def</span> <span class="nf">fallback_scal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Fallback scal implementation.&quot;&quot;&quot;</span>
+            <span class="n">x</span> <span class="o">*=</span> <span class="n">a</span>
+            <span class="k">return</span> <span class="n">x</span>
+
+        <span class="k">def</span> <span class="nf">fallback_copy</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Fallback copy implementation.&quot;&quot;&quot;</span>
+            <span class="n">x2</span><span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">x1</span><span class="p">[</span><span class="o">...</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">x2</span>
+
+        <span class="n">axpy</span><span class="p">,</span> <span class="n">scal</span><span class="p">,</span> <span class="n">copy</span> <span class="o">=</span> <span class="p">(</span><span class="n">fallback_axpy</span><span class="p">,</span> <span class="n">fallback_scal</span><span class="p">,</span> <span class="n">fallback_copy</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">x1</span> <span class="ow">is</span> <span class="n">x2</span> <span class="ow">and</span> <span class="n">b</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># x1 is aligned with x2 -&gt; out = (a+b)*x1</span>
+        <span class="n">_lincomb_impl</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">out</span> <span class="ow">is</span> <span class="n">x1</span> <span class="ow">and</span> <span class="n">out</span> <span class="ow">is</span> <span class="n">x2</span><span class="p">:</span>
+        <span class="c1"># All the vectors are aligned -&gt; out = (a+b)*out</span>
+        <span class="n">scal</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">out</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">out</span> <span class="ow">is</span> <span class="n">x1</span><span class="p">:</span>
+        <span class="c1"># out is aligned with x1 -&gt; out = a*out + b*x2</span>
+        <span class="k">if</span> <span class="n">a</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">scal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">out</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">b</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">axpy</span><span class="p">(</span><span class="n">x2</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">out</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">out</span> <span class="ow">is</span> <span class="n">x2</span><span class="p">:</span>
+        <span class="c1"># out is aligned with x2 -&gt; out = a*x1 + b*out</span>
+        <span class="k">if</span> <span class="n">b</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">scal</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">out</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">a</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">axpy</span><span class="p">(</span><span class="n">x1</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">out</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># We have exhausted all alignment options, so x1 != x2 != out</span>
+        <span class="c1"># We now optimize for various values of a and b</span>
+        <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Zero assignment -&gt; out = 0</span>
+                <span class="n">out</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># Scaled copy -&gt; out = a*x1</span>
+                <span class="n">copy</span><span class="p">(</span><span class="n">x1</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">out</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">a</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">scal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">out</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Scaled copy -&gt; out = b*x2</span>
+                <span class="n">copy</span><span class="p">(</span><span class="n">x2</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">out</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">b</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">scal</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">out</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+
+            <span class="k">elif</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># No scaling in x1 -&gt; out = x1 + b*x2</span>
+                <span class="n">copy</span><span class="p">(</span><span class="n">x1</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">out</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+                <span class="n">axpy</span><span class="p">(</span><span class="n">x2</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">out</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># Generic case -&gt; out = a*x1 + b*x2</span>
+                <span class="n">copy</span><span class="p">(</span><span class="n">x2</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">out</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">b</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">scal</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">out</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+                <span class="n">axpy</span><span class="p">(</span><span class="n">x1</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">out</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="NumpyFn"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFn.html#odl.space.npy_ntuples.NumpyFn">[docs]</a><span class="k">class</span> <span class="nc">NumpyFn</span><span class="p">(</span><span class="n">FnBase</span><span class="p">,</span> <span class="n">NumpyNtuples</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Vector space F^n with vector multiplication.</span>
+
+<span class="sd">    This space implements n-tuples of elements from a `Field` ``F``,</span>
+<span class="sd">    which is usually the real or complex numbers.</span>
+
+<span class="sd">    Its elements are represented as instances of the `NumpyFnVector` class.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        size : positive int</span>
+<span class="sd">            The number of dimensions of the space</span>
+<span class="sd">        dtype :</span>
+<span class="sd">            The data type of the storage array. Can be provided in any</span>
+<span class="sd">            way the `numpy.dtype` function understands, most notably</span>
+<span class="sd">            as built-in type, as `numpy.dtype` or as string.</span>
+
+<span class="sd">            Only scalar data types are allowed.</span>
+
+<span class="sd">        weighting : optional</span>
+<span class="sd">            Use weighted inner product, norm, and dist. The following</span>
+<span class="sd">            types are supported as ``weighting``:</span>
+
+<span class="sd">            `FnWeighting`:</span>
+<span class="sd">            Use this weighting as-is. Compatibility with this</span>
+<span class="sd">            space&#39;s elements is not checked during init.</span>
+
+<span class="sd">            float: Weighting by a constant</span>
+
+<span class="sd">            array-like: Weighting by a matrix (2-dim. array) or a vector</span>
+<span class="sd">            (1-dim. array, corresponds to a diagonal matrix). A matrix</span>
+<span class="sd">            can also be given as a sparse matrix</span>
+<span class="sd">            ( `scipy.sparse.spmatrix`).</span>
+
+<span class="sd">            Default: no weighting</span>
+
+<span class="sd">            This option cannot be combined with ``dist``,</span>
+<span class="sd">            ``norm`` or ``inner``.</span>
+
+<span class="sd">        exponent : positive float, optional</span>
+<span class="sd">            Exponent of the norm. For values other than 2.0, no</span>
+<span class="sd">            inner product is defined.</span>
+<span class="sd">            If ``weight`` is a sparse matrix, only 1.0, 2.0 and</span>
+<span class="sd">            ``inf`` are allowed.</span>
+
+<span class="sd">            This option is ignored if ``dist``, ``norm`` or</span>
+<span class="sd">            ``inner`` is given.</span>
+
+<span class="sd">            Default: 2.0</span>
+
+<span class="sd">        Other Parameters</span>
+<span class="sd">        ----------------</span>
+
+<span class="sd">        dist : callable, optional</span>
+<span class="sd">            The distance function defining a metric on the space.</span>
+<span class="sd">            It must accept two `NumpyFnVector` arguments and</span>
+<span class="sd">            fulfill the following mathematical conditions for any</span>
+<span class="sd">            three vectors ``x, y, z``:</span>
+
+<span class="sd">            - ``dist(x, y) &gt;= 0``</span>
+<span class="sd">            - ``dist(x, y) = 0``  if and only if  ``x = y``</span>
+<span class="sd">            - ``dist(x, y) = dist(y, x)``</span>
+<span class="sd">            - ``dist(x, y) &lt;= dist(x, z) + dist(z, y)``</span>
+
+<span class="sd">            By default, ``dist(x, y)`` is calculated as ``norm(x - y)``.</span>
+<span class="sd">            This creates an intermediate array ``x - y``, which can be</span>
+<span class="sd">            avoided by choosing ``dist_using_inner=True``.</span>
+
+<span class="sd">            This option cannot be combined with ``weighting``,</span>
+<span class="sd">            ``norm`` or ``inner``.</span>
+
+<span class="sd">        norm : callable, optional</span>
+<span class="sd">            The norm implementation. It must accept an</span>
+<span class="sd">            `NumpyFnVector` argument, return a float and satisfy the</span>
+<span class="sd">            following conditions for all vectors ``x, y`` and scalars</span>
+<span class="sd">            ``s``:</span>
+
+<span class="sd">            - ``||x|| &gt;= 0``</span>
+<span class="sd">            - ``||x|| = 0``  if and only if  ``x = 0``</span>
+<span class="sd">            - ``||s * x|| = |s| * ||x||``</span>
+<span class="sd">            - ``||x + y|| &lt;= ||x|| + ||y||``</span>
+
+<span class="sd">            By default, ``norm(x)`` is calculated as ``inner(x, x)``.</span>
+
+<span class="sd">            This option cannot be combined with ``weighting``,</span>
+<span class="sd">            ``dist`` or ``inner``.</span>
+
+<span class="sd">        inner : callable, optional</span>
+<span class="sd">            The inner product implementation. It must accept two</span>
+<span class="sd">            `NumpyFnVector` arguments, return a element from</span>
+<span class="sd">            the field of the space (real or complex number) and</span>
+<span class="sd">            satisfy the following conditions for all vectors</span>
+<span class="sd">            ``x, y, z`` and scalars ``s``:</span>
+
+<span class="sd">            - ``&lt;x, y&gt; = conj(&lt;y, x&gt;)``</span>
+<span class="sd">            - ``&lt;s*x + y, z&gt; = s * &lt;x, z&gt; + &lt;y, z&gt;``</span>
+<span class="sd">            - ``&lt;x, x&gt; = 0``  if and only if  ``x = 0``</span>
+
+<span class="sd">            This option cannot be combined with ``weighting``,</span>
+<span class="sd">            ``dist`` or ``norm``.</span>
+
+<span class="sd">        dist_using_inner : bool, optional</span>
+<span class="sd">            Calculate ``dist`` using the formula</span>
+
+<span class="sd">                ``||x - y||^2 = ||x||^2 + ||y||^2 - 2 * Re &lt;x, y&gt;``</span>
+
+<span class="sd">            This avoids the creation of new arrays and is thus faster</span>
+<span class="sd">            for large arrays. On the downside, it will not evaluate to</span>
+<span class="sd">            exactly zero for equal (but not identical) ``x`` and ``y``.</span>
+
+<span class="sd">            This option can only be used if ``exponent`` is 2.0.</span>
+
+<span class="sd">            Default: ``False``.</span>
+
+<span class="sd">        kwargs :</span>
+<span class="sd">            Further keyword arguments are passed to the weighting</span>
+<span class="sd">            classes.</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        NumpyFnMatrixWeighting</span>
+<span class="sd">        NumpyFnArrayWeighting</span>
+<span class="sd">        NumpyFnConstWeighting</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; space = NumpyFn(3, &#39;float&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; space</span>
+<span class="sd">        rn(3)</span>
+<span class="sd">        &gt;&gt;&gt; space = NumpyFn(3, &#39;float&#39;, weighting=[1, 2, 3])</span>
+<span class="sd">        &gt;&gt;&gt; space</span>
+<span class="sd">        rn(3, weighting=[1, 2, 3])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO: fix dead link `scipy.sparse.spmatrix`</span>
+        <span class="n">NumpyNtuples</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+        <span class="n">FnBase</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+
+        <span class="n">dist</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;dist&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">norm</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;norm&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">inner</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">weighting</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;weighting&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">exponent</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;exponent&#39;</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>
+        <span class="n">dist_using_inner</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;dist_using_inner&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+
+        <span class="c1"># Check validity of option combination (3 or 4 out of 4 must be None)</span>
+        <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">inner</span><span class="p">,</span> <span class="n">weighting</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;invalid combination of options `weighting`, &#39;</span>
+                             <span class="s1">&#39;`dist`, `norm` and `inner`&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">inner</span><span class="p">))</span> <span class="ow">and</span> <span class="n">exponent</span> <span class="o">!=</span> <span class="mf">2.0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`exponent` cannot be used together with &#39;</span>
+                             <span class="s1">&#39;`dist`, `norm` and `inner`&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Set the weighting</span>
+        <span class="k">if</span> <span class="n">weighting</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">weighting</span><span class="p">,</span> <span class="n">Weighting</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__weighting</span> <span class="o">=</span> <span class="n">weighting</span>
+            <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">weighting</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__weighting</span> <span class="o">=</span> <span class="n">NumpyFnConstWeighting</span><span class="p">(</span>
+                    <span class="n">weighting</span><span class="p">,</span> <span class="n">exponent</span><span class="p">,</span> <span class="n">dist_using_inner</span><span class="o">=</span><span class="n">dist_using_inner</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">weighting</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># Need to wait until dist, norm and inner are handled</span>
+                <span class="k">pass</span>
+            <span class="k">elif</span> <span class="n">isspmatrix</span><span class="p">(</span><span class="n">weighting</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__weighting</span> <span class="o">=</span> <span class="n">NumpyFnMatrixWeighting</span><span class="p">(</span>
+                    <span class="n">weighting</span><span class="p">,</span> <span class="n">exponent</span><span class="p">,</span> <span class="n">dist_using_inner</span><span class="o">=</span><span class="n">dist_using_inner</span><span class="p">,</span>
+                    <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># last possibility: make a matrix</span>
+                <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">weighting</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">arr</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;invalid weighting argument </span><span class="si">{}</span><span class="s1">&#39;</span>
+                                     <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">weighting</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">arr</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">__weighting</span> <span class="o">=</span> <span class="n">NumpyFnArrayWeighting</span><span class="p">(</span>
+                        <span class="n">arr</span><span class="p">,</span> <span class="n">exponent</span><span class="p">,</span> <span class="n">dist_using_inner</span><span class="o">=</span><span class="n">dist_using_inner</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">arr</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">__weighting</span> <span class="o">=</span> <span class="n">NumpyFnMatrixWeighting</span><span class="p">(</span>
+                        <span class="n">arr</span><span class="p">,</span> <span class="n">exponent</span><span class="p">,</span> <span class="n">dist_using_inner</span><span class="o">=</span><span class="n">dist_using_inner</span><span class="p">,</span>
+                        <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;array-like input </span><span class="si">{}</span><span class="s1"> is not 1- or &#39;</span>
+                                     <span class="s1">&#39;2-dimensional&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">weighting</span><span class="p">))</span>
+
+        <span class="k">elif</span> <span class="n">dist</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__weighting</span> <span class="o">=</span> <span class="n">NumpyFnCustomDist</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">norm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__weighting</span> <span class="o">=</span> <span class="n">NumpyFnCustomNorm</span><span class="p">(</span><span class="n">norm</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">inner</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__weighting</span> <span class="o">=</span> <span class="n">NumpyFnCustomInner</span><span class="p">(</span><span class="n">inner</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># all None -&gt; no weighing</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__weighting</span> <span class="o">=</span> <span class="n">NumpyFnNoWeighting</span><span class="p">(</span>
+                <span class="n">exponent</span><span class="p">,</span> <span class="n">dist_using_inner</span><span class="o">=</span><span class="n">dist_using_inner</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">exponent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Exponent of the norm and distance.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">weighting</span><span class="o">.</span><span class="n">exponent</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">weighting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This space&#39;s weighting scheme.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__weighting</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_weighted</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;``True`` if the weighting is not `NumpyFnNoWeighting`.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weighting</span><span class="p">,</span> <span class="n">NumpyFnNoWeighting</span><span class="p">)</span>
+
+<div class="viewcode-block" id="NumpyFn._lincomb"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFn._lincomb.html#odl.space.npy_ntuples.NumpyFn._lincomb">[docs]</a>    <span class="k">def</span> <span class="nf">_lincomb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">out</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Linear combination of ``x1`` and ``x2``.</span>
+
+<span class="sd">        Calculate ``out = a*x1 + b*x2`` using optimized BLAS</span>
+<span class="sd">        routines if possible.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        a, b : `FnBase.field` elements</span>
+<span class="sd">            Scalars to multiply ``x1`` and ``x2`` with</span>
+<span class="sd">        x1, x2 : `NumpyFnVector`</span>
+<span class="sd">            Summands in the linear combination</span>
+<span class="sd">        out : `NumpyFnVector`</span>
+<span class="sd">            Vector to which the result is written</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; c3 = NumpyFn(3, dtype=complex)</span>
+<span class="sd">        &gt;&gt;&gt; x = c3.element([1+1j, 2-1j, 3])</span>
+<span class="sd">        &gt;&gt;&gt; y = c3.element([4+0j, 5, 6+0.5j])</span>
+<span class="sd">        &gt;&gt;&gt; out = c3.element()</span>
+<span class="sd">        &gt;&gt;&gt; c3.lincomb(2j, x, 3-1j, y, out)  # out is returned</span>
+<span class="sd">        cn(3).element([(10-2j), (17-1j), (18.5+1.5j)])</span>
+<span class="sd">        &gt;&gt;&gt; out</span>
+<span class="sd">        cn(3).element([(10-2j), (17-1j), (18.5+1.5j)])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_lincomb_impl</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NumpyFn._dist"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFn._dist.html#odl.space.npy_ntuples.NumpyFn._dist">[docs]</a>    <span class="k">def</span> <span class="nf">_dist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Calculate the distance between two vectors.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x1, x2 : `NumpyFnVector`</span>
+<span class="sd">            Vectors whose mutual distance is calculated</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dist : float</span>
+<span class="sd">            Distance between the vectors</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        The default case is the euclidean distance</span>
+
+<span class="sd">        &gt;&gt;&gt; c2_2 = NumpyFn(2, dtype=complex)</span>
+<span class="sd">        &gt;&gt;&gt; x = c2_2.element([3+1j, 4])</span>
+<span class="sd">        &gt;&gt;&gt; y = c2_2.element([1j, 4-4j])</span>
+<span class="sd">        &gt;&gt;&gt; c2_2.dist(x, y)</span>
+<span class="sd">        5.0</span>
+
+<span class="sd">        If the user has given another dist function, that one is used instead.</span>
+<span class="sd">        For example, the 2-norm can be given explicitly:</span>
+
+<span class="sd">        &gt;&gt;&gt; from numpy.linalg import norm</span>
+<span class="sd">        &gt;&gt;&gt; c2_2 = NumpyFn(2, dtype=complex,</span>
+<span class="sd">        ...                dist=lambda x, y: norm(x - y, ord=2))</span>
+<span class="sd">        &gt;&gt;&gt; x = c2_2.element([3+1j, 4])</span>
+<span class="sd">        &gt;&gt;&gt; y = c2_2.element([1j, 4-4j])</span>
+<span class="sd">        &gt;&gt;&gt; c2_2.dist(x, y)</span>
+<span class="sd">        5.0</span>
+
+<span class="sd">        Likewise, the 1-norm can be given</span>
+
+<span class="sd">        &gt;&gt;&gt; c2_1 = NumpyFn(2, dtype=complex,</span>
+<span class="sd">        ...                dist=lambda x, y: norm(x - y, ord=1))</span>
+<span class="sd">        &gt;&gt;&gt; x = c2_1.element([3+1j, 4])</span>
+<span class="sd">        &gt;&gt;&gt; y = c2_1.element([1j, 4-4j])</span>
+<span class="sd">        &gt;&gt;&gt; c2_1.dist(x, y)</span>
+<span class="sd">        7.0</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">weighting</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NumpyFn._norm"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFn._norm.html#odl.space.npy_ntuples.NumpyFn._norm">[docs]</a>    <span class="k">def</span> <span class="nf">_norm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Calculate the norm of a vector.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : `NumpyFnVector`</span>
+<span class="sd">            The vector whose norm is calculated</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        norm : float</span>
+<span class="sd">            Norm of the vector</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; from numpy.linalg import norm</span>
+
+<span class="sd">        2-norm</span>
+
+<span class="sd">        &gt;&gt;&gt; c2_2 =  NumpyFn(2, dtype=complex, norm=norm)</span>
+<span class="sd">        &gt;&gt;&gt; x = c2_2.element([3+1j, 1-5j])</span>
+<span class="sd">        &gt;&gt;&gt; c2_2.norm(x)</span>
+<span class="sd">        6.0</span>
+
+<span class="sd">        1-norm</span>
+
+<span class="sd">        &gt;&gt;&gt; from functools import partial</span>
+<span class="sd">        &gt;&gt;&gt; c2_1 = NumpyFn(2, dtype=complex, norm=partial(norm, ord=1))</span>
+<span class="sd">        &gt;&gt;&gt; x = c2_1.element([3-4j, 12+5j])</span>
+<span class="sd">        &gt;&gt;&gt; c2_1.norm(x)</span>
+<span class="sd">        18.0</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">weighting</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NumpyFn._inner"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFn._inner.html#odl.space.npy_ntuples.NumpyFn._inner">[docs]</a>    <span class="k">def</span> <span class="nf">_inner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raw inner product of two vectors.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x1, x2 : `NumpyFnVector`</span>
+<span class="sd">            The vectors whose inner product is calculated</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        inner : `field` element</span>
+<span class="sd">            Inner product of the vectors</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; c3 = NumpyFn(2, dtype=complex, inner=lambda x, y: np.vdot(y, x))</span>
+<span class="sd">        &gt;&gt;&gt; x = c3.element([5+1j, -2j])</span>
+<span class="sd">        &gt;&gt;&gt; y = c3.element([1, 1+1j])</span>
+<span class="sd">        &gt;&gt;&gt; c3.inner(x, y) == (5+1j)*1 + (-2j)*(1-1j)</span>
+<span class="sd">        True</span>
+
+<span class="sd">        Define a space with custom inner product:</span>
+
+<span class="sd">        &gt;&gt;&gt; weights = np.array([1., 2.])</span>
+<span class="sd">        &gt;&gt;&gt; def weighted_inner(x, y):</span>
+<span class="sd">        ...     return np.vdot(weights * y.data, x.data)</span>
+
+<span class="sd">        &gt;&gt;&gt; c3w = NumpyFn(2, dtype=complex, inner=weighted_inner)</span>
+<span class="sd">        &gt;&gt;&gt; x = c3w.element(x)  # elements must be cast (no copy)</span>
+<span class="sd">        &gt;&gt;&gt; y = c3w.element(y)</span>
+<span class="sd">        &gt;&gt;&gt; c3w.inner(x, y) == 1*(5+1j)*1 + 2*(-2j)*(1-1j)</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">weighting</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NumpyFn._multiply"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFn._multiply.html#odl.space.npy_ntuples.NumpyFn._multiply">[docs]</a>    <span class="k">def</span> <span class="nf">_multiply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">out</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Entry-wise product of two vectors, assigned to out.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x1, x2 : `NumpyFnVector`</span>
+<span class="sd">            Factors in the product</span>
+<span class="sd">        out : `NumpyFnVector`</span>
+<span class="sd">            Vector to which the result is written</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; c3 = NumpyFn(3, dtype=complex)</span>
+<span class="sd">        &gt;&gt;&gt; x = c3.element([5+1j, 3, 2-2j])</span>
+<span class="sd">        &gt;&gt;&gt; y = c3.element([1, 2+1j, 3-1j])</span>
+<span class="sd">        &gt;&gt;&gt; out = c3.element()</span>
+<span class="sd">        &gt;&gt;&gt; c3.multiply(x, y, out)  # out is returned</span>
+<span class="sd">        cn(3).element([(5+1j), (6+3j), (4-8j)])</span>
+<span class="sd">        &gt;&gt;&gt; out</span>
+<span class="sd">        cn(3).element([(5+1j), (6+3j), (4-8j)])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">x1</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">x2</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NumpyFn._divide"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFn._divide.html#odl.space.npy_ntuples.NumpyFn._divide">[docs]</a>    <span class="k">def</span> <span class="nf">_divide</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">out</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Entry-wise division of two vectors, assigned to out.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x1, x2 : `NumpyFnVector`</span>
+<span class="sd">            Dividend and divisor in the quotient</span>
+<span class="sd">        out : `NumpyFnVector`</span>
+<span class="sd">            Vector to which the result is written</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; r3 = NumpyFn(3)</span>
+<span class="sd">        &gt;&gt;&gt; x = r3.element([3, 5, 6])</span>
+<span class="sd">        &gt;&gt;&gt; y = r3.element([1, 2, 2])</span>
+<span class="sd">        &gt;&gt;&gt; out = r3.element()</span>
+<span class="sd">        &gt;&gt;&gt; r3.divide(x, y, out)  # out is returned</span>
+<span class="sd">        rn(3).element([3.0, 2.5, 3.0])</span>
+<span class="sd">        &gt;&gt;&gt; out</span>
+<span class="sd">        rn(3).element([3.0, 2.5, 3.0])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">x1</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">x2</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NumpyFn.__eq__"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFn.__eq__.html#odl.space.npy_ntuples.NumpyFn.__eq__">[docs]</a>    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``self == other``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        equals : bool</span>
+<span class="sd">            ``True`` if ``other`` is an instance of this space&#39;s type</span>
+<span class="sd">            with the same `NtuplesBase.size` and `NtuplesBase.dtype`,</span>
+<span class="sd">            and identical distance function, ``False`` otherwise.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; from numpy.linalg import norm</span>
+<span class="sd">        &gt;&gt;&gt; def dist(x, y, ord):</span>
+<span class="sd">        ...     return norm(x - y, ord)</span>
+
+<span class="sd">        &gt;&gt;&gt; from functools import partial</span>
+<span class="sd">        &gt;&gt;&gt; dist2 = partial(dist, ord=2)</span>
+<span class="sd">        &gt;&gt;&gt; c3 = NumpyFn(3, dtype=complex, dist=dist2)</span>
+<span class="sd">        &gt;&gt;&gt; c3_same = NumpyFn(3, dtype=complex, dist=dist2)</span>
+<span class="sd">        &gt;&gt;&gt; c3  == c3_same</span>
+<span class="sd">        True</span>
+
+<span class="sd">        Different ``dist`` functions result in different spaces - the</span>
+<span class="sd">        same applies for ``norm`` and ``inner``:</span>
+
+<span class="sd">        &gt;&gt;&gt; dist1 = partial(dist, ord=1)</span>
+<span class="sd">        &gt;&gt;&gt; r3_1 = NumpyFn(3, dist=dist1)</span>
+<span class="sd">        &gt;&gt;&gt; r3_2 = NumpyFn(3, dist=dist2)</span>
+<span class="sd">        &gt;&gt;&gt; r3_1 == r3_2</span>
+<span class="sd">        False</span>
+
+<span class="sd">        Be careful with Lambdas - they result in non-identical function</span>
+<span class="sd">        objects:</span>
+
+<span class="sd">        &gt;&gt;&gt; r3_lambda1 = NumpyFn(3, dist=lambda x, y: norm(x-y, ord=1))</span>
+<span class="sd">        &gt;&gt;&gt; r3_lambda2 = NumpyFn(3, dist=lambda x, y: norm(x-y, ord=1))</span>
+<span class="sd">        &gt;&gt;&gt; r3_lambda1 == r3_lambda2</span>
+<span class="sd">        False</span>
+
+<span class="sd">        An `NumpyFn` space with the same data type is considered equal:</span>
+
+<span class="sd">        &gt;&gt;&gt; c3 = NumpyFn(3, dtype=complex)</span>
+<span class="sd">        &gt;&gt;&gt; f3_cdouble = NumpyFn(3, dtype=&#39;complex128&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; c3 == f3_cdouble</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">other</span> <span class="ow">is</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">NumpyNtuples</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="ow">and</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">weighting</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">weighting</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``hash(self)``.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">NumpyNtuples</span><span class="o">.</span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">^</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weighting</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``repr(self)``.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_rn</span><span class="p">:</span>
+            <span class="n">constructor_name</span> <span class="o">=</span> <span class="s1">&#39;rn&#39;</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_cn</span><span class="p">:</span>
+            <span class="n">constructor_name</span> <span class="o">=</span> <span class="s1">&#39;cn&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">constructor_name</span> <span class="o">=</span> <span class="s1">&#39;fn&#39;</span>
+
+        <span class="n">inner_str</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_dtype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">field</span><span class="p">):</span>
+            <span class="n">inner_str</span> <span class="o">+=</span> <span class="s1">&#39;, </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dtype_repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span>
+
+        <span class="n">weight_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">weighting</span><span class="o">.</span><span class="n">repr_part</span>
+        <span class="k">if</span> <span class="n">weight_str</span><span class="p">:</span>
+            <span class="n">inner_str</span> <span class="o">+=</span> <span class="s1">&#39;, &#39;</span> <span class="o">+</span> <span class="n">weight_str</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">(</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">constructor_name</span><span class="p">,</span> <span class="n">inner_str</span><span class="p">)</span>
+
+    <span class="c1"># Copy these to handle bug in ABCmeta</span>
+    <span class="n">zero</span> <span class="o">=</span> <span class="n">NumpyNtuples</span><span class="o">.</span><span class="n">zero</span>
+    <span class="n">one</span> <span class="o">=</span> <span class="n">NumpyNtuples</span><span class="o">.</span><span class="n">one</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">element_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;`NumpyFnVector`&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">NumpyFnVector</span>
+
+<div class="viewcode-block" id="NumpyFn.available_dtypes"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFn.available_dtypes.html#odl.space.npy_ntuples.NumpyFn.available_dtypes">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">available_dtypes</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;Available data types.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        This is the set of all arithmetic dtypes available to numpy. See</span>
+<span class="sd">        `numpy.sctypes` for more information.</span>
+
+<span class="sd">        The available dtypes may depend on the specific system used.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO: fix dead link `numpy.sctypes`</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sctypes</span><span class="p">[</span><span class="s1">&#39;int&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sctypes</span><span class="p">[</span><span class="s1">&#39;float&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sctypes</span><span class="p">[</span><span class="s1">&#39;complex&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="NumpyFn.default_dtype"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFn.default_dtype.html#odl.space.npy_ntuples.NumpyFn.default_dtype">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">default_dtype</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the default of `NumpyFn` data type for a given field.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        field : `Field`, optional</span>
+<span class="sd">            Set of numbers to be represented by a data type.</span>
+<span class="sd">            Currently supported : `RealNumbers`, `ComplexNumbers`.</span>
+<span class="sd">            Default: `RealNumbers`</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dtype : `numpy.dtype`</span>
+<span class="sd">            Numpy data type specifier. The returned defaults are:</span>
+
+<span class="sd">            ``RealNumbers()`` : ``np.dtype(&#39;float64&#39;)``</span>
+
+<span class="sd">            ``ComplexNumbers()`` : ``np.dtype(&#39;complex128&#39;)``</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">field</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">field</span> <span class="o">==</span> <span class="n">RealNumbers</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">field</span> <span class="o">==</span> <span class="n">ComplexNumbers</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;complex128&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;no default data type defined for field </span><span class="si">{}</span><span class="s1">.&#39;</span>
+                             <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">field</span><span class="p">))</span></div></div>
+
+
+<div class="viewcode-block" id="NumpyFnVector"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFnVector.html#odl.space.npy_ntuples.NumpyFnVector">[docs]</a><span class="k">class</span> <span class="nc">NumpyFnVector</span><span class="p">(</span><span class="n">FnBaseVector</span><span class="p">,</span> <span class="n">NumpyNtuplesVector</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Representation of an `NumpyFn` element.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">space</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.&quot;&quot;&quot;</span>
+        <span class="n">FnBaseVector</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">space</span><span class="p">)</span>
+        <span class="n">NumpyNtuplesVector</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">space</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">real</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Real part of this vector.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        real : `NumpyFnVector` view with real dtype</span>
+<span class="sd">            The real part this vector as a vector in `rn`</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; c3 = NumpyFn(3, dtype=complex)</span>
+<span class="sd">        &gt;&gt;&gt; x = c3.element([5+1j, 3, 2-2j])</span>
+<span class="sd">        &gt;&gt;&gt; x.real</span>
+<span class="sd">        rn(3).element([5.0, 3.0, 2.0])</span>
+
+<span class="sd">        The `rn` vector is really a view, so changes affect</span>
+<span class="sd">        the original array:</span>
+
+<span class="sd">        &gt;&gt;&gt; x.real *= 2</span>
+<span class="sd">        &gt;&gt;&gt; x</span>
+<span class="sd">        cn(3).element([(10+1j), (6+0j), (4-2j)])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">real_space</span> <span class="o">=</span> <span class="n">NumpyFn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">real_dtype</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">real_space</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+
+    <span class="nd">@real</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">real</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">newreal</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Setter for the real part.</span>
+
+<span class="sd">        This method is invoked by ``vec.real = other``.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        newreal : `array-like` or scalar</span>
+<span class="sd">            The new real part for this vector.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; c3 = NumpyFn(3, dtype=complex)</span>
+<span class="sd">        &gt;&gt;&gt; x = c3.element([5+1j, 3, 2-2j])</span>
+<span class="sd">        &gt;&gt;&gt; a = NumpyFn(3).element([0, 0, 0])</span>
+<span class="sd">        &gt;&gt;&gt; x.real = a</span>
+<span class="sd">        &gt;&gt;&gt; x</span>
+<span class="sd">        cn(3).element([1j, 0j, -2j])</span>
+
+<span class="sd">        Other array-like types and broadcasting:</span>
+
+<span class="sd">        &gt;&gt;&gt; x.real = 1.0</span>
+<span class="sd">        &gt;&gt;&gt; x</span>
+<span class="sd">        cn(3).element([(1+1j), (1+0j), (1-2j)])</span>
+<span class="sd">        &gt;&gt;&gt; x.real = [0, 2, -1]</span>
+<span class="sd">        &gt;&gt;&gt; x</span>
+<span class="sd">        cn(3).element([1j, (2+0j), (-1-2j)])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">real</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">newreal</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">imag</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Imaginary part of this vector.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        imag : `NumpyFnVector`</span>
+<span class="sd">            The imaginary part this vector as a vector in `rn`</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; c3 = NumpyFn(3, dtype=complex)</span>
+<span class="sd">        &gt;&gt;&gt; x = c3.element([5+1j, 3, 2-2j])</span>
+<span class="sd">        &gt;&gt;&gt; x.imag</span>
+<span class="sd">        rn(3).element([1.0, 0.0, -2.0])</span>
+
+<span class="sd">        The `rn` vector is really a view, so changes affect</span>
+<span class="sd">        the original array:</span>
+
+<span class="sd">        &gt;&gt;&gt; x.imag *= 2</span>
+<span class="sd">        &gt;&gt;&gt; x</span>
+<span class="sd">        cn(3).element([(5+2j), (3+0j), (2-4j)])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">real_space</span> <span class="o">=</span> <span class="n">NumpyFn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">real_dtype</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">real_space</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+
+    <span class="nd">@imag</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">imag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">newimag</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Setter for the imaginary part.</span>
+
+<span class="sd">        This method is invoked by ``vec.imag = other``.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        newimag : `array-like` or scalar</span>
+<span class="sd">            The new imaginary part for this vector.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; x = cn(3).element([5+1j, 3, 2-2j])</span>
+<span class="sd">        &gt;&gt;&gt; a = NumpyFn(3).element([0, 0, 0])</span>
+<span class="sd">        &gt;&gt;&gt; x.imag = a; print(x)</span>
+<span class="sd">        [(5+0j), (3+0j), (2+0j)]</span>
+
+<span class="sd">        Other array-like types and broadcasting:</span>
+
+<span class="sd">        &gt;&gt;&gt; x.imag = 1.0; print(x)</span>
+<span class="sd">        [(5+1j), (3+1j), (2+1j)]</span>
+<span class="sd">        &gt;&gt;&gt; x.imag = [0, 2, -1]; print(x)</span>
+<span class="sd">        [(5+0j), (3+2j), (2-1j)]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imag</span><span class="o">.</span><span class="n">data</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">newimag</span>
+
+<div class="viewcode-block" id="NumpyFnVector.conj"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFnVector.conj.html#odl.space.npy_ntuples.NumpyFnVector.conj">[docs]</a>    <span class="k">def</span> <span class="nf">conj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Complex conjugate of this vector.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        out : `NumpyFnVector`, optional</span>
+<span class="sd">            Vector to which the complex conjugate is written.</span>
+<span class="sd">            Must be an element of this vector&#39;s space.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : `NumpyFnVector`</span>
+<span class="sd">            The complex conjugate vector. If ``out`` was provided,</span>
+<span class="sd">            the returned object is a reference to it.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; x = NumpyFn(3, dtype=complex).element([5+1j, 3, 2-2j])</span>
+<span class="sd">        &gt;&gt;&gt; y = x.conj(); print(y)</span>
+<span class="sd">        [(5-1j), (3-0j), (2+2j)]</span>
+
+<span class="sd">        The out parameter allows you to avoid a copy</span>
+
+<span class="sd">        &gt;&gt;&gt; z = NumpyFn(3, dtype=complex).element()</span>
+<span class="sd">        &gt;&gt;&gt; z_out = x.conj(out=z); print(z)</span>
+<span class="sd">        [(5-1j), (3-0j), (2+2j)]</span>
+<span class="sd">        &gt;&gt;&gt; z_out is z</span>
+<span class="sd">        True</span>
+
+<span class="sd">        It can also be used for in-place conj</span>
+
+<span class="sd">        &gt;&gt;&gt; x_out = x.conj(out=x); print(x)</span>
+<span class="sd">        [(5-1j), (3-0j), (2+2j)]</span>
+<span class="sd">        &gt;&gt;&gt; x_out is x</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">conj</span><span class="p">())</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">out</span></div>
+
+    <span class="k">def</span> <span class="nf">__ipow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``self **= other``.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">other</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
+                <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__ipow__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+        <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<span class="k">def</span> <span class="nf">_weighting</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">exponent</span><span class="p">,</span> <span class="n">dist_using_inner</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a weighting whose type is inferred from the arguments.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">weights</span><span class="p">):</span>
+        <span class="n">weighting</span> <span class="o">=</span> <span class="n">NumpyFnConstWeighting</span><span class="p">(</span>
+            <span class="n">weights</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="n">exponent</span><span class="p">,</span> <span class="n">dist_using_inner</span><span class="o">=</span><span class="n">dist_using_inner</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">isspmatrix</span><span class="p">(</span><span class="n">weights</span><span class="p">):</span>
+        <span class="n">weighting</span> <span class="o">=</span> <span class="n">NumpyFnMatrixWeighting</span><span class="p">(</span>
+            <span class="n">weights</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="n">exponent</span><span class="p">,</span> <span class="n">dist_using_inner</span><span class="o">=</span><span class="n">dist_using_inner</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">weights</span><span class="p">,</span> <span class="n">weights_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">weights</span><span class="p">),</span> <span class="n">weights</span>
+        <span class="k">if</span> <span class="n">weights</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;bad weights </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">weights_in</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">weights</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">weighting</span> <span class="o">=</span> <span class="n">NumpyFnArrayWeighting</span><span class="p">(</span>
+                <span class="n">weights</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="n">exponent</span><span class="p">,</span> <span class="n">dist_using_inner</span><span class="o">=</span><span class="n">dist_using_inner</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">weights</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">weighting</span> <span class="o">=</span> <span class="n">NumpyFnMatrixWeighting</span><span class="p">(</span>
+                <span class="n">weights</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="n">exponent</span><span class="p">,</span> <span class="n">dist_using_inner</span><span class="o">=</span><span class="n">dist_using_inner</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;array-like `weights` must have 1 or 2 &#39;</span>
+                             <span class="s1">&#39;dimensions, but </span><span class="si">{}</span><span class="s1"> has </span><span class="si">{}</span><span class="s1"> dimensions&#39;</span>
+                             <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">weights</span><span class="o">.</span><span class="n">ndim</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">weighting</span>
+
+
+<div class="viewcode-block" id="npy_weighted_inner"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.npy_weighted_inner.html#odl.space.npy_ntuples.npy_weighted_inner">[docs]</a><span class="k">def</span> <span class="nf">npy_weighted_inner</span><span class="p">(</span><span class="n">weights</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Weighted inner product on `NumpyFn` spaces as free function.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    weights : scalar or `array-like`</span>
+<span class="sd">        Weights of the inner product. A scalar is interpreted as a</span>
+<span class="sd">        constant weight, a 1-dim. array as a weighting array and a</span>
+<span class="sd">        2-dimensional array as a weighting matrix.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    inner : callable</span>
+<span class="sd">        Inner product function with given weight. Constant weightings</span>
+<span class="sd">        are applicable to spaces of any size, for arrays the sizes</span>
+<span class="sd">        of the weighting and the space must match.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    NumpyFnConstWeighting</span>
+<span class="sd">    NumpyFnArrayWeighting</span>
+<span class="sd">    NumpyFnMatrixWeighting</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_weighting</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span><span class="o">.</span><span class="n">inner</span></div>
+
+
+<div class="viewcode-block" id="npy_weighted_norm"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.npy_weighted_norm.html#odl.space.npy_ntuples.npy_weighted_norm">[docs]</a><span class="k">def</span> <span class="nf">npy_weighted_norm</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="mf">2.0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Weighted norm on `NumpyFn` spaces as free function.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    weights : scalar or `array-like`</span>
+<span class="sd">        Weights of the norm. A scalar is interpreted as a</span>
+<span class="sd">        constant weight, a 1-dim. array as a weighting array and a</span>
+<span class="sd">        2-dimensional array as a weighting matrix.</span>
+<span class="sd">    exponent : positive float, optional</span>
+<span class="sd">        Exponent of the norm. If ``weight`` is a sparse matrix, only</span>
+<span class="sd">        1.0, 2.0 and ``inf`` are allowed.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    norm : callable</span>
+<span class="sd">        Norm function with given weight. Constant weightings</span>
+<span class="sd">        are applicable to spaces of any size, for arrays the sizes</span>
+<span class="sd">        of the weighting and the space must match.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    NumpyFnConstWeighting</span>
+<span class="sd">    NumpyFnArrayWeighting</span>
+<span class="sd">    NumpyFnMatrixWeighting</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_weighting</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="n">exponent</span><span class="p">)</span><span class="o">.</span><span class="n">norm</span></div>
+
+
+<div class="viewcode-block" id="npy_weighted_dist"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.npy_weighted_dist.html#odl.space.npy_ntuples.npy_weighted_dist">[docs]</a><span class="k">def</span> <span class="nf">npy_weighted_dist</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">use_inner</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Weighted distance on `NumpyFn` spaces as free function.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    weights : scalar or `array-like`</span>
+<span class="sd">        Weights of the distance. A scalar is interpreted as a</span>
+<span class="sd">        constant weight, a 1-dim. array as a weighting array and a</span>
+<span class="sd">        2-dimensional array as a weighting matrix.</span>
+<span class="sd">    exponent : positive float, optional</span>
+<span class="sd">        Exponent of the norm. If ``weight`` is a sparse matrix, only</span>
+<span class="sd">        1.0, 2.0 and ``inf`` are allowed.</span>
+<span class="sd">    use_inner : bool, optional</span>
+<span class="sd">        Calculate ``dist`` using the formula</span>
+
+<span class="sd">            ``||x - y||^2 = ||x||^2 + ||y||^2 - 2 * Re &lt;x, y&gt;``</span>
+
+<span class="sd">        This avoids the creation of new arrays and is thus faster</span>
+<span class="sd">        for large arrays. On the downside, it will not evaluate to</span>
+<span class="sd">        exactly zero for equal (but not identical) ``x`` and ``y``.</span>
+
+<span class="sd">        Can only be used if ``exponent`` is 2.0.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dist : callable</span>
+<span class="sd">        Distance function with given weight. Constant weightings</span>
+<span class="sd">        are applicable to spaces of any size, for arrays the sizes</span>
+<span class="sd">        of the weighting and the space must match.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    NumpyFnConstWeighting</span>
+<span class="sd">    NumpyFnArrayWeighting</span>
+<span class="sd">    NumpyFnMatrixWeighting</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_weighting</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="n">exponent</span><span class="p">,</span>
+                      <span class="n">dist_using_inner</span><span class="o">=</span><span class="n">use_inner</span><span class="p">)</span><span class="o">.</span><span class="n">dist</span></div>
+
+
+<span class="k">def</span> <span class="nf">_norm_default</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Default Euclidean norm implementation.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">_blas_is_applicable</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">nrm2</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">blas</span><span class="o">.</span><span class="n">get_blas_funcs</span><span class="p">(</span><span class="s1">&#39;nrm2&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="n">norm</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">nrm2</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">native</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span>
+    <span class="k">return</span> <span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_pnorm_default</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Default p-norm implementation.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_pnorm_diagweight</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Diagonally weighted p-norm implementation.&quot;&quot;&quot;</span>
+    <span class="c1"># This is faster than first applying the weights and then summing with</span>
+    <span class="c1"># BLAS dot or nrm2</span>
+    <span class="n">xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+        <span class="n">xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">xp</span><span class="p">)</span>
+        <span class="n">xp</span> <span class="o">*=</span> <span class="n">w</span>  <span class="c1"># w is a plain NumPy array</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">xp</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">p</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">xp</span> <span class="o">*=</span> <span class="n">w</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">xp</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_inner_default</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Default Euclidean inner product implementation.&quot;&quot;&quot;</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="n">x1</span><span class="o">.</span><span class="n">size</span>
+
+    <span class="c1"># x2 as first argument because we want linearity in x1</span>
+
+    <span class="k">if</span> <span class="n">size</span> <span class="o">&gt;</span> <span class="n">THRESHOLD_MEDIUM</span> <span class="ow">and</span> <span class="n">_blas_is_applicable</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">):</span>
+        <span class="n">dotc</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">blas</span><span class="o">.</span><span class="n">get_blas_funcs</span><span class="p">(</span><span class="s1">&#39;dotc&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">x1</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="n">dot</span> <span class="o">=</span> <span class="n">dotc</span><span class="p">(</span><span class="n">x2</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">x1</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">native</span><span class="p">(</span><span class="n">size</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">is_real_dtype</span><span class="p">(</span><span class="n">x1</span><span class="o">.</span><span class="n">dtype</span><span class="p">):</span>
+        <span class="n">dot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x2</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">x1</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># still much faster than vdot</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">dot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vdot</span><span class="p">(</span><span class="n">x2</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">x1</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># slowest alternative</span>
+
+    <span class="k">return</span> <span class="n">dot</span>
+
+
+<div class="viewcode-block" id="NumpyFnMatrixWeighting"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFnMatrixWeighting.html#odl.space.npy_ntuples.NumpyFnMatrixWeighting">[docs]</a><span class="k">class</span> <span class="nc">NumpyFnMatrixWeighting</span><span class="p">(</span><span class="n">MatrixWeighting</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Matrix weighting for `NumpyFn`.</span>
+
+<span class="sd">    For exponent 2.0, a new weighted inner product with matrix ``W``</span>
+<span class="sd">    is defined as::</span>
+
+<span class="sd">        &lt;a, b&gt;_W := &lt;W * a, b&gt; = b^H * W * a</span>
+
+<span class="sd">    with ``b^H`` standing for transposed complex conjugate.</span>
+
+<span class="sd">    For other exponents, only norm and dist are defined. In the case of</span>
+<span class="sd">    exponent ``inf``, the weighted norm is::</span>
+
+<span class="sd">        ||a||_{W, inf} := ||W * a||_inf</span>
+
+<span class="sd">    otherwise it is::</span>
+
+<span class="sd">        ||a||_{W, p} := ||W^{1/p} * a||_p</span>
+
+<span class="sd">    Note that this definition does **not** fulfill the limit property</span>
+<span class="sd">    in ``p``, i.e.::</span>
+
+<span class="sd">        ||x||_{W, p} --/-&gt; ||x||_{W, inf}  for p --&gt; inf</span>
+
+<span class="sd">    unless ``W`` is the identity matrix.</span>
+
+<span class="sd">    The matrix must be Hermitian and posivive definite, otherwise it</span>
+<span class="sd">    does not define an inner product or norm, respectively. This is not</span>
+<span class="sd">    checked during initialization.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">dist_using_inner</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        matrix :  `scipy.sparse.spmatrix` or `array-like`, 2-dim.</span>
+<span class="sd">            Square weighting matrix of the inner product</span>
+<span class="sd">        exponent : positive float, optional</span>
+<span class="sd">            Exponent of the norm. For values other than 2.0, the inner</span>
+<span class="sd">            product is not defined.</span>
+<span class="sd">            If ``matrix`` is a sparse matrix, only 1.0, 2.0 and ``inf``</span>
+<span class="sd">            are allowed.</span>
+<span class="sd">        dist_using_inner : bool, optional</span>
+<span class="sd">            Calculate ``dist`` using the formula</span>
+
+<span class="sd">                ``||x - y||^2 = ||x||^2 + ||y||^2 - 2 * Re &lt;x, y&gt;``</span>
+
+<span class="sd">            This avoids the creation of new arrays and is thus faster</span>
+<span class="sd">            for large arrays. On the downside, it will not evaluate to</span>
+<span class="sd">            exactly zero for equal (but not identical) ``x`` and ``y``.</span>
+
+<span class="sd">            This option can only be used if ``exponent`` is 2.0.</span>
+<span class="sd">        precomp_mat_pow : bool, optional</span>
+<span class="sd">            If ``True``, precompute the matrix power ``W ** (1/p)``</span>
+<span class="sd">            during initialization. This has no effect if ``exponent``</span>
+<span class="sd">            is 1.0, 2.0 or ``inf``.</span>
+
+<span class="sd">            Default: False</span>
+
+<span class="sd">        cache_mat_pow : bool, optional</span>
+<span class="sd">            If ``True``, cache the matrix power ``W ** (1/p)``. This can</span>
+<span class="sd">            happen either during initialization or in the first call to</span>
+<span class="sd">            ``norm`` or ``dist``, resp. This has no effect if</span>
+<span class="sd">            ``exponent`` is 1.0, 2.0 or ``inf``.</span>
+
+<span class="sd">            Default: True</span>
+
+<span class="sd">        cache_mat_decomp : bool, optional</span>
+<span class="sd">            If ``True``, cache the eigenbasis decomposition of the</span>
+<span class="sd">            matrix. This can happen either during initialization or in</span>
+<span class="sd">            the first call to ``norm`` or ``dist``, resp. This has no</span>
+<span class="sd">            effect if ``exponent`` is 1.0, 2.0 or ``inf``.</span>
+
+<span class="sd">            Default: False</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        The matrix power ``W ** (1/p)`` is computed with by eigenbasis</span>
+<span class="sd">        decomposition::</span>
+
+<span class="sd">            eigval, eigvec = scipy.linalg.eigh(matrix)</span>
+<span class="sd">            mat_pow = (eigval ** p * eigvec).dot(eigvec.conj().T)</span>
+
+<span class="sd">        Depending on the matrix size, this can be rather expensive.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO: fix dead link `scipy.sparse.spmatrix`</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">impl</span><span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="n">exponent</span><span class="p">,</span>
+                         <span class="n">dist_using_inner</span><span class="o">=</span><span class="n">dist_using_inner</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="NumpyFnMatrixWeighting.inner"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFnMatrixWeighting.inner.html#odl.space.npy_ntuples.NumpyFnMatrixWeighting.inner">[docs]</a>    <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Calculate the matrix-weighted inner product of two vectors.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x1, x2 : `NumpyFnVector`</span>
+<span class="sd">            Vectors whose inner product is calculated</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        inner : float or complex</span>
+<span class="sd">            The inner product of the vectors</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span> <span class="o">!=</span> <span class="mf">2.0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;no inner product defined for &#39;</span>
+                                      <span class="s1">&#39;exponent != 2 (got </span><span class="si">{}</span><span class="s1">)&#39;</span>
+                                      <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">exponent</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">inner</span> <span class="o">=</span> <span class="n">_inner_default</span><span class="p">(</span><span class="n">x1</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x1</span><span class="p">)),</span> <span class="n">x2</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">is_real_dtype</span><span class="p">(</span><span class="n">x1</span><span class="o">.</span><span class="n">dtype</span><span class="p">):</span>
+                <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">inner</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="nb">complex</span><span class="p">(</span><span class="n">inner</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NumpyFnMatrixWeighting.norm"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFnMatrixWeighting.norm.html#odl.space.npy_ntuples.NumpyFnMatrixWeighting.norm">[docs]</a>    <span class="k">def</span> <span class="nf">norm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Calculate the matrix-weighted norm of a vector.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : `NumpyFnVector`</span>
+<span class="sd">            Vector whose norm is calculated</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        norm : float</span>
+<span class="sd">            The norm of the vector</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span> <span class="o">==</span> <span class="mf">2.0</span><span class="p">:</span>
+            <span class="n">norm_squared</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">real</span>  <span class="c1"># TODO: optimize?</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">norm_squared</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mat_pow</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># This case can only be reached if p != 1,2,inf</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix_issparse</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;sparse matrix powers not &#39;</span>
+                                          <span class="s1">&#39;suppoerted&#39;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eigval</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eigvec</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># No cached decomposition, computing new one</span>
+                <span class="n">eigval</span><span class="p">,</span> <span class="n">eigvec</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache_mat_decomp</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_eigval</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eigvec</span> <span class="o">=</span> <span class="n">eigval</span><span class="p">,</span> <span class="n">eigvec</span>
+                    <span class="n">eigval_pow</span> <span class="o">=</span> <span class="n">eigval</span> <span class="o">**</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Not storing eigenvalues, so we can destroy them</span>
+                    <span class="n">eigval_pow</span> <span class="o">=</span> <span class="n">eigval</span>
+                    <span class="n">eigval_pow</span> <span class="o">**=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Using cached, cannot destroy</span>
+                <span class="n">eigval</span><span class="p">,</span> <span class="n">eigvec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eigval</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eigvec</span>
+                <span class="n">eigval_pow</span> <span class="o">=</span> <span class="n">eigval</span> <span class="o">**</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span><span class="p">)</span>
+
+            <span class="n">mat_pow</span> <span class="o">=</span> <span class="p">(</span><span class="n">eigval_pow</span> <span class="o">*</span> <span class="n">eigvec</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">eigvec</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache_mat_pow</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_mat_pow</span> <span class="o">=</span> <span class="n">mat_pow</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">mat_pow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mat_pow</span>
+
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">_pnorm_default</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">mat_pow</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span>
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span><span class="p">))</span></div></div>
+
+
+<div class="viewcode-block" id="NumpyFnArrayWeighting"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFnArrayWeighting.html#odl.space.npy_ntuples.NumpyFnArrayWeighting">[docs]</a><span class="k">class</span> <span class="nc">NumpyFnArrayWeighting</span><span class="p">(</span><span class="n">ArrayWeighting</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Weighting of `Fn` by an array.</span>
+
+<span class="sd">    This class defines a point-wise weighting, i.e., a weighting with</span>
+<span class="sd">    a different value for each index.</span>
+<span class="sd">    See ``Notes`` for mathematical details.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">dist_using_inner</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        array : `array-like`, one-dim.</span>
+<span class="sd">            Weighting array of the inner product, norm and distance.</span>
+<span class="sd">        exponent : positive float, optional</span>
+<span class="sd">            Exponent of the norm. For values other than 2.0, no inner</span>
+<span class="sd">            product is defined.</span>
+<span class="sd">        dist_using_inner : bool, optional</span>
+<span class="sd">            Calculate ``dist`` using the formula</span>
+
+<span class="sd">                ``||x - y||^2 = ||x||^2 + ||y||^2 - 2 * Re &lt;x, y&gt;``</span>
+
+<span class="sd">            This avoids the creation of new arrays and is thus faster</span>
+<span class="sd">            for large arrays. On the downside, it will not evaluate to</span>
+<span class="sd">            exactly zero for equal (but not identical) ``x`` and ``y``.</span>
+
+<span class="sd">            This option can only be used if ``exponent`` is 2.0.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        - For exponent 2.0, a new weighted inner product with array</span>
+<span class="sd">          :math:`w` is defined as</span>
+
+<span class="sd">          .. math::</span>
+<span class="sd">              \\langle a, b\\rangle_w :=</span>
+<span class="sd">              \\langle w \odot a, b\\rangle =</span>
+<span class="sd">              b^{\mathrm{H}} (w \odot a),</span>
+
+<span class="sd">          where :math:`b^{\mathrm{H}}` stands for transposed complex</span>
+<span class="sd">          conjugate and :math:`w \odot a` for entry-wise multiplication.</span>
+
+<span class="sd">        - For other exponents, only norm and dist are defined. In the</span>
+<span class="sd">          case of exponent :math:`\\infty`, the weighted norm is</span>
+
+<span class="sd">          .. math::</span>
+<span class="sd">              \| a\|_{w, \\infty} :=</span>
+<span class="sd">              \| w \odot a\|_{\\infty},</span>
+
+<span class="sd">          otherwise it is (using point-wise exponentiation)</span>
+
+<span class="sd">          .. math::</span>
+
+<span class="sd">              \| a\|_{w, p} :=</span>
+<span class="sd">              \| w^{1/p} \odot a\|_{\\infty}.</span>
+
+<span class="sd">        - Note that this definition does **not** fulfill the limit</span>
+<span class="sd">          property in :math:`p`, i.e.</span>
+
+<span class="sd">          .. math::</span>
+<span class="sd">              \| a\|_{w, p} \\not\\to</span>
+<span class="sd">              \| a\|_{w, \\infty} \quad (p \\to \\infty)</span>
+
+<span class="sd">          unless :math:`w = (1, \dots, 1)`. The reason for this choice</span>
+<span class="sd">          is that the alternative with the limit property consists in</span>
+<span class="sd">          ignoring the weights altogether.</span>
+
+<span class="sd">        - The array may only have positive entries, otherwise it does</span>
+<span class="sd">          not define an inner product or norm, respectively. This is not</span>
+<span class="sd">          checked during initialization.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">impl</span><span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="n">exponent</span><span class="p">,</span>
+                         <span class="n">dist_using_inner</span><span class="o">=</span><span class="n">dist_using_inner</span><span class="p">)</span>
+
+<div class="viewcode-block" id="NumpyFnArrayWeighting.inner"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFnArrayWeighting.inner.html#odl.space.npy_ntuples.NumpyFnArrayWeighting.inner">[docs]</a>    <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the weighted inner product of two vectors.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x1, x2 : `NumpyFnVector`</span>
+<span class="sd">            Vectors whose inner product is calculated</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        inner : float or complex</span>
+<span class="sd">            The inner product of the two provided vectors.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span> <span class="o">!=</span> <span class="mf">2.0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;no inner product defined for &#39;</span>
+                                      <span class="s1">&#39;exponent != 2 (got </span><span class="si">{}</span><span class="s1">)&#39;</span>
+                                      <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">exponent</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">inner</span> <span class="o">=</span> <span class="n">_inner_default</span><span class="p">(</span><span class="n">x1</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">is_real_dtype</span><span class="p">(</span><span class="n">x1</span><span class="o">.</span><span class="n">dtype</span><span class="p">):</span>
+                <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">inner</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="nb">complex</span><span class="p">(</span><span class="n">inner</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NumpyFnArrayWeighting.norm"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFnArrayWeighting.norm.html#odl.space.npy_ntuples.NumpyFnArrayWeighting.norm">[docs]</a>    <span class="k">def</span> <span class="nf">norm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Calculate the array-weighted norm of a vector.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : `NumpyFnVector`</span>
+<span class="sd">            Vector whose norm is calculated</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        norm : float</span>
+<span class="sd">            The norm of the provided vector</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span> <span class="o">==</span> <span class="mf">2.0</span><span class="p">:</span>
+            <span class="n">norm_squared</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">real</span>  <span class="c1"># TODO: optimize?!</span>
+            <span class="k">if</span> <span class="n">norm_squared</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">norm_squared</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1"># Compensate for numerical error</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">norm_squared</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">_pnorm_diagweight</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">array</span><span class="p">))</span></div></div>
+
+
+<div class="viewcode-block" id="NumpyFnConstWeighting"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFnConstWeighting.html#odl.space.npy_ntuples.NumpyFnConstWeighting">[docs]</a><span class="k">class</span> <span class="nc">NumpyFnConstWeighting</span><span class="p">(</span><span class="n">ConstWeighting</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Weighting of `NumpyFn` by a constant.</span>
+
+<span class="sd">    This class defines a weighting with the same constant for each index.</span>
+<span class="sd">    See ``Notes`` for mathematical details.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">constant</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">dist_using_inner</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        constant : positive float</span>
+<span class="sd">            Weighting constant of the inner product.</span>
+<span class="sd">        exponent : positive float, optional</span>
+<span class="sd">            Exponent of the norm. For values other than 2.0, the inner</span>
+<span class="sd">            product is not defined.</span>
+<span class="sd">        dist_using_inner : bool, optional</span>
+<span class="sd">            Calculate ``dist`` using the formula</span>
+
+<span class="sd">                ``||x - y||^2 = ||x||^2 + ||y||^2 - 2 * Re &lt;x, y&gt;``</span>
+
+<span class="sd">            This avoids the creation of new arrays and is thus faster</span>
+<span class="sd">            for large arrays. On the downside, it will not evaluate to</span>
+<span class="sd">            exactly zero for equal (but not identical) ``x`` and ``y``.</span>
+
+<span class="sd">            This option can only be used if ``exponent`` is 2.0.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        - For exponent 2.0, a new weighted inner product with constant</span>
+<span class="sd">          :math:`c` is defined as</span>
+
+<span class="sd">          .. math::</span>
+<span class="sd">              \\langle a, b\\rangle_c = c\, \\langle a, b\\rangle</span>
+<span class="sd">              = c\, b^{\mathrm{H}} a,</span>
+
+<span class="sd">          with :math:`b^{\mathrm{H}}` standing for transposed complex</span>
+<span class="sd">          conjugate.</span>
+
+<span class="sd">          For other exponents, only norm and dist are defined. In the case of</span>
+<span class="sd">          exponent :math:`\infty`, the weighted norm is defined as</span>
+
+<span class="sd">          .. math::</span>
+<span class="sd">              \|a\|_{c, \infty} := c\, \|a\|_\infty,</span>
+
+<span class="sd">          otherwise it is</span>
+
+<span class="sd">          .. math::</span>
+<span class="sd">              \|a\|_{c, p} := c^{1/p}\, \|a\|_p.</span>
+
+<span class="sd">        - Note that this definition does **not** fulfill the limit property</span>
+<span class="sd">          in ``p``, i.e.,</span>
+
+<span class="sd">          .. math::</span>
+<span class="sd">              \|a\|_{c,p} \\not\\to \|a\|_{c,\infty}</span>
+<span class="sd">              \quad\\text{for } p \\to \infty</span>
+
+<span class="sd">          unless :math:`c = 1`. The reason for this choice is that the</span>
+<span class="sd">          alternative fulfilling the limit property consists in ignoring</span>
+<span class="sd">          the weight altogether.</span>
+
+<span class="sd">        - The constant must be positive, otherwise it does not define an</span>
+<span class="sd">          inner product or norm, respectively.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">constant</span><span class="p">,</span> <span class="n">impl</span><span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="n">exponent</span><span class="p">,</span>
+                         <span class="n">dist_using_inner</span><span class="o">=</span><span class="n">dist_using_inner</span><span class="p">)</span>
+
+<div class="viewcode-block" id="NumpyFnConstWeighting.inner"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFnConstWeighting.inner.html#odl.space.npy_ntuples.NumpyFnConstWeighting.inner">[docs]</a>    <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Calculate the constant-weighted inner product of two vectors.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x1, x2 : `NumpyFnVector`</span>
+<span class="sd">            Vectors whose inner product is calculated</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        inner : float or complex</span>
+<span class="sd">            The inner product of the two provided vectors</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span> <span class="o">!=</span> <span class="mf">2.0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;no inner product defined for &#39;</span>
+                                      <span class="s1">&#39;exponent != 2 (got </span><span class="si">{}</span><span class="s1">)&#39;</span>
+                                      <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">exponent</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">inner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">const</span> <span class="o">*</span> <span class="n">_inner_default</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">x1</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">field</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">inner</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NumpyFnConstWeighting.norm"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFnConstWeighting.norm.html#odl.space.npy_ntuples.NumpyFnConstWeighting.norm">[docs]</a>    <span class="k">def</span> <span class="nf">norm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Calculate the constant-weighted norm of a vector.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x1 : `NumpyFnVector`</span>
+<span class="sd">            Vector whose norm is calculated</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        norm : float</span>
+<span class="sd">            The norm of the vector</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span> <span class="o">==</span> <span class="mf">2.0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">const</span><span class="p">)</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">_norm_default</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span> <span class="o">==</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">const</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">_pnorm_default</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">const</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span><span class="p">)</span> <span class="o">*</span>
+                    <span class="nb">float</span><span class="p">(</span><span class="n">_pnorm_default</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span><span class="p">)))</span></div>
+
+<div class="viewcode-block" id="NumpyFnConstWeighting.dist"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFnConstWeighting.dist.html#odl.space.npy_ntuples.NumpyFnConstWeighting.dist">[docs]</a>    <span class="k">def</span> <span class="nf">dist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Calculate the constant-weighted distance between two vectors.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x1, x2 : `NumpyFnVector`</span>
+<span class="sd">            Vectors whose mutual distance is calculated</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dist : float</span>
+<span class="sd">            The distance between the vectors</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dist_using_inner</span><span class="p">:</span>
+            <span class="n">dist_squared</span> <span class="o">=</span> <span class="p">(</span><span class="n">_norm_default</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">_norm_default</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span>
+                            <span class="mi">2</span> <span class="o">*</span> <span class="n">_inner_default</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">dist_squared</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">:</span>  <span class="c1"># Compensate for numerical error</span>
+                <span class="n">dist_squared</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">const</span><span class="p">)</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dist_squared</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span> <span class="o">==</span> <span class="mf">2.0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">const</span><span class="p">)</span> <span class="o">*</span> <span class="n">_norm_default</span><span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">x2</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span> <span class="o">==</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">const</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">_pnorm_default</span><span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">x2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">const</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span><span class="p">)</span> <span class="o">*</span>
+                    <span class="nb">float</span><span class="p">(</span><span class="n">_pnorm_default</span><span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">x2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">exponent</span><span class="p">)))</span></div></div>
+
+
+<div class="viewcode-block" id="NumpyFnNoWeighting"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFnNoWeighting.html#odl.space.npy_ntuples.NumpyFnNoWeighting">[docs]</a><span class="k">class</span> <span class="nc">NumpyFnNoWeighting</span><span class="p">(</span><span class="n">NoWeighting</span><span class="p">,</span> <span class="n">NumpyFnConstWeighting</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Weighting of `NumpyFn` with constant 1.</span>
+
+<span class="sd">    For exponent 2.0, the unweighted inner product is defined as::</span>
+
+<span class="sd">        &lt;a, b&gt; := b^H a</span>
+
+<span class="sd">    with ``b^H`` standing for transposed complex conjugate.</span>
+
+<span class="sd">    For other exponents, only norm and dist are defined.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Implement singleton pattern for efficiency in the default case</span>
+    <span class="n">_instance</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Implement singleton pattern if ``exp==2.0``.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">exponent</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;exponent&#39;</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>
+            <span class="n">dist_using_inner</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;dist_using_inner&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">exponent</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="n">dist_using_inner</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;dist_using_inner&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">exponent</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">dist_using_inner</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+
+        <span class="k">if</span> <span class="n">exponent</span> <span class="o">==</span> <span class="mf">2.0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">dist_using_inner</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_instance</span><span class="p">:</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">_instance</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_instance</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">dist_using_inner</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        exponent : positive float, optional</span>
+<span class="sd">            Exponent of the norm. For values other than 2.0, the inner</span>
+<span class="sd">            product is not defined.</span>
+<span class="sd">        dist_using_inner : bool, optional</span>
+<span class="sd">            Calculate ``dist`` using the formula</span>
+
+<span class="sd">                ``||x - y||^2 = ||x||^2 + ||y||^2 - 2 * Re &lt;x, y&gt;``</span>
+
+<span class="sd">            This avoids the creation of new arrays and is thus faster</span>
+<span class="sd">            for large arrays. On the downside, it will not evaluate to</span>
+<span class="sd">            exactly zero for equal (but not identical) ``x`` and ``y``.</span>
+
+<span class="sd">            This option can only be used if ``exponent`` is 2.0.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">impl</span><span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="n">exponent</span><span class="p">,</span>
+                         <span class="n">dist_using_inner</span><span class="o">=</span><span class="n">dist_using_inner</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="NumpyFnCustomInner"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFnCustomInner.html#odl.space.npy_ntuples.NumpyFnCustomInner">[docs]</a><span class="k">class</span> <span class="nc">NumpyFnCustomInner</span><span class="p">(</span><span class="n">CustomInner</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Class for handling a user-specified inner product in `NumpyFn`.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inner</span><span class="p">,</span> <span class="n">dist_using_inner</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        inner : callable</span>
+<span class="sd">            The inner product implementation. It must accept two</span>
+<span class="sd">            `NumpyFnVector` arguments, return an element from their space&#39;s</span>
+<span class="sd">            field (real or complex number) and satisfy the following</span>
+<span class="sd">            conditions for all vectors ``x, y, z`` and scalars ``s``:</span>
+
+<span class="sd">            - ``&lt;x, y&gt; = conj(&lt;y, x&gt;)``</span>
+<span class="sd">            - ``&lt;s*x + y, z&gt; = s * &lt;x, z&gt; + &lt;y, z&gt;``</span>
+<span class="sd">            - ``&lt;x, x&gt; = 0``  if and only if  ``x = 0``</span>
+
+<span class="sd">        dist_using_inner : bool, optional</span>
+<span class="sd">            Calculate ``dist`` using the formula</span>
+
+<span class="sd">                ``||x - y||^2 = ||x||^2 + ||y||^2 - 2 * Re &lt;x, y&gt;``</span>
+
+<span class="sd">            This avoids the creation of new arrays and is thus faster</span>
+<span class="sd">            for large arrays. On the downside, it will not evaluate to</span>
+<span class="sd">            exactly zero for equal (but not identical) ``x`` and ``y``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">inner</span><span class="p">,</span> <span class="n">impl</span><span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">,</span>
+                         <span class="n">dist_using_inner</span><span class="o">=</span><span class="n">dist_using_inner</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="NumpyFnCustomNorm"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFnCustomNorm.html#odl.space.npy_ntuples.NumpyFnCustomNorm">[docs]</a><span class="k">class</span> <span class="nc">NumpyFnCustomNorm</span><span class="p">(</span><span class="n">CustomNorm</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Class for handling a user-specified norm in `NumpyFn`.</span>
+
+<span class="sd">    Note that this removes ``inner``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">norm</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        norm : callable</span>
+<span class="sd">            The norm implementation. It must accept an `NumpyFnVector`</span>
+<span class="sd">            argument, return a float and satisfy the following</span>
+<span class="sd">            conditions for all vectors ``x, y`` and scalars ``s``:</span>
+
+<span class="sd">            - ``||x|| &gt;= 0``</span>
+<span class="sd">            - ``||x|| = 0``  if and only if  ``x = 0``</span>
+<span class="sd">            - ``||s * x|| = |s| * ||x||``</span>
+<span class="sd">            - ``||x + y|| &lt;= ||x|| + ||y||``</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">norm</span><span class="p">,</span> <span class="n">impl</span><span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="NumpyFnCustomDist"><a class="viewcode-back" href="../../../generated/odl.space.npy_ntuples.NumpyFnCustomDist.html#odl.space.npy_ntuples.NumpyFnCustomDist">[docs]</a><span class="k">class</span> <span class="nc">NumpyFnCustomDist</span><span class="p">(</span><span class="n">CustomDist</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Class for handling a user-specified distance in `NumpyFn`.</span>
+
+<span class="sd">    Note that this removes ``inner`` and ``norm``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dist</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        dist : callable</span>
+<span class="sd">            The distance function defining a metric on `NumpyFn`. It must</span>
+<span class="sd">            accept two `NumpyFnVector` arguments, return a float and</span>
+<span class="sd">            fulfill the following mathematical conditions for any three</span>
+<span class="sd">            vectors ``x, y, z``:</span>
+
+<span class="sd">            - ``dist(x, y) &gt;= 0``</span>
+<span class="sd">            - ``dist(x, y) = 0``  if and only if  ``x = y``</span>
+<span class="sd">            - ``dist(x, y) = dist(y, x)``</span>
+<span class="sd">            - ``dist(x, y) &lt;= dist(x, z) + dist(z, y)``</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">impl</span><span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1"># pylint: disable=wrong-import-position</span>
+    <span class="kn">from</span> <span class="nn">odl.util.testutils</span> <span class="k">import</span> <span class="n">run_doctests</span>
+    <span class="n">run_doctests</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

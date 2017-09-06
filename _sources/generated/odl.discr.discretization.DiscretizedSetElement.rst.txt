@@ -1,0 +1,33 @@
+DiscretizedSetElement
+==============================================
+
+.. currentmodule:: odl.discr.discretization
+
+.. autoclass:: DiscretizedSetElement
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         DiscretizedSetElement.__eq__
+         DiscretizedSetElement.__getitem__
+         DiscretizedSetElement.__setitem__
+         DiscretizedSetElement.asarray
+         DiscretizedSetElement.copy
+         DiscretizedSetElement.sampling
+         DiscretizedSetElement.show
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

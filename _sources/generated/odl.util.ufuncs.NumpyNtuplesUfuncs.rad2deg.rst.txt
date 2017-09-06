@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesUfuncs.rad2deg
+==========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NumpyNtuplesUfuncs.rad2deg

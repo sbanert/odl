@@ -1,0 +1,8 @@
+:orphan:
+
+FunctionSetMapping._call
+=================================================
+
+.. currentmodule:: odl.discr.discr_mappings
+
+.. automethod:: FunctionSetMapping._call

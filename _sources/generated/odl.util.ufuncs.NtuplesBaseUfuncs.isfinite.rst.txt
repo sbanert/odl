@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBaseUfuncs.isfinite
+==========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NtuplesBaseUfuncs.isfinite

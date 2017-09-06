@@ -1,0 +1,8 @@
+:orphan:
+
+DiscretizedSet.available_dtypes
+========================================================
+
+.. currentmodule:: odl.discr.discretization
+
+.. automethod:: DiscretizedSet.available_dtypes

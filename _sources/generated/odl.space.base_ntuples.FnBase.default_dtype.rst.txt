@@ -1,0 +1,8 @@
+:orphan:
+
+FnBase.default_dtype
+===========================================
+
+.. currentmodule:: odl.space.base_ntuples
+
+.. automethod:: FnBase.default_dtype

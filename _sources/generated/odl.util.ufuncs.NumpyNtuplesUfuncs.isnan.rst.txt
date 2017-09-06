@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesUfuncs.isnan
+========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NumpyNtuplesUfuncs.isnan

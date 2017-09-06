@@ -1,0 +1,8 @@
+:orphan:
+
+FunctionSetMapping.__eq__
+==================================================
+
+.. currentmodule:: odl.discr.discr_mappings
+
+.. automethod:: FunctionSetMapping.__eq__

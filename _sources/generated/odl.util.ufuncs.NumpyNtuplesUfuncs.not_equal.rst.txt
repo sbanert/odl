@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesUfuncs.not_equal
+============================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NumpyNtuplesUfuncs.not_equal

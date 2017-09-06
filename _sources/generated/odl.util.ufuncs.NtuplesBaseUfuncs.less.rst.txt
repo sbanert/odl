@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBaseUfuncs.less
+======================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NtuplesBaseUfuncs.less

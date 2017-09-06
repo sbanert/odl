@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBaseUfuncs.minimum
+=========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NtuplesBaseUfuncs.minimum

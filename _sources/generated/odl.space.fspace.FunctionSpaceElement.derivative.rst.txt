@@ -1,0 +1,8 @@
+:orphan:
+
+FunctionSpaceElement.derivative
+================================================
+
+.. currentmodule:: odl.space.fspace
+
+.. automethod:: FunctionSpaceElement.derivative

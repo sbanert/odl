@@ -1,0 +1,48 @@
+FnBase
+=============================
+
+.. currentmodule:: odl.space.base_ntuples
+
+.. autoclass:: FnBase
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         FnBase.__contains__
+         FnBase.__eq__
+         FnBase._dist
+         FnBase._divide
+         FnBase._inner
+         FnBase._lincomb
+         FnBase._multiply
+         FnBase._norm
+         FnBase.astype
+         FnBase.available_dtypes
+         FnBase.contains_all
+         FnBase.contains_set
+         FnBase.default_dtype
+         FnBase.dist
+         FnBase.divide
+         FnBase.element
+         FnBase.inner
+         FnBase.lincomb
+         FnBase.multiply
+         FnBase.norm
+         FnBase.one
+         FnBase.zero
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

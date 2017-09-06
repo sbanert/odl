@@ -1,0 +1,8 @@
+:orphan:
+
+DiscretizedSetElement.asarray
+======================================================
+
+.. currentmodule:: odl.discr.discretization
+
+.. automethod:: DiscretizedSetElement.asarray

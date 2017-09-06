@@ -1,0 +1,8 @@
+:orphan:
+
+FnBase._norm
+===================================
+
+.. currentmodule:: odl.space.base_ntuples
+
+.. automethod:: FnBase._norm

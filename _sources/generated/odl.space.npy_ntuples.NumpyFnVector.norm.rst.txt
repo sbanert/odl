@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyFnVector.norm
+========================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyFnVector.norm

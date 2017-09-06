@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesVector.__setitem__
+====================================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyNtuplesVector.__setitem__

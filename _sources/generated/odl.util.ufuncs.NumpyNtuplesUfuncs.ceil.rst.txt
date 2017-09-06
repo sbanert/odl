@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesUfuncs.ceil
+=======================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NumpyNtuplesUfuncs.ceil

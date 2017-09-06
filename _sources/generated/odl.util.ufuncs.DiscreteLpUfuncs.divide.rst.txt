@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.divide
+=======================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.divide

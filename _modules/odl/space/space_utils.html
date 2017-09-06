@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>odl.space.space_utils &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../odl.html">odl</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>odl.space.space_utils</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for odl.space.space_utils</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2014-2017 The ODL contributors</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of ODL.</span>
+<span class="c1">#</span>
+<span class="c1"># This Source Code Form is subject to the terms of the Mozilla Public License,</span>
+<span class="c1"># v. 2.0. If a copy of the MPL was not distributed with this file, You can</span>
+<span class="c1"># obtain one at https://mozilla.org/MPL/2.0/.</span>
+
+<span class="sd">&quot;&quot;&quot;Utility functions for space implementations.&quot;&quot;&quot;</span>
+
+<span class="c1"># Imports for common Python 2/3 codebase</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">absolute_import</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;vector&#39;</span><span class="p">,</span> <span class="s1">&#39;ntuples&#39;</span><span class="p">,</span> <span class="s1">&#39;fn&#39;</span><span class="p">,</span> <span class="s1">&#39;cn&#39;</span><span class="p">,</span> <span class="s1">&#39;rn&#39;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">odl.set</span> <span class="k">import</span> <span class="n">RealNumbers</span><span class="p">,</span> <span class="n">ComplexNumbers</span>
+<span class="kn">from</span> <span class="nn">odl.space.entry_points</span> <span class="k">import</span> <span class="n">ntuples_impl</span><span class="p">,</span> <span class="n">fn_impl</span>
+<span class="kn">from</span> <span class="nn">odl.util</span> <span class="k">import</span> <span class="p">(</span>
+    <span class="n">is_real_floating_dtype</span><span class="p">,</span> <span class="n">is_complex_floating_dtype</span><span class="p">,</span> <span class="n">is_scalar_dtype</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="vector"><a class="viewcode-back" href="../../../generated/odl.space.space_utils.vector.html#odl.space.space_utils.vector">[docs]</a><span class="k">def</span> <span class="nf">vector</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">impl</span><span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create an n-tuples type vector from an array.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    array : `array-like`</span>
+<span class="sd">        Array from which to create the vector. Scalars become</span>
+<span class="sd">        one-dimensional vectors.</span>
+<span class="sd">    dtype : optional</span>
+<span class="sd">        Set the data type of the vector manually with this option.</span>
+<span class="sd">        By default, the space type is inferred from the input data.</span>
+<span class="sd">    impl : string, optional</span>
+<span class="sd">        The backend to use. See `odl.space.entry_points.ntuples_impl_names` and</span>
+<span class="sd">        `odl.space.entry_points.fn_impl_names` for available options.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    vec : `NtuplesBaseVector`</span>
+<span class="sd">        Vector created from the input array. Its concrete type depends</span>
+<span class="sd">        on the provided arguments.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This is a convenience function and not intended for use in</span>
+<span class="sd">    speed-critical algorithms.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; vector([1, 2, 3])  # No automatic cast to float</span>
+<span class="sd">    fn(3, &#39;int&#39;).element([1, 2, 3])</span>
+<span class="sd">    &gt;&gt;&gt; vector([1, 2, 3], dtype=float)</span>
+<span class="sd">    rn(3).element([1.0, 2.0, 3.0])</span>
+<span class="sd">    &gt;&gt;&gt; vector([1 + 1j, 2, 3 - 2j])</span>
+<span class="sd">    cn(3).element([(1+1j), (2+0j), (3-2j)])</span>
+
+<span class="sd">    Non-scalar types are also supported:</span>
+
+<span class="sd">    &gt;&gt;&gt; vector([True, False])</span>
+<span class="sd">    ntuples(2, &#39;bool&#39;).element([True, False])</span>
+
+<span class="sd">    Scalars become a one-element vector:</span>
+
+<span class="sd">    &gt;&gt;&gt; vector(0.0)</span>
+<span class="sd">    rn(1).element([0.0])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Sanitize input</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Validate input</span>
+    <span class="k">if</span> <span class="n">arr</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;array has </span><span class="si">{}</span><span class="s1"> dimensions, expected 1&#39;</span>
+                         <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">ndim</span><span class="p">))</span>
+
+    <span class="c1"># Set dtype</span>
+    <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">space_dtype</span> <span class="o">=</span> <span class="n">dtype</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">space_dtype</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">dtype</span>
+
+    <span class="c1"># Select implementation</span>
+    <span class="k">if</span> <span class="n">space_dtype</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">is_scalar_dtype</span><span class="p">(</span><span class="n">space_dtype</span><span class="p">):</span>
+        <span class="n">space_type</span> <span class="o">=</span> <span class="n">fn</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">space_type</span> <span class="o">=</span> <span class="n">ntuples</span>
+
+    <span class="k">return</span> <span class="n">space_type</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">space_dtype</span><span class="p">,</span> <span class="n">impl</span><span class="o">=</span><span class="n">impl</span><span class="p">)</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ntuples"><a class="viewcode-back" href="../../../generated/odl.space.space_utils.ntuples.html#odl.space.space_utils.ntuples">[docs]</a><span class="k">def</span> <span class="nf">ntuples</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">impl</span><span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Set of tuples of a fixed size.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    size : positive int</span>
+<span class="sd">        The number of dimensions of the space</span>
+<span class="sd">    dtype : `object`</span>
+<span class="sd">        The data type of the storage array. Can be provided in any</span>
+<span class="sd">        way the `numpy.dtype` function understands, most notably</span>
+<span class="sd">        as built-in type, as one of NumPy&#39;s internal datatype</span>
+<span class="sd">        objects or as string.</span>
+
+<span class="sd">        Only complex floating-point data types are allowed.</span>
+<span class="sd">    impl : string, optional</span>
+<span class="sd">        The backend to use. See `odl.space.entry_points.ntuples_impl_names` for</span>
+<span class="sd">        available options.</span>
+<span class="sd">    kwargs :</span>
+<span class="sd">        Extra keyword arguments to pass to the implmentation.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ntuple : `NtuplesBase`</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    fn : n-tuples over a field with arbitrary scalar data type.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">ntuples_impl</span><span class="p">(</span><span class="n">impl</span><span class="p">)(</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="fn"><a class="viewcode-back" href="../../../generated/odl.space.space_utils.fn.html#odl.space.space_utils.fn">[docs]</a><span class="k">def</span> <span class="nf">fn</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">impl</span><span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the space ``F^n`` for arbitrary field ``F``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    size : positive int</span>
+<span class="sd">        The number of dimensions of the space</span>
+<span class="sd">    dtype : `object`, optional</span>
+<span class="sd">        The data type of the storage array. Can be provided in any</span>
+<span class="sd">        way the `numpy.dtype` function understands, most notably</span>
+<span class="sd">        as built-in type, as one of NumPy&#39;s internal datatype</span>
+<span class="sd">        objects or as string.</span>
+
+<span class="sd">        Default: default of the implementation given by calling</span>
+<span class="sd">        ``default_dtype()`` on the `FnBase` implementation.</span>
+<span class="sd">    impl : string, optional</span>
+<span class="sd">        The backend to use. See `odl.space.entry_points.fn_impl_names` for</span>
+<span class="sd">        available options.</span>
+<span class="sd">    kwargs :</span>
+<span class="sd">        Extra keyword arguments to pass to the implmentation.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fn : `FnBase`</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    ntuples : n-tuples over a field with arbitrary data type.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fn_cls</span> <span class="o">=</span> <span class="n">fn_impl</span><span class="p">(</span><span class="n">impl</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="n">fn_impl</span><span class="o">.</span><span class="n">default_dtype</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">fn_cls</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="cn"><a class="viewcode-back" href="../../../generated/odl.space.space_utils.cn.html#odl.space.space_utils.cn">[docs]</a><span class="k">def</span> <span class="nf">cn</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">impl</span><span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the complex vector space ``C^n``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    size : positive int</span>
+<span class="sd">        The number of dimensions of the space</span>
+<span class="sd">    dtype : `object`, optional</span>
+<span class="sd">        The data type of the storage array. Can be provided in any</span>
+<span class="sd">        way the `numpy.dtype` function understands, most notably</span>
+<span class="sd">        as built-in type, as one of NumPy&#39;s internal datatype</span>
+<span class="sd">        objects or as string.</span>
+
+<span class="sd">        Only complex floating-point data types are allowed.</span>
+
+<span class="sd">        Default: default of the implementation given by calling</span>
+<span class="sd">        ``default_dtype(ComplexNumbers())`` on the `FnBase` implementation.</span>
+<span class="sd">    impl : string, optional</span>
+<span class="sd">        The backend to use. See `odl.space.entry_points.fn_impl_names` for</span>
+<span class="sd">        available options.</span>
+<span class="sd">    kwargs :</span>
+<span class="sd">        Extra keyword arguments to pass to the implmentation.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    cn : `FnBase`</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    fn : n-tuples over a field with arbitrary scalar data type.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cn_cls</span> <span class="o">=</span> <span class="n">fn_impl</span><span class="p">(</span><span class="n">impl</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="n">cn_cls</span><span class="o">.</span><span class="n">default_dtype</span><span class="p">(</span><span class="n">ComplexNumbers</span><span class="p">())</span>
+
+    <span class="n">cn</span> <span class="o">=</span> <span class="n">cn_cls</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">cn</span><span class="o">.</span><span class="n">is_cn</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;data type </span><span class="si">{!r}</span><span class="s1"> not a complex floating-point type.&#39;</span>
+                        <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dtype</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">cn</span></div>
+
+
+<div class="viewcode-block" id="rn"><a class="viewcode-back" href="../../../generated/odl.space.space_utils.rn.html#odl.space.space_utils.rn">[docs]</a><span class="k">def</span> <span class="nf">rn</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">impl</span><span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the real vector space ``R^n``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    size : positive int</span>
+<span class="sd">        The number of dimensions of the space</span>
+<span class="sd">    dtype : `object`, optional</span>
+<span class="sd">        The data type of the storage array. Can be provided in any</span>
+<span class="sd">        way the `numpy.dtype` function understands, most notably</span>
+<span class="sd">        as built-in type, as one of NumPy&#39;s internal datatype</span>
+<span class="sd">        objects or as string.</span>
+
+<span class="sd">        Only real floating-point data types are allowed.</span>
+<span class="sd">        Default: default of the implementation given by calling</span>
+<span class="sd">        ``default_dtype(RealNumbers())`` on the `FnBase` implementation.</span>
+<span class="sd">    impl : string, optional</span>
+<span class="sd">        The backend to use. See `odl.space.entry_points.fn_impl_names` for</span>
+<span class="sd">        available options.</span>
+<span class="sd">    kwargs :</span>
+<span class="sd">        Extra keyword arguments to pass to the implmentation.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    rn : `FnBase`</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    fn : n-tuples over a field with arbitrary scalar data type.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">rn_impl</span> <span class="o">=</span> <span class="n">fn_impl</span><span class="p">(</span><span class="n">impl</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="n">rn_impl</span><span class="o">.</span><span class="n">default_dtype</span><span class="p">(</span><span class="n">RealNumbers</span><span class="p">())</span>
+
+    <span class="n">rn</span> <span class="o">=</span> <span class="n">rn_impl</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">rn</span><span class="o">.</span><span class="n">is_rn</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;data type </span><span class="si">{!r}</span><span class="s1"> not a real floating-point type.&#39;</span>
+                        <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dtype</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">rn</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1"># pylint: disable=wrong-import-position</span>
+    <span class="kn">from</span> <span class="nn">odl.util.testutils</span> <span class="k">import</span> <span class="n">run_doctests</span>
+    <span class="n">run_doctests</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

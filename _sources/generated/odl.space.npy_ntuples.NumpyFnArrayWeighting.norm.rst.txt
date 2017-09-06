@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyFnArrayWeighting.norm
+================================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyFnArrayWeighting.norm

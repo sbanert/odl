@@ -1,0 +1,32 @@
+NtuplesBase
+==================================
+
+.. currentmodule:: odl.space.base_ntuples
+
+.. autoclass:: NtuplesBase
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         NtuplesBase.__contains__
+         NtuplesBase.__eq__
+         NtuplesBase.available_dtypes
+         NtuplesBase.contains_all
+         NtuplesBase.contains_set
+         NtuplesBase.element
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

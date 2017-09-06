@@ -1,0 +1,30 @@
+FlatteningOperatorAdjoint
+=============================================
+
+.. currentmodule:: odl.operator.fn_ops
+
+.. autoclass:: FlatteningOperatorAdjoint
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         FlatteningOperatorAdjoint.__call__
+         FlatteningOperatorAdjoint._call
+         FlatteningOperatorAdjoint.derivative
+         FlatteningOperatorAdjoint.norm
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

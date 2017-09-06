@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesUfuncs.greater
+==========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NumpyNtuplesUfuncs.greater

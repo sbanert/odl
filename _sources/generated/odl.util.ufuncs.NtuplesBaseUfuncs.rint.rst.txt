@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBaseUfuncs.rint
+======================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NtuplesBaseUfuncs.rint

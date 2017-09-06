@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.sqrt
+=====================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.sqrt

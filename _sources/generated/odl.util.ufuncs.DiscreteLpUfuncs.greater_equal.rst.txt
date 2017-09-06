@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.greater_equal
+==============================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.greater_equal

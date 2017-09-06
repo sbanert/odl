@@ -1,0 +1,32 @@
+NumpyNtuplesVector
+========================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. autoclass:: NumpyNtuplesVector
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         NumpyNtuplesVector.__eq__
+         NumpyNtuplesVector.__getitem__
+         NumpyNtuplesVector.__setitem__
+         NumpyNtuplesVector.asarray
+         NumpyNtuplesVector.copy
+         NumpyNtuplesVector.show
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

@@ -1,0 +1,8 @@
+:orphan:
+
+FnBase._lincomb
+======================================
+
+.. currentmodule:: odl.space.base_ntuples
+
+.. automethod:: FnBase._lincomb

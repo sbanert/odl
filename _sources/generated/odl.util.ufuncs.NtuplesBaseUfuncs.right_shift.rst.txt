@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBaseUfuncs.right_shift
+=============================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NtuplesBaseUfuncs.right_shift

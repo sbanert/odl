@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBaseUfuncs.invert
+========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NtuplesBaseUfuncs.invert

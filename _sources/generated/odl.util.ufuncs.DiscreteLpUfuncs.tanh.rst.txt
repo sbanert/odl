@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.tanh
+=====================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.tanh

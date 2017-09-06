@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyFnCustomNorm.equiv
+=============================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyFnCustomNorm.equiv

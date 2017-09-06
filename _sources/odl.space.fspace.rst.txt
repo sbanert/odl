@@ -1,0 +1,20 @@
+fspace
+======
+
+Spaces of functions with common domain and range.
+
+.. currentmodule:: odl.space.fspace
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: generated/
+
+   ~odl.space.fspace.FunctionSet
+   ~odl.space.fspace.FunctionSetElement
+   ~odl.space.fspace.FunctionSpace
+   ~odl.space.fspace.FunctionSpaceElement
+
+

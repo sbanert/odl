@@ -1,0 +1,36 @@
+npy_ntuples
+===========
+
+CPU implementations of ``n``-dimensional Cartesian spaces.
+
+.. currentmodule:: odl.space.npy_ntuples
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: generated/
+
+   ~odl.space.npy_ntuples.NumpyFn
+   ~odl.space.npy_ntuples.NumpyFnArrayWeighting
+   ~odl.space.npy_ntuples.NumpyFnConstWeighting
+   ~odl.space.npy_ntuples.NumpyFnCustomDist
+   ~odl.space.npy_ntuples.NumpyFnCustomInner
+   ~odl.space.npy_ntuples.NumpyFnCustomNorm
+   ~odl.space.npy_ntuples.NumpyFnMatrixWeighting
+   ~odl.space.npy_ntuples.NumpyFnNoWeighting
+   ~odl.space.npy_ntuples.NumpyFnVector
+   ~odl.space.npy_ntuples.NumpyNtuples
+   ~odl.space.npy_ntuples.NumpyNtuplesVector
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: generated/
+
+   ~odl.space.npy_ntuples.npy_weighted_dist
+   ~odl.space.npy_ntuples.npy_weighted_inner
+   ~odl.space.npy_ntuples.npy_weighted_norm
+

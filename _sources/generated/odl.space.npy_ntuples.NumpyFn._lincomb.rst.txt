@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyFn._lincomb
+======================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyFn._lincomb

@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBase.contains_all
+===============================================
+
+.. currentmodule:: odl.space.base_ntuples
+
+.. automethod:: NtuplesBase.contains_all

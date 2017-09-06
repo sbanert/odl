@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesUfuncs.signbit
+==========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NumpyNtuplesUfuncs.signbit

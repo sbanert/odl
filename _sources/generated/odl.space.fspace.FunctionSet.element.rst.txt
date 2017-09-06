@@ -1,0 +1,8 @@
+:orphan:
+
+FunctionSet.element
+====================================
+
+.. currentmodule:: odl.space.fspace
+
+.. automethod:: FunctionSet.element

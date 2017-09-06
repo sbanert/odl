@@ -1,0 +1,8 @@
+:orphan:
+
+DiscretizedSetElement.sampling
+=======================================================
+
+.. currentmodule:: odl.discr.discretization
+
+.. automethod:: DiscretizedSetElement.sampling

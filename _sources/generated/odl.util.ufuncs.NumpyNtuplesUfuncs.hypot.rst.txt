@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesUfuncs.hypot
+========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NumpyNtuplesUfuncs.hypot

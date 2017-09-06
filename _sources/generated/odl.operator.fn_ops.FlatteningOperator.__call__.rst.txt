@@ -1,0 +1,8 @@
+:orphan:
+
+FlatteningOperator.__call__
+===============================================
+
+.. currentmodule:: odl.operator.fn_ops
+
+.. automethod:: FlatteningOperator.__call__

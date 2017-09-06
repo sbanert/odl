@@ -1,0 +1,102 @@
+DiscreteLpUfuncs
+================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. autoclass:: DiscreteLpUfuncs
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         DiscreteLpUfuncs.absolute
+         DiscreteLpUfuncs.add
+         DiscreteLpUfuncs.arccos
+         DiscreteLpUfuncs.arccosh
+         DiscreteLpUfuncs.arcsin
+         DiscreteLpUfuncs.arcsinh
+         DiscreteLpUfuncs.arctan
+         DiscreteLpUfuncs.arctan2
+         DiscreteLpUfuncs.arctanh
+         DiscreteLpUfuncs.bitwise_and
+         DiscreteLpUfuncs.bitwise_or
+         DiscreteLpUfuncs.bitwise_xor
+         DiscreteLpUfuncs.ceil
+         DiscreteLpUfuncs.conj
+         DiscreteLpUfuncs.copysign
+         DiscreteLpUfuncs.cos
+         DiscreteLpUfuncs.cosh
+         DiscreteLpUfuncs.deg2rad
+         DiscreteLpUfuncs.divide
+         DiscreteLpUfuncs.equal
+         DiscreteLpUfuncs.exp
+         DiscreteLpUfuncs.exp2
+         DiscreteLpUfuncs.expm1
+         DiscreteLpUfuncs.floor
+         DiscreteLpUfuncs.floor_divide
+         DiscreteLpUfuncs.fmax
+         DiscreteLpUfuncs.fmin
+         DiscreteLpUfuncs.fmod
+         DiscreteLpUfuncs.greater
+         DiscreteLpUfuncs.greater_equal
+         DiscreteLpUfuncs.hypot
+         DiscreteLpUfuncs.invert
+         DiscreteLpUfuncs.isfinite
+         DiscreteLpUfuncs.isinf
+         DiscreteLpUfuncs.isnan
+         DiscreteLpUfuncs.left_shift
+         DiscreteLpUfuncs.less
+         DiscreteLpUfuncs.less_equal
+         DiscreteLpUfuncs.log
+         DiscreteLpUfuncs.log10
+         DiscreteLpUfuncs.log1p
+         DiscreteLpUfuncs.log2
+         DiscreteLpUfuncs.logaddexp
+         DiscreteLpUfuncs.logaddexp2
+         DiscreteLpUfuncs.logical_and
+         DiscreteLpUfuncs.logical_not
+         DiscreteLpUfuncs.logical_or
+         DiscreteLpUfuncs.logical_xor
+         DiscreteLpUfuncs.max
+         DiscreteLpUfuncs.maximum
+         DiscreteLpUfuncs.min
+         DiscreteLpUfuncs.minimum
+         DiscreteLpUfuncs.mod
+         DiscreteLpUfuncs.modf
+         DiscreteLpUfuncs.multiply
+         DiscreteLpUfuncs.negative
+         DiscreteLpUfuncs.not_equal
+         DiscreteLpUfuncs.power
+         DiscreteLpUfuncs.prod
+         DiscreteLpUfuncs.rad2deg
+         DiscreteLpUfuncs.reciprocal
+         DiscreteLpUfuncs.remainder
+         DiscreteLpUfuncs.right_shift
+         DiscreteLpUfuncs.rint
+         DiscreteLpUfuncs.sign
+         DiscreteLpUfuncs.signbit
+         DiscreteLpUfuncs.sin
+         DiscreteLpUfuncs.sinh
+         DiscreteLpUfuncs.sqrt
+         DiscreteLpUfuncs.square
+         DiscreteLpUfuncs.subtract
+         DiscreteLpUfuncs.sum
+         DiscreteLpUfuncs.tan
+         DiscreteLpUfuncs.tanh
+         DiscreteLpUfuncs.true_divide
+         DiscreteLpUfuncs.trunc
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

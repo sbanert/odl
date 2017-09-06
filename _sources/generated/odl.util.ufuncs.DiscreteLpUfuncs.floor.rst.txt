@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.floor
+======================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.floor

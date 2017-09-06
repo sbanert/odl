@@ -1,0 +1,27 @@
+discretization
+==============
+
+Base classes for discretization.
+
+.. currentmodule:: odl.discr.discretization
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: generated/
+
+   ~odl.discr.discretization.DiscretizedSet
+   ~odl.discr.discretization.DiscretizedSetElement
+   ~odl.discr.discretization.DiscretizedSpace
+   ~odl.discr.discretization.DiscretizedSpaceElement
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: generated/
+
+   ~odl.discr.discretization.dspace_type
+

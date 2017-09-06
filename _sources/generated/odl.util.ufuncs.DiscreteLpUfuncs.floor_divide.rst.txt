@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.floor_divide
+=============================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.floor_divide

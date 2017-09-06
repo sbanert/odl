@@ -1,0 +1,8 @@
+:orphan:
+
+FnBaseVector.dist
+========================================
+
+.. currentmodule:: odl.space.base_ntuples
+
+.. automethod:: FnBaseVector.dist

@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyFnVector.set_zero
+============================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyFnVector.set_zero

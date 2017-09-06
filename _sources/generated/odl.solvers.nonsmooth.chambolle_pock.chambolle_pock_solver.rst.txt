@@ -1,0 +1,6 @@
+chambolle_pock_solver
+==========================================================
+
+.. currentmodule:: odl.solvers.nonsmooth.chambolle_pock
+
+.. autofunction:: chambolle_pock_solver

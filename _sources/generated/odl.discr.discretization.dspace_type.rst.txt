@@ -1,0 +1,6 @@
+dspace_type
+====================================
+
+.. currentmodule:: odl.discr.discretization
+
+.. autofunction:: dspace_type

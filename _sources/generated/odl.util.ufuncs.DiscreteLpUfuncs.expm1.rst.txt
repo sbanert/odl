@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.expm1
+======================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.expm1

@@ -1,0 +1,8 @@
+:orphan:
+
+FnBase.multiply
+======================================
+
+.. currentmodule:: odl.space.base_ntuples
+
+.. automethod:: FnBase.multiply

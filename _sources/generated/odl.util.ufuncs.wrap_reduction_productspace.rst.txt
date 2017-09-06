@@ -1,0 +1,6 @@
+wrap_reduction_productspace
+===========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. autofunction:: wrap_reduction_productspace

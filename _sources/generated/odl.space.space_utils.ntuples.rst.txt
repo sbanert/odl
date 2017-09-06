@@ -1,0 +1,6 @@
+ntuples
+=============================
+
+.. currentmodule:: odl.space.space_utils
+
+.. autofunction:: ntuples

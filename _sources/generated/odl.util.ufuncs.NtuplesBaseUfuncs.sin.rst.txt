@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBaseUfuncs.sin
+=====================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NtuplesBaseUfuncs.sin

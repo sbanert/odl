@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBaseUfuncs.logaddexp2
+============================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NtuplesBaseUfuncs.logaddexp2

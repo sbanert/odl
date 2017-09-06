@@ -1,0 +1,102 @@
+NtuplesBaseUfuncs
+=================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. autoclass:: NtuplesBaseUfuncs
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         NtuplesBaseUfuncs.absolute
+         NtuplesBaseUfuncs.add
+         NtuplesBaseUfuncs.arccos
+         NtuplesBaseUfuncs.arccosh
+         NtuplesBaseUfuncs.arcsin
+         NtuplesBaseUfuncs.arcsinh
+         NtuplesBaseUfuncs.arctan
+         NtuplesBaseUfuncs.arctan2
+         NtuplesBaseUfuncs.arctanh
+         NtuplesBaseUfuncs.bitwise_and
+         NtuplesBaseUfuncs.bitwise_or
+         NtuplesBaseUfuncs.bitwise_xor
+         NtuplesBaseUfuncs.ceil
+         NtuplesBaseUfuncs.conj
+         NtuplesBaseUfuncs.copysign
+         NtuplesBaseUfuncs.cos
+         NtuplesBaseUfuncs.cosh
+         NtuplesBaseUfuncs.deg2rad
+         NtuplesBaseUfuncs.divide
+         NtuplesBaseUfuncs.equal
+         NtuplesBaseUfuncs.exp
+         NtuplesBaseUfuncs.exp2
+         NtuplesBaseUfuncs.expm1
+         NtuplesBaseUfuncs.floor
+         NtuplesBaseUfuncs.floor_divide
+         NtuplesBaseUfuncs.fmax
+         NtuplesBaseUfuncs.fmin
+         NtuplesBaseUfuncs.fmod
+         NtuplesBaseUfuncs.greater
+         NtuplesBaseUfuncs.greater_equal
+         NtuplesBaseUfuncs.hypot
+         NtuplesBaseUfuncs.invert
+         NtuplesBaseUfuncs.isfinite
+         NtuplesBaseUfuncs.isinf
+         NtuplesBaseUfuncs.isnan
+         NtuplesBaseUfuncs.left_shift
+         NtuplesBaseUfuncs.less
+         NtuplesBaseUfuncs.less_equal
+         NtuplesBaseUfuncs.log
+         NtuplesBaseUfuncs.log10
+         NtuplesBaseUfuncs.log1p
+         NtuplesBaseUfuncs.log2
+         NtuplesBaseUfuncs.logaddexp
+         NtuplesBaseUfuncs.logaddexp2
+         NtuplesBaseUfuncs.logical_and
+         NtuplesBaseUfuncs.logical_not
+         NtuplesBaseUfuncs.logical_or
+         NtuplesBaseUfuncs.logical_xor
+         NtuplesBaseUfuncs.max
+         NtuplesBaseUfuncs.maximum
+         NtuplesBaseUfuncs.min
+         NtuplesBaseUfuncs.minimum
+         NtuplesBaseUfuncs.mod
+         NtuplesBaseUfuncs.modf
+         NtuplesBaseUfuncs.multiply
+         NtuplesBaseUfuncs.negative
+         NtuplesBaseUfuncs.not_equal
+         NtuplesBaseUfuncs.power
+         NtuplesBaseUfuncs.prod
+         NtuplesBaseUfuncs.rad2deg
+         NtuplesBaseUfuncs.reciprocal
+         NtuplesBaseUfuncs.remainder
+         NtuplesBaseUfuncs.right_shift
+         NtuplesBaseUfuncs.rint
+         NtuplesBaseUfuncs.sign
+         NtuplesBaseUfuncs.signbit
+         NtuplesBaseUfuncs.sin
+         NtuplesBaseUfuncs.sinh
+         NtuplesBaseUfuncs.sqrt
+         NtuplesBaseUfuncs.square
+         NtuplesBaseUfuncs.subtract
+         NtuplesBaseUfuncs.sum
+         NtuplesBaseUfuncs.tan
+         NtuplesBaseUfuncs.tanh
+         NtuplesBaseUfuncs.true_divide
+         NtuplesBaseUfuncs.trunc
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

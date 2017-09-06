@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBaseUfuncs.bitwise_xor
+=============================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NtuplesBaseUfuncs.bitwise_xor

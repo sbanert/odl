@@ -1,0 +1,8 @@
+:orphan:
+
+DiscretizedSet.__eq__
+==============================================
+
+.. currentmodule:: odl.discr.discretization
+
+.. automethod:: DiscretizedSet.__eq__

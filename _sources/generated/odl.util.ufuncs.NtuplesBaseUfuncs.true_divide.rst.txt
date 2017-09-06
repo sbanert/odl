@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBaseUfuncs.true_divide
+=============================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NtuplesBaseUfuncs.true_divide

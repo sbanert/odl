@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.hypot
+======================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.hypot

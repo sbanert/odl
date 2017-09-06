@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBase.__eq__
+=========================================
+
+.. currentmodule:: odl.space.base_ntuples
+
+.. automethod:: NtuplesBase.__eq__

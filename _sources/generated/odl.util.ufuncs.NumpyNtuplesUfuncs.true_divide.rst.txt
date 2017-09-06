@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesUfuncs.true_divide
+==============================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NumpyNtuplesUfuncs.true_divide

@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.logaddexp2
+===========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.logaddexp2

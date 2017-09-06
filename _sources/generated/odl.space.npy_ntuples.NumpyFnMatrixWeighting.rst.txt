@@ -1,0 +1,33 @@
+NumpyFnMatrixWeighting
+============================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. autoclass:: NumpyFnMatrixWeighting
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         NumpyFnMatrixWeighting.__eq__
+         NumpyFnMatrixWeighting.dist
+         NumpyFnMatrixWeighting.equiv
+         NumpyFnMatrixWeighting.inner
+         NumpyFnMatrixWeighting.is_valid
+         NumpyFnMatrixWeighting.matrix_decomp
+         NumpyFnMatrixWeighting.norm
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

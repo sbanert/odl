@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.left_shift
+===========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.left_shift

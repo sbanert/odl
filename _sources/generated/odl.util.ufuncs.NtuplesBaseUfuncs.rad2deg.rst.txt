@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBaseUfuncs.rad2deg
+=========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NtuplesBaseUfuncs.rad2deg

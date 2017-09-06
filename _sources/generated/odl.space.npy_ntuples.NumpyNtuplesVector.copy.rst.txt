@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesVector.copy
+=============================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyNtuplesVector.copy

@@ -1,0 +1,8 @@
+:orphan:
+
+ProductSpaceNoWeighting.inner
+==============================================
+
+.. currentmodule:: odl.space.pspace
+
+.. automethod:: ProductSpaceNoWeighting.inner

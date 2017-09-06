@@ -1,0 +1,8 @@
+:orphan:
+
+DiscretizedSetElement.copy
+===================================================
+
+.. currentmodule:: odl.discr.discretization
+
+.. automethod:: DiscretizedSetElement.copy

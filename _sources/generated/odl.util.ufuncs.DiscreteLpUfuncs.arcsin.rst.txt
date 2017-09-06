@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.arcsin
+=======================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.arcsin

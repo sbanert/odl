@@ -1,0 +1,8 @@
+:orphan:
+
+WeightedSumSamplingOperator.derivative
+==========================================================
+
+.. currentmodule:: odl.operator.fn_ops
+
+.. automethod:: WeightedSumSamplingOperator.derivative

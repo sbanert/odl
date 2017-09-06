@@ -1,0 +1,8 @@
+:orphan:
+
+FunctionSetMapping.derivative
+======================================================
+
+.. currentmodule:: odl.discr.discr_mappings
+
+.. automethod:: FunctionSetMapping.derivative

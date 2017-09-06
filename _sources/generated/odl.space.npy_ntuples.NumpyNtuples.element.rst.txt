@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuples.element
+==========================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyNtuples.element

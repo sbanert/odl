@@ -1,0 +1,8 @@
+:orphan:
+
+WeightedSumSamplingOperator.norm
+====================================================
+
+.. currentmodule:: odl.operator.fn_ops
+
+.. automethod:: WeightedSumSamplingOperator.norm

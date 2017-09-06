@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.not_equal
+==========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.not_equal

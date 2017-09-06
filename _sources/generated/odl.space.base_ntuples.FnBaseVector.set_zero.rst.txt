@@ -1,0 +1,8 @@
+:orphan:
+
+FnBaseVector.set_zero
+============================================
+
+.. currentmodule:: odl.space.base_ntuples
+
+.. automethod:: FnBaseVector.set_zero

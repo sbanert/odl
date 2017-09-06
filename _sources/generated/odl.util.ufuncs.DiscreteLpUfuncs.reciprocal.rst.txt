@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.reciprocal
+===========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.reciprocal

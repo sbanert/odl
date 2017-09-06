@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesUfuncs.logical_xor
+==============================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NumpyNtuplesUfuncs.logical_xor

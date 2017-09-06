@@ -1,0 +1,23 @@
+space
+=====
+
+Concrete vector spaces.
+
+.. currentmodule:: odl.space
+
+
+.. rubric:: Modules
+
+.. toctree::
+   :maxdepth: 2
+
+   odl.space.base_ntuples
+   odl.space.entry_points
+   odl.space.fspace
+   odl.space.npy_ntuples
+   odl.space.pspace
+   odl.space.space_utils
+   odl.space.weighting
+
+
+

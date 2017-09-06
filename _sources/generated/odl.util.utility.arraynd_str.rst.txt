@@ -1,0 +1,6 @@
+arraynd_str
+============================
+
+.. currentmodule:: odl.util.utility
+
+.. autofunction:: arraynd_str

@@ -1,0 +1,102 @@
+NumpyNtuplesUfuncs
+==================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. autoclass:: NumpyNtuplesUfuncs
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         NumpyNtuplesUfuncs.absolute
+         NumpyNtuplesUfuncs.add
+         NumpyNtuplesUfuncs.arccos
+         NumpyNtuplesUfuncs.arccosh
+         NumpyNtuplesUfuncs.arcsin
+         NumpyNtuplesUfuncs.arcsinh
+         NumpyNtuplesUfuncs.arctan
+         NumpyNtuplesUfuncs.arctan2
+         NumpyNtuplesUfuncs.arctanh
+         NumpyNtuplesUfuncs.bitwise_and
+         NumpyNtuplesUfuncs.bitwise_or
+         NumpyNtuplesUfuncs.bitwise_xor
+         NumpyNtuplesUfuncs.ceil
+         NumpyNtuplesUfuncs.conj
+         NumpyNtuplesUfuncs.copysign
+         NumpyNtuplesUfuncs.cos
+         NumpyNtuplesUfuncs.cosh
+         NumpyNtuplesUfuncs.deg2rad
+         NumpyNtuplesUfuncs.divide
+         NumpyNtuplesUfuncs.equal
+         NumpyNtuplesUfuncs.exp
+         NumpyNtuplesUfuncs.exp2
+         NumpyNtuplesUfuncs.expm1
+         NumpyNtuplesUfuncs.floor
+         NumpyNtuplesUfuncs.floor_divide
+         NumpyNtuplesUfuncs.fmax
+         NumpyNtuplesUfuncs.fmin
+         NumpyNtuplesUfuncs.fmod
+         NumpyNtuplesUfuncs.greater
+         NumpyNtuplesUfuncs.greater_equal
+         NumpyNtuplesUfuncs.hypot
+         NumpyNtuplesUfuncs.invert
+         NumpyNtuplesUfuncs.isfinite
+         NumpyNtuplesUfuncs.isinf
+         NumpyNtuplesUfuncs.isnan
+         NumpyNtuplesUfuncs.left_shift
+         NumpyNtuplesUfuncs.less
+         NumpyNtuplesUfuncs.less_equal
+         NumpyNtuplesUfuncs.log
+         NumpyNtuplesUfuncs.log10
+         NumpyNtuplesUfuncs.log1p
+         NumpyNtuplesUfuncs.log2
+         NumpyNtuplesUfuncs.logaddexp
+         NumpyNtuplesUfuncs.logaddexp2
+         NumpyNtuplesUfuncs.logical_and
+         NumpyNtuplesUfuncs.logical_not
+         NumpyNtuplesUfuncs.logical_or
+         NumpyNtuplesUfuncs.logical_xor
+         NumpyNtuplesUfuncs.max
+         NumpyNtuplesUfuncs.maximum
+         NumpyNtuplesUfuncs.min
+         NumpyNtuplesUfuncs.minimum
+         NumpyNtuplesUfuncs.mod
+         NumpyNtuplesUfuncs.modf
+         NumpyNtuplesUfuncs.multiply
+         NumpyNtuplesUfuncs.negative
+         NumpyNtuplesUfuncs.not_equal
+         NumpyNtuplesUfuncs.power
+         NumpyNtuplesUfuncs.prod
+         NumpyNtuplesUfuncs.rad2deg
+         NumpyNtuplesUfuncs.reciprocal
+         NumpyNtuplesUfuncs.remainder
+         NumpyNtuplesUfuncs.right_shift
+         NumpyNtuplesUfuncs.rint
+         NumpyNtuplesUfuncs.sign
+         NumpyNtuplesUfuncs.signbit
+         NumpyNtuplesUfuncs.sin
+         NumpyNtuplesUfuncs.sinh
+         NumpyNtuplesUfuncs.sqrt
+         NumpyNtuplesUfuncs.square
+         NumpyNtuplesUfuncs.subtract
+         NumpyNtuplesUfuncs.sum
+         NumpyNtuplesUfuncs.tan
+         NumpyNtuplesUfuncs.tanh
+         NumpyNtuplesUfuncs.true_divide
+         NumpyNtuplesUfuncs.trunc
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

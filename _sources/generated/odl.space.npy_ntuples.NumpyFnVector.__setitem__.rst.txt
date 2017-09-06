@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyFnVector.__setitem__
+===============================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyFnVector.__setitem__

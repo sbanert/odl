@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyFnVector.divide
+==========================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyFnVector.divide

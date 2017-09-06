@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesUfuncs.subtract
+===========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NumpyNtuplesUfuncs.subtract

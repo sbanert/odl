@@ -1,0 +1,33 @@
+entry_points
+============
+
+Entry points for adding more spaces to ODL using external packages.
+
+External packages can add implementations of `NtuplesBase` and `FnBase` by
+hooking into the setuptools entry point ``'odl.space'`` and exposing the
+methods ``ntuples_impls`` and ``fn_impls``.
+
+This is used with functions such as `rn`, `fn` and `uniform_discr` in order
+to allow arbitrary implementations.
+
+See Also
+--------
+NumpyFn : Numpy based implementation of `FnBase`
+NumpyNtuples : Numpy based implementation of `NtuplesBase`
+
+
+.. currentmodule:: odl.space.entry_points
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: generated/
+
+   ~odl.space.entry_points.fn_impl
+   ~odl.space.entry_points.fn_impl_names
+   ~odl.space.entry_points.ntuples_impl
+   ~odl.space.entry_points.ntuples_impl_names
+

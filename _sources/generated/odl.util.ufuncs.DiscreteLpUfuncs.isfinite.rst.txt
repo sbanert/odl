@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.isfinite
+=========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.isfinite

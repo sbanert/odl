@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBase.available_dtypes
+===================================================
+
+.. currentmodule:: odl.space.base_ntuples
+
+.. automethod:: NtuplesBase.available_dtypes

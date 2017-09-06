@@ -1,0 +1,8 @@
+:orphan:
+
+NoWeighting.norm
+====================================
+
+.. currentmodule:: odl.space.weighting
+
+.. automethod:: NoWeighting.norm

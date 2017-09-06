@@ -1,0 +1,40 @@
+FnBaseVector
+===================================
+
+.. currentmodule:: odl.space.base_ntuples
+
+.. autoclass:: FnBaseVector
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         FnBaseVector.__eq__
+         FnBaseVector.__getitem__
+         FnBaseVector.__setitem__
+         FnBaseVector.asarray
+         FnBaseVector.assign
+         FnBaseVector.copy
+         FnBaseVector.dist
+         FnBaseVector.divide
+         FnBaseVector.inner
+         FnBaseVector.lincomb
+         FnBaseVector.multiply
+         FnBaseVector.norm
+         FnBaseVector.set_zero
+         FnBaseVector.show
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

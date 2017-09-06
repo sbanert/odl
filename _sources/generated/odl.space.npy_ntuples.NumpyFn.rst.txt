@@ -1,0 +1,48 @@
+NumpyFn
+=============================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. autoclass:: NumpyFn
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         NumpyFn.__contains__
+         NumpyFn.__eq__
+         NumpyFn._dist
+         NumpyFn._divide
+         NumpyFn._inner
+         NumpyFn._lincomb
+         NumpyFn._multiply
+         NumpyFn._norm
+         NumpyFn.astype
+         NumpyFn.available_dtypes
+         NumpyFn.contains_all
+         NumpyFn.contains_set
+         NumpyFn.default_dtype
+         NumpyFn.dist
+         NumpyFn.divide
+         NumpyFn.element
+         NumpyFn.inner
+         NumpyFn.lincomb
+         NumpyFn.multiply
+         NumpyFn.norm
+         NumpyFn.one
+         NumpyFn.zero
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

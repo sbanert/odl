@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyFnVector.dist
+========================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyFnVector.dist

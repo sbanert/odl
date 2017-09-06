@@ -1,0 +1,8 @@
+:orphan:
+
+FnBase.astype
+====================================
+
+.. currentmodule:: odl.space.base_ntuples
+
+.. automethod:: FnBase.astype

@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyFnNoWeighting.norm
+=============================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyFnNoWeighting.norm

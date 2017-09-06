@@ -1,0 +1,8 @@
+:orphan:
+
+DiscretizedSet.contains_all
+====================================================
+
+.. currentmodule:: odl.discr.discretization
+
+.. automethod:: DiscretizedSet.contains_all

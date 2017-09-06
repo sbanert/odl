@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesUfuncs.fmod
+=======================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NumpyNtuplesUfuncs.fmod

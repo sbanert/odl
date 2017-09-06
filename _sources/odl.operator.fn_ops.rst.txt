@@ -1,0 +1,20 @@
+fn_ops
+======
+
+Default operators defined on fn (F^n where F is some field).
+
+.. currentmodule:: odl.operator.fn_ops
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: generated/
+
+   ~odl.operator.fn_ops.FlatteningOperator
+   ~odl.operator.fn_ops.FlatteningOperatorAdjoint
+   ~odl.operator.fn_ops.SamplingOperator
+   ~odl.operator.fn_ops.WeightedSumSamplingOperator
+
+

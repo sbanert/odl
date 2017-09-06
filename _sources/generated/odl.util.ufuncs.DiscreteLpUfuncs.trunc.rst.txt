@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.trunc
+======================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.trunc

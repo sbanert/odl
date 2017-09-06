@@ -1,0 +1,8 @@
+:orphan:
+
+FnBase.dist
+==================================
+
+.. currentmodule:: odl.space.base_ntuples
+
+.. automethod:: FnBase.dist

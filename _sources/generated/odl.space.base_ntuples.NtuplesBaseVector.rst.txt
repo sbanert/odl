@@ -1,0 +1,32 @@
+NtuplesBaseVector
+========================================
+
+.. currentmodule:: odl.space.base_ntuples
+
+.. autoclass:: NtuplesBaseVector
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         NtuplesBaseVector.__eq__
+         NtuplesBaseVector.__getitem__
+         NtuplesBaseVector.__setitem__
+         NtuplesBaseVector.asarray
+         NtuplesBaseVector.copy
+         NtuplesBaseVector.show
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

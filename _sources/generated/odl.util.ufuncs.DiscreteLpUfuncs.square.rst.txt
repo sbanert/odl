@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.square
+=======================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.square

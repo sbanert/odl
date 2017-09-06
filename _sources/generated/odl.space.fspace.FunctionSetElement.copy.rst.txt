@@ -1,0 +1,8 @@
+:orphan:
+
+FunctionSetElement.copy
+========================================
+
+.. currentmodule:: odl.space.fspace
+
+.. automethod:: FunctionSetElement.copy

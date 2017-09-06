@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.copysign
+=========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.copysign

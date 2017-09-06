@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesUfuncs.bitwise_xor
+==============================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NumpyNtuplesUfuncs.bitwise_xor

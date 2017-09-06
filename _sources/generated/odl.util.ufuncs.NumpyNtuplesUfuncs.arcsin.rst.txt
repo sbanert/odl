@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesUfuncs.arcsin
+=========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NumpyNtuplesUfuncs.arcsin

@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBaseVector.copy
+=============================================
+
+.. currentmodule:: odl.space.base_ntuples
+
+.. automethod:: NtuplesBaseVector.copy

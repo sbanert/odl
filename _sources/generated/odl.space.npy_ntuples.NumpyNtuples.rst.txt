@@ -1,0 +1,34 @@
+NumpyNtuples
+==================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. autoclass:: NumpyNtuples
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         NumpyNtuples.__contains__
+         NumpyNtuples.__eq__
+         NumpyNtuples.available_dtypes
+         NumpyNtuples.contains_all
+         NumpyNtuples.contains_set
+         NumpyNtuples.element
+         NumpyNtuples.one
+         NumpyNtuples.zero
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

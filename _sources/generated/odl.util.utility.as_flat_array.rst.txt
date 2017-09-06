@@ -1,0 +1,6 @@
+as_flat_array
+==============================
+
+.. currentmodule:: odl.util.utility
+
+.. autofunction:: as_flat_array

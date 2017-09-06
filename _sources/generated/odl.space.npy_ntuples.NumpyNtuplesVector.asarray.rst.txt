@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesVector.asarray
+================================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyNtuplesVector.asarray

@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyFn.available_dtypes
+==============================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyFn.available_dtypes

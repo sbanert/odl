@@ -1,0 +1,615 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>odl.tomo.geometry.geometry &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../../../../index.html"/>
+        <link rel="up" title="Module code" href="../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../odl.html">odl</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>odl.tomo.geometry.geometry</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for odl.tomo.geometry.geometry</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2014-2017 The ODL contributors</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of ODL.</span>
+<span class="c1">#</span>
+<span class="c1"># This Source Code Form is subject to the terms of the Mozilla Public License,</span>
+<span class="c1"># v. 2.0. If a copy of the MPL was not distributed with this file, You can</span>
+<span class="c1"># obtain one at https://mozilla.org/MPL/2.0/.</span>
+
+<span class="sd">&quot;&quot;&quot;Geometry base and mixin classes.&quot;&quot;&quot;</span>
+
+<span class="c1"># Imports for common Python 2/3 codebase</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">builtins</span> <span class="k">import</span> <span class="nb">object</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">odl.discr</span> <span class="k">import</span> <span class="n">RectPartition</span>
+<span class="kn">from</span> <span class="nn">odl.tomo.geometry.detector</span> <span class="k">import</span> <span class="n">Detector</span>
+<span class="kn">from</span> <span class="nn">odl.tomo.util</span> <span class="k">import</span> <span class="n">axis_rotation_matrix</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Geometry&#39;</span><span class="p">,</span> <span class="s1">&#39;DivergentBeamGeometry&#39;</span><span class="p">,</span> <span class="s1">&#39;AxisOrientedGeometry&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Geometry"><a class="viewcode-back" href="../../../../generated/odl.tomo.geometry.geometry.Geometry.html#odl.tomo.geometry.conebeam.Geometry">[docs]</a><span class="k">class</span> <span class="nc">Geometry</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Abstract geometry class.</span>
+
+<span class="sd">    A geometry is described by</span>
+
+<span class="sd">    * a detector,</span>
+<span class="sd">    * a set of detector motion parameters,</span>
+<span class="sd">    * a function mapping motion parameters to the location of a</span>
+<span class="sd">      reference point (e.g. the center of the detector surface),</span>
+<span class="sd">    * a rotation applied to the detector surface, depending on the motion</span>
+<span class="sd">      parameters,</span>
+<span class="sd">    * a mapping from the motion and surface parameters to the detector pixel</span>
+<span class="sd">      direction to the source,</span>
+<span class="sd">    * optionally a mapping from the motion parameters to the source position,</span>
+<span class="sd">    * optionally a global translation of the geometry (shift of the origin)</span>
+
+<span class="sd">    For details, check `the online docs</span>
+<span class="sd">    &lt;https://odlgroup.github.io/odl/guide/geometry_guide.html&gt;`_.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ndim</span><span class="p">,</span> <span class="n">motion_part</span><span class="p">,</span> <span class="n">detector</span><span class="p">,</span> <span class="n">translation</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ndim : positive int</span>
+<span class="sd">            Number of dimensions of this geometry, i.e. dimensionality</span>
+<span class="sd">            of the physical space in which this geometry is embedded</span>
+<span class="sd">        motion_part : `RectPartition`</span>
+<span class="sd">           Partition for the set of &quot;motion&quot; parameters</span>
+<span class="sd">        detector : `Detector`</span>
+<span class="sd">           The detector of this geometry</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ndim</span><span class="p">,</span> <span class="n">ndim_in</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ndim</span><span class="p">),</span> <span class="n">ndim</span>
+        <span class="k">if</span> <span class="n">ndim</span> <span class="o">!=</span> <span class="n">ndim_in</span> <span class="ow">or</span> <span class="n">ndim</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`ndim` must be a positive integer, got </span><span class="si">{}</span><span class="s1">&#39;</span>
+                             <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ndim_in</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">motion_part</span><span class="p">,</span> <span class="n">RectPartition</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`motion_part` must be a `RectPartition`, &#39;</span>
+                            <span class="s1">&#39;instance, got </span><span class="si">{!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">motion_part</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">detector</span><span class="p">,</span> <span class="n">Detector</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`detector` must be a `Detector` instance, &#39;</span>
+                            <span class="s1">&#39;got </span><span class="si">{!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">detector</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__ndim</span> <span class="o">=</span> <span class="n">ndim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__motion_partition</span> <span class="o">=</span> <span class="n">motion_part</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__detector</span> <span class="o">=</span> <span class="n">detector</span>
+
+        <span class="k">if</span> <span class="n">translation</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__translation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">translation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">translation</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">translation</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndim</span><span class="p">,):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`translation` must have shape (</span><span class="si">{}</span><span class="s1">,), got </span><span class="si">{}</span><span class="s1">&#39;</span>
+                                 <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span> <span class="n">translation</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__translation</span> <span class="o">=</span> <span class="n">translation</span>
+
+        <span class="c1"># Cache geometry-related objects for backends that require computation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__implementation_cache</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ndim</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Number of dimensions of the geometry.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__ndim</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">motion_partition</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Partition of the motion parameter set into subsets.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__motion_partition</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">motion_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Continuous motion parameter range, an `IntervalProd`.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">motion_partition</span><span class="o">.</span><span class="n">set</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">motion_grid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sampling grid of `motion_params`.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">motion_partition</span><span class="o">.</span><span class="n">grid</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">detector</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Detector representation of this geometry.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__detector</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">det_partition</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Partition of the detector parameter set into subsets.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">detector</span><span class="o">.</span><span class="n">partition</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">det_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Continuous detector parameter range, an `IntervalProd`.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">detector</span><span class="o">.</span><span class="n">params</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">det_grid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sampling grid of `det_params`.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">detector</span><span class="o">.</span><span class="n">grid</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">partition</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Joined parameter set partition for motion and detector.</span>
+
+<span class="sd">        A `RectPartition` with `det_partition` appended to `motion_partition`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">motion_partition</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">det_partition</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Joined parameter set for motion and detector.</span>
+
+<span class="sd">        By convention, the motion parameters come before the detector</span>
+<span class="sd">        parameters.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="o">.</span><span class="n">set</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">grid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Joined sampling grid for motion and detector.</span>
+
+<span class="sd">        By convention, the motion grid comes before the detector grid.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">partition</span><span class="o">.</span><span class="n">grid</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">translation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Shift of the origin of this geometry.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__translation</span>
+
+<div class="viewcode-block" id="Geometry.det_refpoint"><a class="viewcode-back" href="../../../../generated/odl.tomo.geometry.geometry.Geometry.det_refpoint.html#odl.tomo.geometry.conebeam.Geometry.det_refpoint">[docs]</a>    <span class="k">def</span> <span class="nf">det_refpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mpar</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Detector reference point function.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        mpar : `motion_params` element</span>
+<span class="sd">            Motion parameter for which to calculate the detector</span>
+<span class="sd">            reference point.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        point : `numpy.ndarray`, shape (`ndim`,)</span>
+<span class="sd">            The reference point, an `ndim`-dimensional vector.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;abstract method&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Geometry.rotation_matrix"><a class="viewcode-back" href="../../../../generated/odl.tomo.geometry.geometry.Geometry.rotation_matrix.html#odl.tomo.geometry.conebeam.Geometry.rotation_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">rotation_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mpar</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the rotation matrix from initial state to state at ``mpar``.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        mpar : `motion_params` element</span>
+<span class="sd">            Motion parameter for which to calculate the rotation matrix.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        rot : `numpy.ndarray`, shape (`ndim`, `ndim`)</span>
+<span class="sd">            The rotation matrix mapping vectors at the initial state</span>
+<span class="sd">            to the ones in the state defined by ``mpar``. The rotation</span>
+<span class="sd">            is extrinsic, i.e., defined in the fixed (&quot;world&quot;) coordinate</span>
+<span class="sd">            system.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;abstract method&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Geometry.det_to_src"><a class="viewcode-back" href="../../../../generated/odl.tomo.geometry.geometry.Geometry.det_to_src.html#odl.tomo.geometry.conebeam.Geometry.det_to_src">[docs]</a>    <span class="k">def</span> <span class="nf">det_to_src</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mpar</span><span class="p">,</span> <span class="n">dpar</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Vector pointing from a detector location to the source.</span>
+
+<span class="sd">        A function of the motion and detector parameters.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        mpar : `motion_params` element</span>
+<span class="sd">            Motion parameter at which to evaluate.</span>
+<span class="sd">        dpar : `det_params` element</span>
+<span class="sd">            Detector parameter at which to evaluate.</span>
+<span class="sd">        normalized : bool, optional</span>
+<span class="sd">            If ``True``, return a normalized (unit) vector.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        vec : `numpy.ndarray`, shape (`ndim`,)</span>
+<span class="sd">            (Unit) vector pointing from the detector to the source</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;abstract method&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Geometry.det_point_position"><a class="viewcode-back" href="../../../../generated/odl.tomo.geometry.geometry.Geometry.det_point_position.html#odl.tomo.geometry.conebeam.Geometry.det_point_position">[docs]</a>    <span class="k">def</span> <span class="nf">det_point_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mpar</span><span class="p">,</span> <span class="n">dpar</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the detector point at ``(mpar, dpar)``.</span>
+
+<span class="sd">        The motion parameter ``mpar`` is used to move the detector</span>
+<span class="sd">        reference point, and the detector parameter ``dpar`` defines</span>
+<span class="sd">        an intrinsic shift that is added to the reference point.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        mpar : `motion_params` element</span>
+<span class="sd">            Motion parameter at which to evaluate.</span>
+<span class="sd">        dpar : `det_params` element</span>
+<span class="sd">            Detector parameter at which to evaluate.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pos : `numpy.ndarray`, shape ``(ndim,)``</span>
+<span class="sd">            Source position, an `ndim`-dimensional vector.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Offset relative to the detector reference point</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rotation_matrix</span><span class="p">(</span><span class="n">mpar</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">detector</span><span class="o">.</span><span class="n">surface</span><span class="p">(</span><span class="n">dpar</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">det_refpoint</span><span class="p">(</span><span class="n">mpar</span><span class="p">)</span> <span class="o">+</span> <span class="n">offset</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">implementation_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Dictionary acting as a cache for this geometry.</span>
+
+<span class="sd">        Intended for reuse of computations. Implementations that use this</span>
+<span class="sd">        storage should take care of unique naming.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        implementations : dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__implementation_cache</span></div>
+
+
+<div class="viewcode-block" id="DivergentBeamGeometry"><a class="viewcode-back" href="../../../../generated/odl.tomo.geometry.geometry.DivergentBeamGeometry.html#odl.tomo.geometry.conebeam.DivergentBeamGeometry">[docs]</a><span class="k">class</span> <span class="nc">DivergentBeamGeometry</span><span class="p">(</span><span class="n">Geometry</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Abstract divergent beam geometry class.</span>
+
+<span class="sd">    A divergent beam geometry is characterized by the presence of a</span>
+<span class="sd">    point source.</span>
+
+<span class="sd">    Special cases include fan beam in 2d and cone beam in 3d.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="DivergentBeamGeometry.src_position"><a class="viewcode-back" href="../../../../generated/odl.tomo.geometry.geometry.DivergentBeamGeometry.src_position.html#odl.tomo.geometry.conebeam.DivergentBeamGeometry.src_position">[docs]</a>    <span class="k">def</span> <span class="nf">src_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mpar</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Source position function.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        mpar : `motion_params` element</span>
+<span class="sd">            Motion parameter for which to calculate the source position.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pos : `numpy.ndarray` (shape (`ndim`,))</span>
+<span class="sd">            Source position, an `ndim`-dimensional vector.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;abstract method&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DivergentBeamGeometry.det_to_src"><a class="viewcode-back" href="../../../../generated/odl.tomo.geometry.geometry.DivergentBeamGeometry.det_to_src.html#odl.tomo.geometry.conebeam.DivergentBeamGeometry.det_to_src">[docs]</a>    <span class="k">def</span> <span class="nf">det_to_src</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mpar</span><span class="p">,</span> <span class="n">dpar</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Vector pointing from a detector location to the source.</span>
+
+<span class="sd">        A function of the motion and detector parameters.</span>
+
+<span class="sd">        The default implementation uses the `det_point_position` and</span>
+<span class="sd">        `src_position` functions. Implementations can override this, for</span>
+<span class="sd">        example if no source position is given.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        mpar : `motion_params` element</span>
+<span class="sd">            Motion parameter at which to evaluate.</span>
+<span class="sd">        dpar : `det_params` element</span>
+<span class="sd">            Detector parameter at which to evaluate.</span>
+<span class="sd">        normalized : bool, optional</span>
+<span class="sd">            If ``True``, return a normalized (unit) vector.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        vec : `numpy.ndarray`, shape (`ndim`,)</span>
+<span class="sd">            (Unit) vector pointing from the detector to the source.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">mpar</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">motion_params</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`mpar` </span><span class="si">{}</span><span class="s1"> not in the valid range </span><span class="si">{}</span><span class="s1">&#39;</span>
+                             <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mpar</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">motion_params</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">dpar</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">det_params</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`dpar` </span><span class="si">{}</span><span class="s1"> not in the valid range </span><span class="si">{}</span><span class="s1">&#39;</span>
+                             <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dpar</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">det_params</span><span class="p">))</span>
+
+        <span class="n">vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">src_position</span><span class="p">(</span><span class="n">mpar</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">det_point_position</span><span class="p">(</span><span class="n">mpar</span><span class="p">,</span> <span class="n">dpar</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">normalized</span><span class="p">:</span>
+            <span class="c1"># axis = -1 allows this to be vectorized</span>
+            <span class="n">vec</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">vec</span></div></div>
+
+
+<div class="viewcode-block" id="AxisOrientedGeometry"><a class="viewcode-back" href="../../../../generated/odl.tomo.geometry.geometry.AxisOrientedGeometry.html#odl.tomo.geometry.conebeam.AxisOrientedGeometry">[docs]</a><span class="k">class</span> <span class="nc">AxisOrientedGeometry</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Mixin class for 3d geometries oriented along an axis.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        axis : `array-like`, shape ``(3,)``</span>
+<span class="sd">            Vector defining the fixed rotation axis of this geometry.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">axis</span><span class="p">,</span> <span class="n">axis_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span> <span class="n">axis</span>
+        <span class="k">if</span> <span class="n">axis</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`axis.shape` must be (3,), got </span><span class="si">{}</span><span class="s1">&#39;</span>
+                             <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">axis</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">1e-10</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`axis` </span><span class="si">{}</span><span class="s1"> too close to zero&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">axis_in</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__axis</span> <span class="o">=</span> <span class="n">axis</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">axis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Normalized axis of rotation, a 3d vector.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__axis</span>
+
+<div class="viewcode-block" id="AxisOrientedGeometry.rotation_matrix"><a class="viewcode-back" href="../../../../generated/odl.tomo.geometry.geometry.AxisOrientedGeometry.rotation_matrix.html#odl.tomo.geometry.conebeam.AxisOrientedGeometry.rotation_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">rotation_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">angle</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the matrix for rotating around `axis` by ``angle``.</span>
+
+<span class="sd">        The matrix is computed according to</span>
+<span class="sd">        `Rodrigues&#39; rotation formula</span>
+<span class="sd">        &lt;https://en.wikipedia.org/wiki/Rodrigues&#39;_rotation_formula&gt;`_.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        angle : float</span>
+<span class="sd">            Motion parameter given in radians. It must be</span>
+<span class="sd">            contained in this geometry&#39;s `motion_params`.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        rot_mat : `numpy.ndarray`, shape ``(3, 3)``</span>
+<span class="sd">            The rotation matrix mapping the standard basis vectors in</span>
+<span class="sd">            the fixed (&quot;lab&quot;) coordinate system to the basis vectors of</span>
+<span class="sd">            the local coordinate system of the detector reference point,</span>
+<span class="sd">            expressed in the fixed system.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">angle</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">angle</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">motion_params</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`angle` </span><span class="si">{}</span><span class="s1"> is not in the valid range </span><span class="si">{}</span><span class="s1">&#39;</span>
+                             <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">motion_params</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">axis_rotation_matrix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">axis</span><span class="p">,</span> <span class="n">angle</span><span class="p">)</span></div></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">odl.util.testutils</span> <span class="k">import</span> <span class="n">run_doctests</span>
+    <span class="n">run_doctests</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

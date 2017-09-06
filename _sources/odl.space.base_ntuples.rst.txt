@@ -1,0 +1,20 @@
+base_ntuples
+============
+
+Base classes for implementations of n-tuples.
+
+.. currentmodule:: odl.space.base_ntuples
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: generated/
+
+   ~odl.space.base_ntuples.FnBase
+   ~odl.space.base_ntuples.FnBaseVector
+   ~odl.space.base_ntuples.NtuplesBase
+   ~odl.space.base_ntuples.NtuplesBaseVector
+
+

@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesUfuncs.sum
+======================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NumpyNtuplesUfuncs.sum

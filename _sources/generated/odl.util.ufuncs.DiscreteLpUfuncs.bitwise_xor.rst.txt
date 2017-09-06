@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.bitwise_xor
+============================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.bitwise_xor

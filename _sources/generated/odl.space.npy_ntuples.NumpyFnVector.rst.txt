@@ -1,0 +1,41 @@
+NumpyFnVector
+===================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. autoclass:: NumpyFnVector
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         NumpyFnVector.__eq__
+         NumpyFnVector.__getitem__
+         NumpyFnVector.__setitem__
+         NumpyFnVector.asarray
+         NumpyFnVector.assign
+         NumpyFnVector.conj
+         NumpyFnVector.copy
+         NumpyFnVector.dist
+         NumpyFnVector.divide
+         NumpyFnVector.inner
+         NumpyFnVector.lincomb
+         NumpyFnVector.multiply
+         NumpyFnVector.norm
+         NumpyFnVector.set_zero
+         NumpyFnVector.show
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

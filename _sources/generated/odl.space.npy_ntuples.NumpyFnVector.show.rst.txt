@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyFnVector.show
+========================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyFnVector.show

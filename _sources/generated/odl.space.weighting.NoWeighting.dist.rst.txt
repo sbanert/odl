@@ -1,0 +1,8 @@
+:orphan:
+
+NoWeighting.dist
+====================================
+
+.. currentmodule:: odl.space.weighting
+
+.. automethod:: NoWeighting.dist

@@ -1,0 +1,18 @@
+linearized
+==========
+
+Operators and functions for linearized deformation.
+
+.. currentmodule:: odl.deform.linearized
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: generated/
+
+   ~odl.deform.linearized.LinDeformFixedDisp
+   ~odl.deform.linearized.LinDeformFixedTempl
+
+

@@ -1,0 +1,8 @@
+:orphan:
+
+FlatteningOperatorAdjoint.norm
+==================================================
+
+.. currentmodule:: odl.operator.fn_ops
+
+.. automethod:: FlatteningOperatorAdjoint.norm

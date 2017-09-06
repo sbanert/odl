@@ -1,0 +1,8 @@
+:orphan:
+
+SamplingOperator.derivative
+===============================================
+
+.. currentmodule:: odl.operator.fn_ops
+
+.. automethod:: SamplingOperator.derivative

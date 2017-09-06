@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.cos
+====================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.cos

@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyFn.contains_all
+==========================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyFn.contains_all

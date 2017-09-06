@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBaseUfuncs.sum
+=====================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NtuplesBaseUfuncs.sum

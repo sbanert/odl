@@ -1,0 +1,8 @@
+:orphan:
+
+SamplingOperator.__call__
+=============================================
+
+.. currentmodule:: odl.operator.fn_ops
+
+.. automethod:: SamplingOperator.__call__

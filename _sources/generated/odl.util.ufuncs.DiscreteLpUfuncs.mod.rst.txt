@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.mod
+====================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.mod

@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBaseUfuncs.arctanh
+=========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NtuplesBaseUfuncs.arctanh

@@ -1,0 +1,10 @@
+data
+====
+
+Routines for Data I/O.
+
+.. currentmodule:: odl.tomo.data
+
+
+
+

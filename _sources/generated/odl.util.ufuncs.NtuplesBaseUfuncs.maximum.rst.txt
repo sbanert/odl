@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBaseUfuncs.maximum
+=========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NtuplesBaseUfuncs.maximum

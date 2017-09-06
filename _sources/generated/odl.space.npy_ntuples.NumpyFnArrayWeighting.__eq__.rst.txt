@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyFnArrayWeighting.__eq__
+==================================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyFnArrayWeighting.__eq__

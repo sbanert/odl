@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyFnConstWeighting.inner
+=================================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyFnConstWeighting.inner

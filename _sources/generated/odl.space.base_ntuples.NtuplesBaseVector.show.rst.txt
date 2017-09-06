@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBaseVector.show
+=============================================
+
+.. currentmodule:: odl.space.base_ntuples
+
+.. automethod:: NtuplesBaseVector.show

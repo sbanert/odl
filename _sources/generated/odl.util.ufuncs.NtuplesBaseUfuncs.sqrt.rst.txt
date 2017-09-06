@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBaseUfuncs.sqrt
+======================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NtuplesBaseUfuncs.sqrt

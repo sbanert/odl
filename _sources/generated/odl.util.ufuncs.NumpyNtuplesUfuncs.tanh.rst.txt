@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesUfuncs.tanh
+=======================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NumpyNtuplesUfuncs.tanh

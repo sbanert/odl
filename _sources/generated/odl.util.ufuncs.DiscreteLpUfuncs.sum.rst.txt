@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.sum
+====================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.sum

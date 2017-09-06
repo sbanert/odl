@@ -1,0 +1,6 @@
+ntuples_impl_names
+=========================================
+
+.. currentmodule:: odl.space.entry_points
+
+.. autofunction:: ntuples_impl_names

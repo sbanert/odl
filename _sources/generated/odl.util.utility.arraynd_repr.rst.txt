@@ -1,0 +1,6 @@
+arraynd_repr
+=============================
+
+.. currentmodule:: odl.util.utility
+
+.. autofunction:: arraynd_repr

@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.invert
+=======================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.invert

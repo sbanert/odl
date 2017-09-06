@@ -1,0 +1,8 @@
+:orphan:
+
+DiscretizedSet.element
+===============================================
+
+.. currentmodule:: odl.discr.discretization
+
+.. automethod:: DiscretizedSet.element

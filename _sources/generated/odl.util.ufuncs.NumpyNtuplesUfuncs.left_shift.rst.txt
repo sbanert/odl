@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesUfuncs.left_shift
+=============================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NumpyNtuplesUfuncs.left_shift

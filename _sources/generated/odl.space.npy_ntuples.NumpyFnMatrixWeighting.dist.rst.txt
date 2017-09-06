@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyFnMatrixWeighting.dist
+=================================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyFnMatrixWeighting.dist

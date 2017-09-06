@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.multiply
+=========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.multiply

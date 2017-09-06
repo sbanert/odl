@@ -1,0 +1,8 @@
+:orphan:
+
+FnBase.contains_set
+==========================================
+
+.. currentmodule:: odl.space.base_ntuples
+
+.. automethod:: FnBase.contains_set

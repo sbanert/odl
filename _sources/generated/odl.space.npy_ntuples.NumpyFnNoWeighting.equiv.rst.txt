@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyFnNoWeighting.equiv
+==============================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyFnNoWeighting.equiv

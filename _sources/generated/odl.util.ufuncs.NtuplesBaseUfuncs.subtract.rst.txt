@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBaseUfuncs.subtract
+==========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NtuplesBaseUfuncs.subtract

@@ -1,0 +1,8 @@
+:orphan:
+
+FnBaseVector.__eq__
+==========================================
+
+.. currentmodule:: odl.space.base_ntuples
+
+.. automethod:: FnBaseVector.__eq__

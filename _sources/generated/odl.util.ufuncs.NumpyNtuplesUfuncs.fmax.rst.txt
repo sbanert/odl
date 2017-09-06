@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesUfuncs.fmax
+=======================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NumpyNtuplesUfuncs.fmax

@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.rad2deg
+========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.rad2deg

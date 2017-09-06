@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyFnMatrixWeighting.is_valid
+=====================================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyFnMatrixWeighting.is_valid

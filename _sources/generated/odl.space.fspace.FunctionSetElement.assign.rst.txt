@@ -1,0 +1,8 @@
+:orphan:
+
+FunctionSetElement.assign
+==========================================
+
+.. currentmodule:: odl.space.fspace
+
+.. automethod:: FunctionSetElement.assign

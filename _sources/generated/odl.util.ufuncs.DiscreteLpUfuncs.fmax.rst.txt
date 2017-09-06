@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.fmax
+=====================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.fmax

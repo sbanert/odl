@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesUfuncs.logaddexp
+============================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NumpyNtuplesUfuncs.logaddexp

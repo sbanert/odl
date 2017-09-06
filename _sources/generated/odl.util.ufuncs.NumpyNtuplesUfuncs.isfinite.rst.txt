@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesUfuncs.isfinite
+===========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NumpyNtuplesUfuncs.isfinite

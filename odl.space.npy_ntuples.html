@@ -1,0 +1,363 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>npy_ntuples &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="index.html"/>
+        <link rel="up" title="space" href="odl.space.html"/>
+        <link rel="next" title="NumpyFn" href="generated/odl.space.npy_ntuples.NumpyFn.html"/>
+        <link rel="prev" title="FunctionSpaceElement.set_zero" href="generated/odl.space.fspace.FunctionSpaceElement.set_zero.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="odl.html">odl</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="odl.contrib.html">contrib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odl.deform.html">deform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odl.diagnostics.html">diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odl.discr.html">discr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odl.operator.html">operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odl.phantom.html">phantom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odl.set.html">set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odl.solvers.html">solvers</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="odl.space.html">space</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="odl.space.base_ntuples.html">base_ntuples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="odl.space.entry_points.html">entry_points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="odl.space.fspace.html">fspace</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">npy_ntuples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFn.html">NumpyFn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFnArrayWeighting.html">NumpyFnArrayWeighting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFnConstWeighting.html">NumpyFnConstWeighting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFnCustomDist.html">NumpyFnCustomDist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFnCustomInner.html">NumpyFnCustomInner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFnCustomNorm.html">NumpyFnCustomNorm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFnMatrixWeighting.html">NumpyFnMatrixWeighting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFnNoWeighting.html">NumpyFnNoWeighting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFnVector.html">NumpyFnVector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyNtuples.html">NumpyNtuples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyNtuplesVector.html">NumpyNtuplesVector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_ntuples.npy_weighted_dist.html">npy_weighted_dist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_ntuples.npy_weighted_inner.html">npy_weighted_inner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/odl.space.npy_ntuples.npy_weighted_norm.html">npy_weighted_norm</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="odl.space.pspace.html">pspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="odl.space.space_utils.html">space_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="odl.space.weighting.html">weighting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="odl.tomo.html">tomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odl.trafos.html">trafos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odl.ufunc_ops.html">ufunc_ops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="odl.util.html">util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="odl.html">odl</a> &raquo;</li>
+        
+          <li><a href="odl.space.html">space</a> &raquo;</li>
+        
+      <li>npy_ntuples</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/odl.space.npy_ntuples.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="npy-ntuples">
+<h1>npy_ntuples<a class="headerlink" href="#npy-ntuples" title="Permalink to this headline">¶</a></h1>
+<p>CPU implementations of <code class="docutils literal"><span class="pre">n</span></code>-dimensional Cartesian spaces.</p>
+<p class="rubric">Classes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFn.html#odl.space.npy_ntuples.NumpyFn" title="odl.space.npy_ntuples.NumpyFn"><code class="xref py py-obj docutils literal"><span class="pre">NumpyFn</span></code></a>(size[,&nbsp;dtype])</td>
+<td>Vector space F^n with vector multiplication.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFnArrayWeighting.html#odl.space.npy_ntuples.NumpyFnArrayWeighting" title="odl.space.npy_ntuples.NumpyFnArrayWeighting"><code class="xref py py-obj docutils literal"><span class="pre">NumpyFnArrayWeighting</span></code></a>(array[,&nbsp;exponent,&nbsp;…])</td>
+<td>Weighting of <code class="xref any docutils literal"><span class="pre">Fn</span></code> by an array.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFnConstWeighting.html#odl.space.npy_ntuples.NumpyFnConstWeighting" title="odl.space.npy_ntuples.NumpyFnConstWeighting"><code class="xref py py-obj docutils literal"><span class="pre">NumpyFnConstWeighting</span></code></a>(constant[,&nbsp;exponent,&nbsp;…])</td>
+<td>Weighting of <a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFn.html#odl.space.npy_ntuples.NumpyFn" title="odl.space.npy_ntuples.NumpyFn"><code class="xref any py py-class docutils literal"><span class="pre">NumpyFn</span></code></a> by a constant.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFnCustomDist.html#odl.space.npy_ntuples.NumpyFnCustomDist" title="odl.space.npy_ntuples.NumpyFnCustomDist"><code class="xref py py-obj docutils literal"><span class="pre">NumpyFnCustomDist</span></code></a>(dist)</td>
+<td>Class for handling a user-specified distance in <a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFn.html#odl.space.npy_ntuples.NumpyFn" title="odl.space.npy_ntuples.NumpyFn"><code class="xref any py py-class docutils literal"><span class="pre">NumpyFn</span></code></a>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFnCustomInner.html#odl.space.npy_ntuples.NumpyFnCustomInner" title="odl.space.npy_ntuples.NumpyFnCustomInner"><code class="xref py py-obj docutils literal"><span class="pre">NumpyFnCustomInner</span></code></a>(inner[,&nbsp;dist_using_inner])</td>
+<td>Class for handling a user-specified inner product in <a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFn.html#odl.space.npy_ntuples.NumpyFn" title="odl.space.npy_ntuples.NumpyFn"><code class="xref any py py-class docutils literal"><span class="pre">NumpyFn</span></code></a>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFnCustomNorm.html#odl.space.npy_ntuples.NumpyFnCustomNorm" title="odl.space.npy_ntuples.NumpyFnCustomNorm"><code class="xref py py-obj docutils literal"><span class="pre">NumpyFnCustomNorm</span></code></a>(norm)</td>
+<td>Class for handling a user-specified norm in <a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFn.html#odl.space.npy_ntuples.NumpyFn" title="odl.space.npy_ntuples.NumpyFn"><code class="xref any py py-class docutils literal"><span class="pre">NumpyFn</span></code></a>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFnMatrixWeighting.html#odl.space.npy_ntuples.NumpyFnMatrixWeighting" title="odl.space.npy_ntuples.NumpyFnMatrixWeighting"><code class="xref py py-obj docutils literal"><span class="pre">NumpyFnMatrixWeighting</span></code></a>(matrix[,&nbsp;exponent,&nbsp;…])</td>
+<td>Matrix weighting for <a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFn.html#odl.space.npy_ntuples.NumpyFn" title="odl.space.npy_ntuples.NumpyFn"><code class="xref any py py-class docutils literal"><span class="pre">NumpyFn</span></code></a>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFnNoWeighting.html#odl.space.npy_ntuples.NumpyFnNoWeighting" title="odl.space.npy_ntuples.NumpyFnNoWeighting"><code class="xref py py-obj docutils literal"><span class="pre">NumpyFnNoWeighting</span></code></a>([exponent,&nbsp;dist_using_inner])</td>
+<td>Weighting of <a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFn.html#odl.space.npy_ntuples.NumpyFn" title="odl.space.npy_ntuples.NumpyFn"><code class="xref any py py-class docutils literal"><span class="pre">NumpyFn</span></code></a> with constant 1.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFnVector.html#odl.space.npy_ntuples.NumpyFnVector" title="odl.space.npy_ntuples.NumpyFnVector"><code class="xref py py-obj docutils literal"><span class="pre">NumpyFnVector</span></code></a>(space,&nbsp;data)</td>
+<td>Representation of an <a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFn.html#odl.space.npy_ntuples.NumpyFn" title="odl.space.npy_ntuples.NumpyFn"><code class="xref any py py-class docutils literal"><span class="pre">NumpyFn</span></code></a> element.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyNtuples.html#odl.space.npy_ntuples.NumpyNtuples" title="odl.space.npy_ntuples.NumpyNtuples"><code class="xref py py-obj docutils literal"><span class="pre">NumpyNtuples</span></code></a>(size,&nbsp;dtype)</td>
+<td>Set of n-tuples of arbitrary type.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyNtuplesVector.html#odl.space.npy_ntuples.NumpyNtuplesVector" title="odl.space.npy_ntuples.NumpyNtuplesVector"><code class="xref py py-obj docutils literal"><span class="pre">NumpyNtuplesVector</span></code></a>(space,&nbsp;data)</td>
+<td>Representation of an <a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyNtuples.html#odl.space.npy_ntuples.NumpyNtuples" title="odl.space.npy_ntuples.NumpyNtuples"><code class="xref any py py-class docutils literal"><span class="pre">NumpyNtuples</span></code></a> element.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Functions</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/odl.space.npy_ntuples.npy_weighted_dist.html#odl.space.npy_ntuples.npy_weighted_dist" title="odl.space.npy_ntuples.npy_weighted_dist"><code class="xref py py-obj docutils literal"><span class="pre">npy_weighted_dist</span></code></a>(weights[,&nbsp;exponent,&nbsp;use_inner])</td>
+<td>Weighted distance on <a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFn.html#odl.space.npy_ntuples.NumpyFn" title="odl.space.npy_ntuples.NumpyFn"><code class="xref any py py-class docutils literal"><span class="pre">NumpyFn</span></code></a> spaces as free function.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/odl.space.npy_ntuples.npy_weighted_inner.html#odl.space.npy_ntuples.npy_weighted_inner" title="odl.space.npy_ntuples.npy_weighted_inner"><code class="xref py py-obj docutils literal"><span class="pre">npy_weighted_inner</span></code></a>(weights)</td>
+<td>Weighted inner product on <a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFn.html#odl.space.npy_ntuples.NumpyFn" title="odl.space.npy_ntuples.NumpyFn"><code class="xref any py py-class docutils literal"><span class="pre">NumpyFn</span></code></a> spaces as free function.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/odl.space.npy_ntuples.npy_weighted_norm.html#odl.space.npy_ntuples.npy_weighted_norm" title="odl.space.npy_ntuples.npy_weighted_norm"><code class="xref py py-obj docutils literal"><span class="pre">npy_weighted_norm</span></code></a>(weights[,&nbsp;exponent])</td>
+<td>Weighted norm on <a class="reference internal" href="generated/odl.space.npy_ntuples.NumpyFn.html#odl.space.npy_ntuples.NumpyFn" title="odl.space.npy_ntuples.NumpyFn"><code class="xref any py py-class docutils literal"><span class="pre">NumpyFn</span></code></a> spaces as free function.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="generated/odl.space.npy_ntuples.NumpyFn.html" class="btn btn-neutral float-right" title="NumpyFn" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="generated/odl.space.fspace.FunctionSpaceElement.set_zero.html" class="btn btn-neutral" title="FunctionSpaceElement.set_zero" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

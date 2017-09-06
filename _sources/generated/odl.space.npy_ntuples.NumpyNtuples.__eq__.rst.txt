@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuples.__eq__
+=========================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyNtuples.__eq__

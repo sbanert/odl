@@ -1,0 +1,718 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>odl.operator.fn_ops &mdash; odl 0.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="odl 0.6.1.dev0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> odl
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Working with ODL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/guide.html">User’s guide – selected topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../math/math.html">Mathematical Background</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer zone</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev/dev.html">Contributing to ODL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Useful facts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../refs.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../odl.html">odl</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">odl</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>odl.operator.fn_ops</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for odl.operator.fn_ops</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2014-2017 The ODL contributors</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of ODL.</span>
+<span class="c1">#</span>
+<span class="c1"># This Source Code Form is subject to the terms of the Mozilla Public License,</span>
+<span class="c1"># v. 2.0. If a copy of the MPL was not distributed with this file, You can</span>
+<span class="c1"># obtain one at https://mozilla.org/MPL/2.0/.</span>
+
+<span class="sd">&quot;&quot;&quot;Default operators defined on fn (F^n where F is some field).&quot;&quot;&quot;</span>
+
+<span class="c1"># Imports for common Python 2/3 codebase</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">builtins</span> <span class="k">import</span> <span class="nb">super</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">odl.operator.operator</span> <span class="k">import</span> <span class="n">Operator</span>
+<span class="kn">from</span> <span class="nn">odl.space</span> <span class="k">import</span> <span class="n">fn</span>
+<span class="kn">from</span> <span class="nn">odl.set</span> <span class="k">import</span> <span class="n">LinearSpace</span><span class="p">,</span> <span class="n">Field</span>
+<span class="kn">from</span> <span class="nn">odl.discr</span> <span class="k">import</span> <span class="n">DiscreteLp</span>
+<span class="kn">from</span> <span class="nn">odl.space.base_ntuples</span> <span class="k">import</span> <span class="n">FnBase</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;SamplingOperator&#39;</span><span class="p">,</span> <span class="s1">&#39;WeightedSumSamplingOperator&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;FlatteningOperator&#39;</span><span class="p">,</span> <span class="s1">&#39;FlatteningOperatorAdjoint&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="SamplingOperator"><a class="viewcode-back" href="../../../generated/odl.operator.fn_ops.SamplingOperator.html#odl.operator.fn_ops.SamplingOperator">[docs]</a><span class="k">class</span> <span class="nc">SamplingOperator</span><span class="p">(</span><span class="n">Operator</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Operator that samples coefficients.</span>
+<span class="sd">    The operator is defined by::</span>
+<span class="sd">        ``SamplingOperator(f) == c * f[indices]``</span>
+<span class="sd">    with the weight c being determined by the variant. By choosing</span>
+<span class="sd">    c = 1, this operator approximates point evaluations or inner products</span>
+<span class="sd">    with dirac deltas, see option &#39;point_eval&#39;. By choosing c = cell_volume</span>
+<span class="sd">    it approximates the integration of f over the cell by multiplying its</span>
+<span class="sd">    function valume with the cell volume, see option &#39;integrate&#39;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">sampling_points</span><span class="p">,</span> <span class="n">variant</span><span class="o">=</span><span class="s1">&#39;point_eval&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        domain : `FnBase` or `DiscreteLp`</span>
+<span class="sd">            Set of elements on which this operator acts.</span>
+<span class="sd">        sampling_points : sequence</span>
+<span class="sd">            Sequence of indices that determine the sampling points.</span>
+<span class="sd">            In n dimensions, it should be of length n. Each element of</span>
+<span class="sd">            this list is a list by itself and should have the length of</span>
+<span class="sd">            the total number of sampling points. Example: To sample a</span>
+<span class="sd">            function at the points (0, 1) and (1, 1) the indices should</span>
+<span class="sd">            be defined as sampling_points = [[0, 1], [1, 1]].</span>
+<span class="sd">        variant : {&#39;point_eval&#39;, &#39;integrate&#39;}, optional</span>
+<span class="sd">            For `&#39;point_eval&#39;` this operator performs the sampling by</span>
+<span class="sd">            evaluation the function at the sampling points. The</span>
+<span class="sd">            `&#39;integrate&#39;` variant approximates integration by</span>
+<span class="sd">            multiplying point evaluation with the cell volume.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; X = odl.uniform_discr(min_pt=[0, 0], max_pt=[1, 1], shape=[2, 2])</span>
+<span class="sd">        &gt;&gt;&gt; x = X.element(range(X.size))</span>
+<span class="sd">        &gt;&gt;&gt; sampling_points = [[0, 1], [1, 1]]</span>
+<span class="sd">        &gt;&gt;&gt; A = odl.SamplingOperator(X, sampling_points, &#39;point_eval&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; A(x)</span>
+<span class="sd">        rn(2).element([1.0, 3.0])</span>
+<span class="sd">        &gt;&gt;&gt; A = odl.SamplingOperator(X, sampling_points, &#39;integrate&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; A(x)</span>
+<span class="sd">        rn(2).element([0.25, 0.75])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="p">(</span><span class="n">FnBase</span><span class="p">,</span> <span class="n">DiscreteLp</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`domain` </span><span class="si">{!r}</span><span class="s1"> not a `FnBase` or `DiscreteLp` &#39;</span>
+                            <span class="s1">&#39;instance&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">domain</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__sampling_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">sampling_points</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__variant</span> <span class="o">=</span> <span class="n">variant</span>
+
+        <span class="c1"># Converts a single sequence to an array of integers</span>
+        <span class="c1"># and a sequence of arrays to a vertically stacked array</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_points</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># Strides = increment in linear indices per axis</span>
+            <span class="n">strides</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">cumprod</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__indices_flat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sampling_points</span> <span class="o">*</span> <span class="n">strides</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__indices_flat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_points</span>
+
+        <span class="nb">range</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">indices_flat</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">domain</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="nb">range</span><span class="p">,</span> <span class="n">linear</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">variant</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Weighting scheme for the sampling operator.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__variant</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sampling_points</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Indices where to sample the function.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sampling_points</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">indices_flat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Flat indices (linear indexing) where to sample the function.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__indices_flat</span>
+
+<div class="viewcode-block" id="SamplingOperator._call"><a class="viewcode-back" href="../../../generated/odl.operator.fn_ops.SamplingOperator._call.html#odl.operator.fn_ops.SamplingOperator._call">[docs]</a>    <span class="k">def</span> <span class="nf">_call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Collect indices weighted with the cell volume.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">indices_flat</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">out</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">indices_flat</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">variant</span> <span class="o">==</span> <span class="s1">&#39;point_eval&#39;</span><span class="p">:</span>
+            <span class="n">weights</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">variant</span> <span class="o">==</span> <span class="s1">&#39;integrate&#39;</span><span class="p">:</span>
+            <span class="n">weights</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="s1">&#39;cell_volume&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;The variant &quot;</span><span class="si">{!r}</span><span class="s1">&quot; is not yet supported&#39;</span>
+                               <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variant</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">weights</span> <span class="o">!=</span> <span class="mf">1.0</span><span class="p">:</span>
+            <span class="n">out</span> <span class="o">*=</span> <span class="n">weights</span>
+
+        <span class="k">return</span> <span class="n">out</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Adjoint of the sampling is summing over weighted dirac deltas or</span>
+<span class="sd">        characteristic functions, see WeightedSumSamplingOperator.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; X = odl.uniform_discr(min_pt=[-1, -1], max_pt=[1, 1], shape=[4, 3])</span>
+<span class="sd">        &gt;&gt;&gt; x = X.element(range(1,X.size+1))</span>
+<span class="sd">        &gt;&gt;&gt; sampling_points = [[0, 1, 2], [0, 1, 2]]</span>
+<span class="sd">        &gt;&gt;&gt; A = odl.SamplingOperator(X, sampling_points, &#39;point_eval&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; A.adjoint(A(x)).inner(x) - A(x).inner(A(x)) &lt; 1e-10</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; A = odl.SamplingOperator(X, sampling_points, &#39;integrate&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; A.adjoint(A(x)).inner(x) - A(x).inner(A(x)) &lt; 1e-10</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">variant</span> <span class="o">==</span> <span class="s1">&#39;point_eval&#39;</span><span class="p">:</span>
+            <span class="n">variant</span> <span class="o">=</span> <span class="s1">&#39;dirac&#39;</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">variant</span> <span class="o">==</span> <span class="s1">&#39;integrate&#39;</span><span class="p">:</span>
+            <span class="n">variant</span> <span class="o">=</span> <span class="s1">&#39;char_fun&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;The variant &quot;</span><span class="si">{!r}</span><span class="s1">&quot; is not yet supported&#39;</span>
+                               <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variant</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">WeightedSumSamplingOperator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_points</span><span class="p">,</span>
+                                           <span class="n">variant</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``repr(self)``.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">(</span><span class="si">{!r}</span><span class="s1">, </span><span class="si">{!r}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span>
+                                       <span class="bp">self</span><span class="o">.</span><span class="n">sampling_points</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``str(self)``.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="WeightedSumSamplingOperator"><a class="viewcode-back" href="../../../generated/odl.operator.fn_ops.WeightedSumSamplingOperator.html#odl.operator.fn_ops.WeightedSumSamplingOperator">[docs]</a><span class="k">class</span> <span class="nc">WeightedSumSamplingOperator</span><span class="p">(</span><span class="n">Operator</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Adjoint of the sampling operator.</span>
+<span class="sd">    It sums dirac deltas or charactistic functions that are centered</span>
+<span class="sd">    around the sampling points and weighted by its argument.</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        W(g)(x) == \sum_{i in sampling_points} d_i(x) g_i</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">range</span><span class="p">,</span> <span class="n">sampling_points</span><span class="p">,</span> <span class="n">variant</span><span class="o">=</span><span class="s1">&#39;dirac&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        range : `FnBase` or `DiscreteLp`</span>
+<span class="sd">            Set of elements into which this operator maps.</span>
+<span class="sd">        sampling_points : sequence</span>
+<span class="sd">            Sequence of indices that determine the sampling points.</span>
+<span class="sd">            In n dimensions, it should be of length n. Each element of</span>
+<span class="sd">            this list is a list by itself and should have the length of</span>
+<span class="sd">            the total number of sampling points. Example: To sample a</span>
+<span class="sd">            function at the points (0, 1) and (1, 1) the indices should</span>
+<span class="sd">            be defined as sampling_points = [[0, 1], [1, 1]].</span>
+<span class="sd">        variant : {&#39;dirac&#39;, &#39;char_fun&#39;}, optional</span>
+<span class="sd">            This option determines which function to sum over.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; X = odl.uniform_discr(min_pt=[0, 0], max_pt=[1, 1], shape=[2, 2])</span>
+<span class="sd">        &gt;&gt;&gt; sampling_points = [[0, 1], [1, 1]]</span>
+<span class="sd">        &gt;&gt;&gt; A = odl.WeightedSumSamplingOperator(X, sampling_points, &#39;dirac&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; x = A.domain.one()</span>
+<span class="sd">        &gt;&gt;&gt; A(x)</span>
+<span class="sd">        uniform_discr([0.0, 0.0], [1.0, 1.0], (2, 2)).element([[0.0, 4.0],</span>
+<span class="sd">        [0.0, 4.0]])</span>
+<span class="sd">        &gt;&gt;&gt; A = odl.WeightedSumSamplingOperator(X, sampling_points, &#39;char_fun&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; A(x)</span>
+<span class="sd">        uniform_discr([0.0, 0.0], [1.0, 1.0], (2, 2)).element([[0.0, 1.0],</span>
+<span class="sd">        [0.0, 1.0]])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__sampling_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">sampling_points</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__variant</span> <span class="o">=</span> <span class="n">variant</span>
+
+        <span class="c1"># Converts a single sequence to an array of integers</span>
+        <span class="c1"># and a sequence of arrays to a vertically stacked array</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_points</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># Strides = increment in linear indices per axis</span>
+            <span class="n">strides</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">cumprod</span><span class="p">(</span><span class="nb">range</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__indices_flat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sampling_points</span> <span class="o">*</span> <span class="n">strides</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__indices_flat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_points</span>
+
+        <span class="n">domain</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">indices_flat</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">range</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="nb">range</span><span class="p">,</span> <span class="n">linear</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">variant</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Weighting scheme for the operator.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__variant</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sampling_points</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Indices where to sample the function.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sampling_points</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">indices_flat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Flattened set of indices (linear indexing) where to sample the</span>
+<span class="sd">        function.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__indices_flat</span>
+
+<div class="viewcode-block" id="WeightedSumSamplingOperator._call"><a class="viewcode-back" href="../../../generated/odl.operator.fn_ops.WeightedSumSamplingOperator._call.html#odl.operator.fn_ops.WeightedSumSamplingOperator._call">[docs]</a>    <span class="k">def</span> <span class="nf">_call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sum all values if indices are given multiple times.&quot;&quot;&quot;</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">indices_flat</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+                        <span class="n">minlength</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">out</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">y</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">variant</span> <span class="o">==</span> <span class="s1">&#39;dirac&#39;</span><span class="p">:</span>
+            <span class="n">weights</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">,</span> <span class="s1">&#39;cell_volume&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">variant</span> <span class="o">==</span> <span class="s1">&#39;char_fun&#39;</span><span class="p">:</span>
+            <span class="n">weights</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;The variant &quot;</span><span class="si">{!r}</span><span class="s1">&quot; is not yet supported&#39;</span>
+                               <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variant</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">weights</span> <span class="o">!=</span> <span class="mf">1.0</span><span class="p">:</span>
+            <span class="n">out</span> <span class="o">/=</span> <span class="n">weights</span>
+
+        <span class="k">return</span> <span class="n">out</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Adjoint of the weighted sum of sampling functions is &#39;sampling&#39;,</span>
+<span class="sd">        see SamplingOperator.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; X = odl.uniform_discr(min_pt=[-1, -1], max_pt=[1, 1], shape=[4, 3])</span>
+<span class="sd">        &gt;&gt;&gt; sampling_points = [[0, 1, 2], [0, 1, 2]]</span>
+<span class="sd">        &gt;&gt;&gt; A = odl.WeightedSumSamplingOperator(X, sampling_points, &#39;dirac&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; x = A.domain.one()</span>
+<span class="sd">        &gt;&gt;&gt; A.adjoint(A(x)).inner(x) - A(x).inner(A(x)) &lt; 1e-10</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; A = odl.WeightedSumSamplingOperator(X, sampling_points, &#39;char_fun&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; A.adjoint(A(x)).inner(x) - A(x).inner(A(x)) &lt; 1e-10</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">variant</span> <span class="o">==</span> <span class="s1">&#39;dirac&#39;</span><span class="p">:</span>
+            <span class="n">variant</span> <span class="o">=</span> <span class="s1">&#39;point_eval&#39;</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">variant</span> <span class="o">==</span> <span class="s1">&#39;char_fun&#39;</span><span class="p">:</span>
+            <span class="n">variant</span> <span class="o">=</span> <span class="s1">&#39;integrate&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;The variant &quot;</span><span class="si">{!r}</span><span class="s1">&quot; is not yet supported&#39;</span>
+                               <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variant</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">SamplingOperator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_points</span><span class="p">,</span> <span class="n">variant</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``repr(self)``.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">(</span><span class="si">{!r}</span><span class="s1">, </span><span class="si">{!r}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                                       <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_points</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``str(self)``.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="FlatteningOperator"><a class="viewcode-back" href="../../../generated/odl.operator.fn_ops.FlatteningOperator.html#odl.operator.fn_ops.FlatteningOperator">[docs]</a><span class="k">class</span> <span class="nc">FlatteningOperator</span><span class="p">(</span><span class="n">Operator</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Operator that reshapes the object as a column vector.</span>
+
+<span class="sd">        ``FlatteningOperator(f) == np.ravel(f)``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        domain : `FnBase` or `DiscreteLp`</span>
+<span class="sd">            Set of elements on which this operator acts.</span>
+<span class="sd">        order : {&#39;C&#39;, &#39;F&#39;} (optional)</span>
+<span class="sd">            The flattening is performed in this order. &#39;C&#39; means that</span>
+<span class="sd">            that the last index is changing fastest or in terms of a matrix</span>
+<span class="sd">            that the read out is row-by-row. Likewise &#39;F&#39; is column-by-column.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        General usage example:</span>
+
+<span class="sd">        &gt;&gt;&gt; X = odl.uniform_discr(min_pt=[-1, -1], max_pt=[1, 1], shape=[2, 3])</span>
+<span class="sd">        &gt;&gt;&gt; x = X.element(range(X.size))</span>
+<span class="sd">        &gt;&gt;&gt; A = odl.FlatteningOperator(X)</span>
+<span class="sd">        &gt;&gt;&gt; A(x)</span>
+<span class="sd">        rn(6).element([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="p">(</span><span class="n">LinearSpace</span><span class="p">,</span> <span class="n">Field</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`domain` </span><span class="si">{!r}</span><span class="s1"> not a `LinearSpace` or `Field` &#39;</span>
+                            <span class="s1">&#39;instance&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">domain</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__order</span> <span class="o">=</span> <span class="n">order</span>
+        <span class="nb">range</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">domain</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="nb">range</span><span class="p">,</span> <span class="n">linear</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="FlatteningOperator._call"><a class="viewcode-back" href="../../../generated/odl.operator.fn_ops.FlatteningOperator._call.html#odl.operator.fn_ops.FlatteningOperator._call">[docs]</a>    <span class="k">def</span> <span class="nf">_call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Collect indices&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">out</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">order</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;order of the flattening&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__order</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Adjoint of the vectorising is creating an element with these</span>
+<span class="sd">        components with an appropriate weighting, see</span>
+<span class="sd">        FlatteningOperatorAdjoint.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; X = odl.uniform_discr(min_pt=[-1, -1], max_pt=[1, 1], shape=[2, 3])</span>
+<span class="sd">        &gt;&gt;&gt; A = odl.FlatteningOperator(X)</span>
+<span class="sd">        &gt;&gt;&gt; x = A.domain.element(range(A.domain.size))</span>
+<span class="sd">        &gt;&gt;&gt; A.adjoint(A(x)).inner(x) - A(x).inner(A(x)) &lt; 1e-10</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO: This only works for a subset of function spaces</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="s1">&#39;cell_volume&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">c</span> <span class="o">*</span> <span class="n">FlatteningOperatorAdjoint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reshaping to original shape, see FlatteningOperatorAdjoint.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; X = odl.uniform_discr(min_pt=[-1, -1], max_pt=[1, 1], shape=[3, 4])</span>
+<span class="sd">        &gt;&gt;&gt; x = X.element(range(X.size))</span>
+<span class="sd">        &gt;&gt;&gt; A = odl.FlatteningOperator(X)</span>
+<span class="sd">        &gt;&gt;&gt; (A.inverse(A(x)) - x).norm() &lt; 1e-10</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">FlatteningOperatorAdjoint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``repr(self)``.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">(</span><span class="si">{!r}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``str(self)``.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="FlatteningOperatorAdjoint"><a class="viewcode-back" href="../../../generated/odl.operator.fn_ops.FlatteningOperatorAdjoint.html#odl.operator.fn_ops.FlatteningOperatorAdjoint">[docs]</a><span class="k">class</span> <span class="nc">FlatteningOperatorAdjoint</span><span class="p">(</span><span class="n">Operator</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Operator that creates an element of a vector space given its coefficients:</span>
+
+<span class="sd">        ``FlatteningOperatorAdjoint(f) == range.element(f)``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># TODO: give the domain as an optional argument</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">range</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a new instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        range : `LinearSpace` or `Field`</span>
+<span class="sd">            Space that the operator should map to.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        General usage example:</span>
+
+<span class="sd">        &gt;&gt;&gt; X = odl.uniform_discr(min_pt=[-1, -1], max_pt=[1, 1], shape=[1, 2])</span>
+<span class="sd">        &gt;&gt;&gt; A = odl.FlatteningOperatorAdjoint(X)</span>
+<span class="sd">        &gt;&gt;&gt; x = A.domain.element(range(A.domain.size))</span>
+<span class="sd">        &gt;&gt;&gt; A(x)</span>
+<span class="sd">        uniform_discr([-1.0, -1.0], [1.0, 1.0], (1, 2)).element([[0.0, 1.0]])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">range</span><span class="p">,</span> <span class="p">(</span><span class="n">LinearSpace</span><span class="p">,</span> <span class="n">Field</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`range` </span><span class="si">{!r}</span><span class="s1"> not a `LinearSpace` or `Field` &#39;</span>
+                            <span class="s1">&#39;instance&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">range</span><span class="p">))</span>
+
+        <span class="n">domain</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="nb">range</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">range</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="nb">range</span><span class="p">,</span> <span class="n">linear</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="FlatteningOperatorAdjoint._call"><a class="viewcode-back" href="../../../generated/odl.operator.fn_ops.FlatteningOperatorAdjoint._call.html#odl.operator.fn_ops.FlatteningOperatorAdjoint._call">[docs]</a>    <span class="k">def</span> <span class="nf">_call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a new element with the known coefficients.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">out</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">x</span>
+
+        <span class="k">return</span> <span class="n">out</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Adjoint of this operation is flattening with an appropriate scaling,</span>
+<span class="sd">        see FlatteningOperator.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; X = odl.uniform_discr(min_pt=[-1, -1], max_pt=[1, 1], shape=[2, 3])</span>
+<span class="sd">        &gt;&gt;&gt; A = odl.FlatteningOperatorAdjoint(X)</span>
+<span class="sd">        &gt;&gt;&gt; x = A.domain.element(range(A.domain.size))</span>
+<span class="sd">        &gt;&gt;&gt; A.adjoint(A(x)).inner(x) - A(x).inner(A(x)) &lt; 1e-10</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO: This only works for a subset of function spaces</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">,</span> <span class="s1">&#39;cell_volume&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">c</span> <span class="o">*</span> <span class="n">FlatteningOperator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Inverse of the embedding is flattening with the right scaling,</span>
+<span class="sd">        see FlatteningOperator.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; X = odl.uniform_discr(min_pt=[-1, -1], max_pt=[1, 1], shape=[3, 4])</span>
+<span class="sd">        &gt;&gt;&gt; A = odl.FlatteningOperatorAdjoint(X)</span>
+<span class="sd">        &gt;&gt;&gt; x = A.domain.element(range(A.domain.size))</span>
+<span class="sd">        &gt;&gt;&gt; (A.inverse(A(x)) - x).norm() &lt; 1e-10</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">FlatteningOperator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``repr(self)``.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">(</span><span class="si">{!r}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return ``str(self)``.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1"># pylint: disable=wrong-import-position</span>
+    <span class="kn">from</span> <span class="nn">odl.util.testutils</span> <span class="k">import</span> <span class="n">run_doctests</span>
+    <span class="n">run_doctests</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2017, ODL development group.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.6.1.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

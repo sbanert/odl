@@ -1,0 +1,8 @@
+:orphan:
+
+FnBase.divide
+====================================
+
+.. currentmodule:: odl.space.base_ntuples
+
+.. automethod:: FnBase.divide

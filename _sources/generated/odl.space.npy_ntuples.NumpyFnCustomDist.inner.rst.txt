@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyFnCustomDist.inner
+=============================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyFnCustomDist.inner

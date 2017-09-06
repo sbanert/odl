@@ -1,0 +1,30 @@
+NumpyFnCustomInner
+========================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. autoclass:: NumpyFnCustomInner
+   :show-inheritance:
+   
+   
+   .. automethod:: __init__
+   
+      
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         NumpyFnCustomInner.__eq__
+         NumpyFnCustomInner.dist
+         NumpyFnCustomInner.equiv
+         NumpyFnCustomInner.norm
+   
+
+    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+   
+   

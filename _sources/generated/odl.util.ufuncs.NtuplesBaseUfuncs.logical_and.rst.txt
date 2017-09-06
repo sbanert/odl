@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBaseUfuncs.logical_and
+=============================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NtuplesBaseUfuncs.logical_and

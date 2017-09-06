@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyFn.inner
+===================================
+
+.. currentmodule:: odl.space.npy_ntuples
+
+.. automethod:: NumpyFn.inner

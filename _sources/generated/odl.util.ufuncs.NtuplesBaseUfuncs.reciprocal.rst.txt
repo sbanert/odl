@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBaseUfuncs.reciprocal
+============================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NtuplesBaseUfuncs.reciprocal

@@ -1,0 +1,8 @@
+:orphan:
+
+DiscreteLpUfuncs.logical_and
+============================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: DiscreteLpUfuncs.logical_and

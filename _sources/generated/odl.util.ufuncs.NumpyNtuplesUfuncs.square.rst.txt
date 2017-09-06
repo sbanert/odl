@@ -1,0 +1,8 @@
+:orphan:
+
+NumpyNtuplesUfuncs.square
+=========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NumpyNtuplesUfuncs.square

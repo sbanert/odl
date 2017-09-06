@@ -1,0 +1,8 @@
+:orphan:
+
+NtuplesBaseUfuncs.multiply
+==========================================
+
+.. currentmodule:: odl.util.ufuncs
+
+.. automethod:: NtuplesBaseUfuncs.multiply
