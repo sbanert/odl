@@ -122,7 +122,7 @@ def adupgrades(funcs, ops, majs, x, rhs, mu, niter, random=False, callback=None,
     # Iteratively find solution
     for _ in range(niter):
         # TODO: Form the prospective next iteration of the primal variable
-        # xtilde = x - 1/mu * sum(ops[i].adjoint(duals[i], i)
+        # xtilde = x - 1/mu * sum(ops[i].adjoint(duals[i], i = ...)
         if random:
             rng = numpy.random.permutation(range(len(ops)))
         else:
